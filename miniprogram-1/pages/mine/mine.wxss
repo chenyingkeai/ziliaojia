@@ -1,0 +1,48 @@
+/* pages/mine/mine.wxss */
+.myInfo{
+  background-color: white;
+  border-radius: 25rpx;
+  border: 3rpx solid #020e0f;
+  margin: 30rpx 20rpx;
+  padding: 30rpx 15rpx;
+}
+.nickName{
+  font-size: 38rpx;
+  display: inline-block;
+  position: relative;
+  top: -60rpx;
+  left: 30rpx;
+}
+.avatarUrl{
+  border-radius: 100%;
+  width: 150rpx;
+  height: 150rpx;
+}
+.turn{
+  /* background-color: white; */
+  border: 3rpx solid #020e0f;
+  border-radius: 25rpx;
+  margin: 30rpx 20rpx;
+  padding: 30rpx 15rpx;
+  
+}
+.turnIcon{
+  margin-left: 20rpx;
+  width: 30rpx;
+  height: 35rpx;
+}
+.turnText{
+  /* font-size: 34rpx; */
+  margin-left: 30rpx;
+  position: relative;
+  top: -6rpx;
+  color: #3e3e3e;
+}
+.turnSign{
+  float:right;
+  font-size:40rpx;
+  margin-right:30rpx; 
+  position:relative;
+  top:-7rpx
+
+}

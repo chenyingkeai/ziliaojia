@@ -1,0 +1,23 @@
+/* pages/index/search/search.wxss */
+.searchSth{
+  text-align: center;
+}
+.search{
+  display: inline-block;
+  border-radius:20rpx;
+  background-color: #f2f2f2;
+  color: #9f9f9f;
+}
+.searchText{
+  width: 80%;
+  display: inline-block;
+  /* text-align: left; */
+}
+.noSearch{
+  margin-top: 200rpx;
+  text-align: center;
+}
+.noSearchImg{
+  width: 284rpx;
+  height: 226rpx;
+}

@@ -1,0 +1,77 @@
+  .sect{
+  margin: 20rpx;  
+
+  }
+  .section view{  
+    width: 130rpx;
+    margin-right: 20rpx;  
+  }  
+  .section input{
+    margin: auto;
+    display: block;
+    border-bottom: 1rpx solid #e7e7e7;
+    width: 96%;
+  }
+  .sect_thing{
+    margin-right: 20rpx;  
+    margin-bottom: 10rpx;
+  }
+  .sect input{
+    margin: auto;
+    display: block;
+    border-bottom: 1rpx solid #e7e7e7;
+    width: 96%;
+  }
+  .sect textarea{
+    margin: auto;
+    background-color: #f5f5f5;
+    width: 96%;
+  }
+  /* 下拉列表的效果 */
+  .select_box{
+    background: #fff;
+    width: 100%;
+    position: relative;
+    margin-top: 30rpx;
+   }
+   .select{
+     width: 100%;
+     height: 50rpx;
+    box-sizing: border-box;
+    /* border:1px solid #efefef; */
+    border-radius: 8rpx;
+    display: flex;
+    align-items: center;
+    padding: 0 20rpx;
+    border:1px solid #efefef;
+    border-bottom:none ;
+   }
+   .select_text{
+    font-size: 30rpx;
+    flex: 1;
+   }
+   .option{
+     margin-left: 14rpx;
+   }
+   .select_img{
+    width: 40rpx;
+    height: 40rpx;
+    display: block;
+    transition:transform 0.3s;
+   }
+   .select_img_rotate{
+    transform:rotate(180deg); 
+   }
+   .option_box1{
+    z-index: 99;
+    width: 100%;
+    position: absolute;
+    /* top: 100rpx; */
+    border:1px solid #efefef;
+    box-sizing: border-box;
+    height: 0;
+    overflow-y: auto;
+    border-top: 0;
+    background: #fff;
+    transition: height 0.3s;
+   }

@@ -1,0 +1,100 @@
+<!--pages/data/list/list.wxml-->
+<view class="whole">
+  <view class="top">
+    <view bindtap="onTapSelect" style="display:inline-block"> 
+      <image class="selectImg"  src="/pages/image/select.png"></image>
+      <view class="selectText">筛选</view>
+    </view>
+    <image class="sortImg" src="/pages/image/sort.png"></image>
+    <view class="sortText">智能排序</view>
+  </view>
+  <view class="list">
+    <view>
+      <block wx:for="{{item}}" wx:key="key">
+        <view class="item" bindtap="toDetails">
+          <image class="itemImg" src="/pages/image/item.png"></image>
+          <view class="type">【{{item.type}}】</view>
+          <view class="itemName">{{item.itemName}}</view>
+          <view class="download">
+            <image class="loadImg" src="/pages/image/download.png"></image>
+            <view class="loadText">立即下载</view>
+          </view>
+          <view class="num">
+            <view class="itemNum">
+              <image class="numImg1" src="/pages/image/look.png"></image>
+              <view class="itemNum itemLook">{{item.itemLook}}</view>
+            </view>
+            <view class="itemNum">
+              <image class="numImg2" src="/pages/image/follow.png"></image>
+              <view class="itemNum itemFollow">{{item.itemFollow}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class='mask' wx:if="{{flag1}}">
+    <view class="selectShade" bindtap="onTapSelect" style="display:inline-block"> 
+      <image class="selectImg"  src="/pages/image/select.png"></image>
+      <view class="selectText">筛选</view>
+    </view>
+    <view class="shade"> 
+      <view>
+        <form class="submit" report-submit="false" bindsubmit="formSubmit" >
+            <view  class="sect">
+              <view class="sectTittle">类型</view>
+                <view class='selectBox'>
+                  <view class='select' catchtap='selectTap1'>
+                    <text class='selectOption'>{{selectData1[index1]}}</text>
+                    <image class='selectPic {{show1}}' src='/pages/image/down.png'></image>   
+                  </view>
+                  <view class='option_box option_box1' style='height:{{show1?(selectData1.length>5?300:selectData1.length*60):0}}rpx;'>
+                    <text class='option' style='{{index1==selectData1.length-1&&"border:0;"}}' wx:for='{{selectData1}}' wx:key='this' data-index='{{index}}' catchtap='optionTap1'>{{item}}</text>
+                  </view>
+                </view>
+            </view>
+            <view  class="sect">
+              <view class="sectTittle">年级</view>
+                <view class='selectBox'>
+                  <view class='select' catchtap='selectTap2'>
+                    <text class='selectOption'>{{selectData2[index2]}}</text>
+                    <image class='selectPic {{show2}}' src='/pages/image/down.png'></image>   
+                  </view>
+                  <view class='option_box option_box2' style='height:{{show2?(selectData2.length>5?300:selectData2.length*60):0}}rpx;'>
+                    <text class='option' style='{{index2==selectData2.length-1&&"border:0;"}}' wx:for='{{selectData2}}' wx:key='this' data-index='{{index}}' catchtap='optionTap2'>{{item}}</text>
+                  </view>
+                </view>
+            </view>
+            <view  class="sect">
+              <view class="sectTittle">科目</view>
+                <view class='selectBox'>
+                  <view class='select' catchtap='selectTap3'>
+                    <text class='selectOption'>{{selectData3[index3]}}</text>
+                    <image class='selectPic {{show3}}' src='/pages/image/down.png'></image>   
+                  </view>
+                  <view class='option_box option_box3' style='height:{{show3?(selectData3.length>5?300:selectData3.length*60):0}}rpx;'>
+                    <text class='option' style='{{index3==selectData3.length-1&&"border:0;"}}' wx:for='{{selectData3}}' wx:key='this' data-index='{{index}}' catchtap='optionTap3'>{{item}}</text>
+                  </view>
+                </view>
+            </view>
+            <view  class="sect">
+              <view class="sectTittle">年份</view>
+                <view class='selectBox'>
+                  <view class='select' catchtap='selectTap4'>
+                    <text class='selectOption'>{{selectData4[index4]}}</text>
+                    <image class='selectPic {{show4}}' src='/pages/image/down.png'></image>   
+                  </view>
+                  <view class='option_box option_box4' style='height:{{show4?(selectData4.length>5?300:selectData4.length*60):0}}rpx;'>
+                    <text class='option' style='{{index4==selectData4.length-1&&"border:0;"}}' wx:for='{{selectData4}}' wx:key='this' data-index='{{index}}' catchtap='optionTap4'>{{item}}</text>
+                  </view>
+                </view>
+            </view>
+        </form>
+      </view>
+      <view class="closeSelect"> 
+        <button class="clear closeSelectBtn">清除</button>
+        <button class="confirm closeSelectBtn">确认</button>
+      </view>
+    </view>
+  </view>
+</view>

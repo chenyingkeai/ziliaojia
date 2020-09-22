@@ -1,0 +1,8 @@
+<!--pages/manager/login/login.wxml-->
+<view class="login">
+  <form bindsubmit="Mlogin">
+    <input class="loginInput" name="username" placeholder="账号" class="userName"></input>
+    <input class="loginInput" name="password" type="password" placeholder="请输入密码" class="userName"></input>
+    <button form-type="submit">登陆</button>
+  </form>
+</view>

@@ -1,0 +1,8 @@
+/* pages/manager/login/login.wxss */
+.login input{
+  height: 80rpx;
+  padding: 0 10rpx;
+  border: 3rpx solid #797979;
+  margin:40rpx 20rpx;
+  border-radius: 20rpx;
+}

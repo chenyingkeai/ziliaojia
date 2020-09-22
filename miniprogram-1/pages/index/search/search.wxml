@@ -1,0 +1,10 @@
+<!--pages/index/search/search.wxml-->
+<view class="searchSth">
+  <icon  type='search' size="38rpx"></icon>
+  <input class="searchText" type="text" placeholder="搜索你需要的学习资料" />
+</view>
+<view wx:if="{{!hasSearch}}">
+    <view class="noSearch">
+      <image mode="widthFix  " src="../../image/nosearch.png" class="noSearchImg"></image>
+    </view>
+</view>

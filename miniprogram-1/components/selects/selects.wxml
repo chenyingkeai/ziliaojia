@@ -1,0 +1,13 @@
+<!--components/selects/selects.wxml-->
+<view class="select">
+  <view>{{selectName}}</view>
+  <view class='select_box'>
+    <view class='select' catchtap='selectTap'>
+      <text class='select_text'>{{selectData1[index1]}}</text>
+      <image class='select_img {{show1}}' src='/pages/image/down.png'></image>   
+    </view>
+    <view class='option_box1' style='height:{{show1?(selectData1.length>5?300:selectData1.length*60):0}}rpx;'>
+      <text class='option' style='{{index1==selectData1.length-1&&"border:0;"}}' wx:for='{{selectData1}}' wx:key='this' data-index='{{index}}' catchtap='optionTap1'>{{item}}</text>
+    </view>
+  </view>
+</view>

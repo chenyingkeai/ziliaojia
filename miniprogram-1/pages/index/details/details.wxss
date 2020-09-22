@@ -1,0 +1,44 @@
+/* pages/index/details/details.wxss */
+.top{
+  margin: 0 20rpx;
+  border-bottom: 2rpx solid #e4f9e6; 
+}
+.type{
+  /* border: 1rpx solid black; */
+  display: inline-block;
+  font-size: 28rpx;
+  font-weight: 550;
+}
+.itemName{
+  display: inline-block;
+  font-size: 28rpx;
+  font-weight: 500;
+  /* width: 420rpx; */
+  /* min-height: 120rpx; */
+  /* margin-left: 120rpx; */
+}
+.select{
+  color: #46CC95;
+  font-size: 28rpx;
+  margin-left: 10rpx;
+}
+.num{
+  text-align: right;
+  margin:70rpx 50rpx 40rpx 0;
+}
+.itemNum{
+  display: inline-block;
+  color: #888888;
+  font-size: 25rpx;
+}
+.numImg1{
+  width: 22rpx;
+  height: 22rpx;
+  margin-right: 3rpx;
+}
+.numImg2{
+  width: 22rpx;
+  height: 22rpx;
+  margin-left: 20rpx;
+  margin-right: 3rpx;
+}

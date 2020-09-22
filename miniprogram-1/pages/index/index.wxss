@@ -1,0 +1,244 @@
+/**index.wxss**/
+button::after{
+  border:none;
+}
+.headView {
+  font-size: 33rpx;
+  /* margin:50px auto; */
+  text-align: center;
+}
+.headImageView {
+  display: block;
+  /* margin-left: 25px; */
+  margin-top: 25px;
+  margin-right: 25px;
+  margin-bottom: 0px;
+  height: 50px;
+}
+.pic{
+  position:absolute;
+  left: 0;
+  right: 0;
+  margin:auto;
+  /* right: 0px; */
+  width: 500rpx;
+  /* margin-top:235rpx */
+}
+.text{
+  margin-left: 120rpx;
+  color: #4fce9a;
+}
+.titleText{
+  margin-top: 55px;
+  margin-bottom: 6px;
+  /* font-size: 14px; */
+  text-align: left;
+}
+.contentText{
+  text-align: left;
+}
+/* 授权按钮 */
+.authBtn{
+  font-size: 34rpx;
+  line-height: 80rpx;
+  width: 360rpx;
+  height: 80rpx;
+  margin-top: 280rpx;
+  color: #4fce9a;
+  font-weight: 500;
+  border: 2rpx solid #4fce9a;
+  background-color: white;
+}
+.banner{
+  height: 360rpx;
+  border-radius: 20rpx;
+  background-color: black;
+  text-align: center;
+  margin:10rpx 30rpx 30rpx 30rpx;
+}
+.top{
+  text-align: center;
+}
+.select{
+  display: inline-block;
+}
+.search{
+  display: inline-block;
+  border-radius:20rpx;
+  background-color: #f1f1f1;
+  margin-left: 25rpx;
+  position: relative;
+  top: 3rpx;
+}
+.title{
+  display: inline-block;
+
+}
+.selectImg{
+  display: inline-block;
+  width: 35rpx;
+  height: 35rpx;
+  margin-right: 5rpx;
+}
+.selectText{
+  display:inline-block;
+  position: relative;
+  top: -8rpx;
+}
+.searchText{
+  display: inline-block;
+  width: 500rpx;
+  text-align: left;
+}
+/* 遮罩层 */
+.mask{
+  width:100%;   
+  height:100%;   
+  top:0;   
+  background:rgba(222, 222, 222,0.7);   
+  overflow: hidden;   
+  /*要显示在wrap的上面 */   
+  z-index: 1;   
+  position: absolute;  
+}
+.shade{   
+  width: 100%;   
+  min-height: 428rpx;   
+  background-color: white;   
+  position: fixed;   
+  top: 100rpx;   
+  padding-bottom: 20rpx;
+  border-radius:0 0 15rpx 15rpx;
+  margin-left:auto
+}  
+.selectBlock{
+  margin-left: 30rpx;
+  margin-bottom: 60rpx;
+}
+.selectTitle{
+  color: #85e4ba;
+  font-size: 30rpx;
+  font-weight: 500;
+  margin:20rpx;
+  margin-bottom: 40rpx;
+}
+
+.selectItem{
+  /* align-items: center; */
+  justify-content: center;
+  font-size: 24rpx;
+  line-height: 45rpx;
+  display: inline-flex;
+  flex-wrap: wrap;
+  width: 120rpx;
+  padding: 0 10rpx;
+  border: 3rpx solid #cdcdcd;
+  margin:0 8rpx;
+  color:#cdcdcd ;
+  border-radius: 20rpx;
+  margin-bottom: 15rpx;
+}
+.list{
+  padding: 0 35rpx;
+}
+/* 点击 */
+.activeTag{
+  border: 3rpx solid #bbf9da;
+  background-color: #bbf9da;
+  color: #76deb1;
+}
+.closeSelect{
+  float: right;
+}
+.closeSelectBtn{
+  display: inline-block;
+  width: 150rpx;
+  font-size: 26rpx;
+  line-height: 40rpx;
+  height: 43rpx;
+  border-radius: 20rpx;
+  margin-right: 30rpx;
+  margin-top: 40rpx;
+}
+.clear{
+  border: 1rpx solid #e09391;
+  color: #e09391;
+}
+.confirm{
+  border: 1rpx solid #e09391;
+  background-color: #45cb97;
+  color: white;
+}
+/* 资料列表 */
+.item{
+  min-height: 180rpx;
+  width: 100%;
+  position:relative;
+  vertical-align: middle
+}
+.type{
+  /* border: 1rpx solid black; */
+  font-size: 29rpx;
+  font-weight: 500;
+  display: inline-block;
+  width: 120rpx;
+  height: 120rpx;
+  position: absolute;
+  margin-left: 10rpx;
+
+}
+.itemName{
+  display: inline-block;
+  font-size: 29rpx;
+  font-weight: 500;
+  width: 420rpx;
+  min-height: 120rpx;
+  margin-left: 120rpx;
+}
+.itemImg{
+  /* border: 1rpx solid red; */
+  position: absolute;
+  z-index: -99;
+  width: 157rpx;
+  height: 160rpx;
+}
+.num{
+  position: absolute;
+  bottom: 25rpx;
+}
+.itemNum{
+  display: inline-block;
+  color: #888888;
+  font-size: 22rpx;
+  margin-right: 20rpx;
+}
+.numImg1{
+  width: 22rpx;
+  height: 14rpx;
+  margin-right: 4rpx;
+  position: relative;
+  top: -1rpx;
+  margin-left: 20rpx;
+
+}
+.numImg2{
+  width: 18rpx;
+  height: 18rpx;
+  margin-right: 3rpx;
+  position: relative;
+  top: 1rpx;
+}
+.download{
+  float: right;
+}
+.loadImg{
+  width: 70rpx;
+  height: 70rpx;
+  display: inline-block;
+  position: relative;
+  left: 12rpx;
+}
+.loadText{
+  color: #46cc95;
+  font-size: 24rpx;
+}

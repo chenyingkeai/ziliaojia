@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText":"资料列表",
+  "usingComponents": {
+    "selects": "../../../components/selects/selects"
+  }
+}

@@ -1,0 +1,9 @@
+<!--pages/integral/integral.wxml-->
+<view>
+  <view class="top">邀请好友赚积分</view>
+  <view class="share">
+    <view class="shareText">分享小程序给好友获得下载积分</view>
+    <view class="shareNum">已成功分享0人，累计获得0下载积分</view>
+    <button open-type="share">分享给好友</button>
+  </view>
+</view>

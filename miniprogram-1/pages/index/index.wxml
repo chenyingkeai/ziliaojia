@@ -1,0 +1,88 @@
+<view wx:if="{{canIUse}}">
+  <view wx:if="{{!hasUserInfo}}" class='headView'>
+    <view>
+        <image mode="widthFix" class="pic" src="../image/empower.png"></image>
+    </view>
+    <view class="text">
+      <view class='titleText'>欢迎来到初中学习资料库</view>
+      <view class='contentText'>为了给您带来更好的服务，</view>
+      <view class='contentText'>请允许我们获得您的微信公开信息。</view>
+    </view>
+    <button class='authBtn'   open-type='getUserInfo'     
+    bindgetuserinfo='getUserInfo'>允许</button>
+  </view> 
+  <view  wx:else>
+    <view class="top">
+      <view class="select" bindtap="onTap">
+        <image class="selectImg" src="../../pages/image/select.png"></image>
+        <view class="selectText">筛选</view>
+    </view>
+    <view class="search" bindtap="toSearch">
+      <icon  type='search' size="38rpx"></icon>
+      <input class="searchText" type="text" disabled="disabled" placeholder="搜索你需要的学习资料" />
+    </view>
+    </view>
+    <view class="banner">
+      <image ></image>
+    </view>
+    <!-- 资料列表 -->
+    <view class="list">
+      <view>
+        <block wx:for="{{item}}" wx:key="key">
+          <view class="item" bindtap="toDetails">
+            <image class="itemImg" src="../image/item.png"></image>
+            <view class="type">【{{item.type}}】</view>
+            <view class="itemName">{{item.itemName}}</view>
+            <view class="download">
+              <image class="loadImg" src="../image/download.png"></image>
+              <view class="loadText">立即下载</view>
+            </view>
+            <view class="num">
+              <view class="itemNum">
+                <image class="numImg1" src="../image/look.png"></image>
+                <view class="itemNum itemLook">{{item.itemLook}}</view>
+              </view>
+              <view class="itemNum">
+                <image class="numImg2" src="../image/follow.png"></image>
+                <view class="itemNum itemFollow">{{item.itemFollow}}</view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class='mask' wx:if="{{flag}}">
+      <view class="shade"> 
+        <view class="selectTap">
+          <view class="selectTitle">年级</view>
+          <view class="selectBlock">
+            <block wx:for="{{selectList1}}"  wx:for-index='key' wx:key="key">
+              <view class="selectItem {{selectNum1==key?'activeTag':''}}" bindtap="subjectChange1"   data-num="{{key}}" >{{item}}</view>
+            </block>
+          </view>
+        </view>
+        <view class="selectTap">
+          <view class="selectTitle">科目</view>
+          <view class="selectBlock">
+            <block wx:for="{{selectList2}}"  wx:for-index='key' wx:key="key">
+              <view class="selectItem {{selectNum2==key?'activeTag':''}}" bindtap="subjectChange2"   data-num="{{key}}" >{{item}}</view>
+            </block>
+          </view>
+        </view>
+        <view class="selectTap">
+          <view class="selectTitle">类型</view>
+          <view class="selectBlock">
+            <block wx:for="{{selectList3}}"  wx:for-index='key' wx:key="key">
+              <view class="selectItem {{selectNum3==key?'activeTag':''}}" bindtap="subjectChange3"   data-num="{{key}}" >{{item}}</view>
+            </block>
+          </view>
+        </view>
+        <view class="closeSelect"> 
+          <button class="clear closeSelectBtn">清除</button>
+          <button class="confirm closeSelectBtn">确认</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:else>请升级微信版本</view>

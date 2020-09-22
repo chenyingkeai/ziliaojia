@@ -1,0 +1,20 @@
+<!--pages/mine/mine.wxml-->
+<view>
+  <view class="myInfo">
+    <image class="avatarUrl" src="{{avatarUrl}}" mode="widthFix" lazy-load="false" binderror="" bindload="">
+    </image>
+    <view class="nickName" hover-class="none" hover-stop-propagation="false">
+        {{nickName}}
+    </view>
+  </view>
+  <view class="turn">
+    <image class="turnIcon"></image>
+    <text class="turnText">我的收藏</text>
+    <text class="turnSign">></text>
+  </view>
+    <view class="turn" bindtap="toLogin">
+    <image class="turnIcon"></image>
+    <text class="turnText">运营人员入口</text>
+    <text class="turnSign">></text>
+  </view>
+</view>

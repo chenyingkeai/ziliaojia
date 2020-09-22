@@ -1,0 +1,9 @@
+<!--pages/manager/dataList/dataList.wxml-->
+<view class="dataList">
+  <view class="choose">
+    <selects project="{{select1}}"></selects>
+    <selects project="{{select2}}"></selects>
+    <view class="upload">资料上传></view>
+  </view>
+
+</view>

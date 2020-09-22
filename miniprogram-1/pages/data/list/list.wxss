@@ -1,0 +1,245 @@
+/* pages/data/list/list.wxss */
+page{
+  font-size: 26rpx;
+}
+.top{
+  margin: 30rpx;
+  margin-bottom: 30rpx;
+}
+.selectImg{
+  display: inline-block;
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 5rpx;
+}
+.sortImg{
+  float: right;
+  width: 22rpx;
+  height: 12rpx;
+  margin-right: 55rpx;
+  position: relative;
+  top: 5rpx;
+}
+.selectText{
+  display:inline-block;
+  position: relative;
+  top: -8rpx;
+  color: #69d5a8;
+}
+.sortText{
+  float: right;
+  position: relative;
+  top: -8rpx;
+  color: #9e9e9e;
+}
+/* 资料列表 */
+.item{
+  min-height: 180rpx;
+  width: 100%;
+  position:relative;
+  vertical-align: middle
+}
+.type{
+  /* border: 1rpx solid black; */
+  font-size: 29rpx;
+  font-weight: 500;
+  display: inline-block;
+  width: 120rpx;
+  height: 120rpx;
+  position: absolute;
+  margin-left: 10rpx;
+
+}
+.itemName{
+  display: inline-block;
+  font-size: 29rpx;
+  font-weight: 500;
+  width: 420rpx;
+  min-height: 120rpx;
+  margin-left: 120rpx;
+}
+.itemImg{
+  /* border: 1rpx solid red; */
+  position: absolute;
+  z-index: -99;
+  width: 157rpx;
+  height: 160rpx;
+}
+.num{
+  position: absolute;
+  bottom: 25rpx;
+}
+.itemNum{
+  display: inline-block;
+  color: #888888;
+  font-size: 22rpx;
+  margin-right: 20rpx;
+}
+.numImg1{
+  width: 22rpx;
+  height: 14rpx;
+  margin-right: 4rpx;
+  position: relative;
+  top: -1rpx;
+  margin-left: 20rpx;
+
+}
+.numImg2{
+  width: 18rpx;
+  height: 18rpx;
+  margin-right: 3rpx;
+  position: relative;
+  top: 1rpx;
+}
+.download{
+  float: right;
+}
+.loadImg{
+  width: 70rpx;
+  height: 70rpx;
+  display: inline-block;
+  position: relative;
+  left: 12rpx;
+}
+.loadText{
+  color: #46cc95;
+  font-size: 24rpx;
+}
+/* 遮罩层 */
+.mask{
+  width:100%;   
+  height:100%;   
+  top:0;   
+  background:rgba(222, 222, 222,0.7);   
+  overflow: hidden;   
+  /*要显示在wrap的上面 */   
+  z-index: 1;   
+  position: absolute;  
+}
+.shade{   
+  width: 100%;   
+  min-height: 428rpx;   
+  background-color: white;   
+  position: fixed;   
+  top: 80rpx;   
+  padding-bottom: 20rpx;
+  border-radius:0 0 15rpx 15rpx;
+  margin-left:auto
+}  
+.selectShade{
+  height:100rpx ;
+  width: 100rpx;
+  background-color: white;   
+  padding: 30rpx;
+  border-radius: 10rpx 10rpx 0 0;
+}
+.selectBlock{
+  margin-left: 30rpx;
+  margin-bottom: 60rpx;
+}
+
+.list{
+  padding: 0 35rpx;
+}
+.closeSelect{
+  float: right;
+}
+.closeSelectBtn{
+  display: inline-block;
+  width: 150rpx;
+  font-size: 26rpx;
+  line-height: 40rpx;
+  height: 43rpx;
+  border-radius: 20rpx;
+  margin-right: 30rpx;
+  margin-top: 40rpx;
+}
+.clear{
+  border: 2rpx solid #e09391;
+  color: #e09391;
+}
+.confirm{
+  /* border: 2rpx solid #45cb97; */
+  background-color: #45cb97;
+  color: white;
+}
+/* 下拉菜单 */
+.sect{
+  margin: 30rpx;
+}
+.sectTittle{
+  display: inline-block;
+  font-size: 30rpx;
+  margin-left:20rpx;
+  margin-right: 15rpx;
+  /* position: relative; */
+  /* top: 10rpx; */
+}
+.selectBox{
+  display: inline-block;
+}
+.select_box{
+  width: 580rpx;
+  background: #fff;
+  position: relative;
+ }
+ .select{
+  width: 580rpx;
+  height: 50rpx;
+  box-sizing: border-box;
+  /* border:1px solid #efefef; */
+  border-radius: 8rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+  border:1px solid #efefef;
+  border-bottom:none ;
+ }
+ .selectOption{
+  font-size: 28rpx;
+  flex: 1;
+ }
+ .selectPic{
+  width: 40rpx;
+  height: 40rpx;
+  display: block;
+  transition:transform 0.3s;
+ }
+ /* .selectPic_rotate{
+  transform:rotate(180deg); 
+ } */
+.option_box1{
+  z-index: 999;
+}
+.option_box2{
+  z-index: 888;
+}
+.option_box3{
+  z-index: 777;
+}
+.option_box4{
+  z-index: 666;
+}
+.option_box5{
+  z-index: 555;
+}
+ .option_box{
+  width: 580rpx;
+  position: absolute;
+  /* top: 100rpx; */
+  border:1px solid #efefef;
+  box-sizing: border-box;
+  height: 0;
+  overflow-y: auto;
+  border-top: 0;
+  background: #fff;
+  transition: height 0.3s;
+ }
+ .option{
+  margin-left: 15rpx;
+  display: block;
+  line-height: 40rpx;
+  font-size: 30rpx;
+  border-bottom: 1px solid #efefef;
+  padding: 10rpx;
+ }

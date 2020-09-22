@@ -1,0 +1,15 @@
+/* pages/manager/dataList/dataList.wxss */
+.choose{
+  text-align: center;
+}
+.upload{
+  display: inline-block;
+  width: 190rpx;
+  text-align: center;
+  margin:5rpx 10rpx;
+  border: 1rpx solid #797979;
+  font-size: 32rpx;
+  line-height: 60rpx;
+  height: 60rpx;
+  border-radius: 20rpx;
+}

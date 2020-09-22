@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText":"初中学习资料库",
+  "usingComponents": {
+    "selects": "../../components/selects/selects"
+  }
+}

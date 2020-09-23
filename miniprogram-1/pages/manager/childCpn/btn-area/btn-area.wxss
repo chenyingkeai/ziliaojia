@@ -1,0 +1,17 @@
+/* pages/manager/childCpn/btn-area/btn-area.wxss */
+.btn-area{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.btn-area button{
+  width: 256rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  font-size: 28rpx;
+  border-radius: 32rpx;
+  background-color: #46CC95;
+  color: white;
+}

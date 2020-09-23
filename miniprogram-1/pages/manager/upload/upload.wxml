@@ -6,26 +6,23 @@
   </view>
   <view class="material-info">
     <view> 模块 </view>
-    <input class="" placeholder="你好啊" bindinput="">
-      <view>
-        123
-      </view>
-    </input>
-      
+    <input class="" placeholder="你好啊" bindinput="" />
   </view>
 
   <view class="line" /> 
   
   <view class="base-info">
-    <view>
-      下载券数
-    </view>
+    <view> 下载券数 </view>
     <input class="" placeholder="请输入下载分数"  bindinput="" />
   </view>
+
   <view class="base-info">
-    <view>
-      回复关键字
-    </view>
+    <view> 回复关键字 </view>
+    <input class="" placeholder="请输入下载分数"  bindinput="" />
+  </view>
+
+  <view class="base-info">
+    <view> 上传资料 </view>
     <input class="" placeholder="请输入下载分数"  bindinput="" />
   </view>
 

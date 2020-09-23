@@ -1,2 +1,47 @@
-<!--pages/manager/detail/detail.wxml-->
-<text>pages/manager/detail/detail.wxml</text>
+
+<detail-list listName="资料名称">
+  <view>
+    {{materianInfo.zlName}}
+  </view>
+</detail-list>
+
+<detail-list listName="资料分类">
+  <view wx:if="{{materianInfo.zlType == '中考真题'}}"> <!-- 中考 -->
+    <view> 类型：{{materianInfo.zlType}}</view>
+    <view> 年份：{{materianInfo.zlYears}} </view>
+    <view> 科目：{{materianInfo.zlSubject}} </view>
+    <view> 省份：{{materianInfo.zlArea}} </view>
+    <view> 市级：{{materianInfo.zlArea}} </view>
+  </view>
+</detail-list>
+
+<detail-list listName="下载条件">
+  <view> 
+    <view> 下载扣除下载券数：{{materianInfo.zlType}}</view>
+    <view> 公众号下载关键字：{{materianInfo.zlYears}} </view>
+  </view>
+</detail-list>
+
+<detail-list listName="资料预览">
+  <view> 
+    无能为力
+  </view>
+</detail-list>
+
+<btn-area class="fixed-bar"/>
+
+
+<!-- 
+  资料
+<view> 类型：{{materianInfo.zlType}}</view>
+<view> 年级：{{materianInfo.zlGrade}} </view>
+<view> 学科：{{materianInfo.zlSubject}} </view>
+<view> 类型：{{materianInfo.zlModule}} </view>
+
+单元测
+<view> 类型：{{materianInfo.zlType}}</view>
+<view> 年级：{{materianInfo.zlGrade}} </view>
+<view> 科目：{{materianInfo.zlSubject}} </view>
+<view> 版本：{{materianInfo.zlVersion}} </view>
+
+ -->

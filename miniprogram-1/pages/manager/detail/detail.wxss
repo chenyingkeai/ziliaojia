@@ -1,1 +1,7 @@
 /* pages/manager/detail/detail.wxss */
+.fixed-bar{
+  position: fixed;
+  bottom: 0;
+  width: 750rpx;
+  height: 100rpx;
+}

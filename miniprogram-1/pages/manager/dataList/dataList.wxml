@@ -1,9 +1,30 @@
 <!--pages/manager/dataList/dataList.wxml-->
 <view class="dataList">
-  <view class="choose">
+  <!-- <view class="choose">
     <selects project="{{select1}}"></selects>
     <selects project="{{select2}}"></selects>
-    <view class="upload">资料上传></view>
+  </view> -->
+  
+  <view class="top-bar">
+    <view class="select">
+      <view bind:tap="showModel" class="select-btn" >
+        资料筛选
+      </view>
+      <view bind:tap="showModel" class="select-btn" >
+        试卷筛选
+      </view>
+    </view>
+    <view class="setting">
+      <image src="/assest/images/manager/setting.png" />
+    </view>
   </view>
+
+  <view>
+    资料
+  </view>
+  
+  <movable-cpn>
+    <image src='/assest/images/manager/upLoad.png' bind:tap="upload" class="movable-img" />
+  </movable-cpn>
 
 </view>

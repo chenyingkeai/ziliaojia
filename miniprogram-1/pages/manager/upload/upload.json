@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText":"资料上传",
-  "usingComponents": {}
+  "usingComponents": {
+    "toast": "../../../components/toast/toast"
+  }
 }

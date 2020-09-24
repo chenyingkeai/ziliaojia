@@ -37,3 +37,5 @@
     确认上传
   </button>
 </view>
+
+<toast message="修改成功" id="toast" />

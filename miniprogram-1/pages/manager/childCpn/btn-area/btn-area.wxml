@@ -1,9 +1,9 @@
 <!--pages/manager/childCpn/btn-area/btn-area.wxml-->
 <view class="btn-area">
-  <button>
-    取消
+  <button bind:tap="firstBtn" >
+    {{btnText[0]}}
   </button>
-  <button>
-    确认上传
+  <button bind:tap="secBtn">
+    {{btnText[1]}}
   </button>
 </view>

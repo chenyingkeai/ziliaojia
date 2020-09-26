@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    test: ['删除资料', '修改资料']
   },
 
   /**
@@ -14,6 +14,9 @@ Page({
    */
   onLoad: function (options) {
     let id = 12
+    this.setData({
+      id: 12
+    })
     this.getMaterianInfo(id)
   },
 
@@ -21,7 +24,9 @@ Page({
     request({
       url: 'Yunying/getMaterialInfo',
       method: 'POST',
-      data: id
+      data: {
+        zlId: id
+      }
     }).then(res =>{
       let that = this
       const { code, data } = res.data;
@@ -35,5 +40,37 @@ Page({
     }).catch(err=>{
       console.log(err);          
     })
-  }
+  },
+
+  isDetlete() {
+    this.setData({
+      showModale: true
+    })
+  },
+  deleteMaterial() {
+    const id = this.data.id
+    request({
+      url: 'Yunying/deleteMaterial',
+      method: 'POST',
+      data: {
+        id,
+      }
+    }).then(res =>{
+      console.log(res);
+      if (res.data.code === '200') {
+        console.log('删除成功');
+      }
+    }).catch(err=>{
+      console.log(err);          
+    })
+  },
+  changeMaterial() {
+    console.log('修改');
+  },
+
+  hideModel() {
+    this.setData({
+      showModale: false
+    })
+  },
 })

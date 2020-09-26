@@ -4,7 +4,11 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    btnText:{
+      type: Array,
+      value: []
+    },
+    deleteBtn: Boolean
   },
 
   /**
@@ -18,6 +22,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    firstBtn() {
+      this.triggerEvent('firstBtn',{})
+    },
+    secBtn() {
+      this.triggerEvent('secBtn',{})
+    }
   }
 })

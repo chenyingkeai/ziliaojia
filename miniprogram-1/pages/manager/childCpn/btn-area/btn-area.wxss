@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: row;
+  z-index: 5;
 }
 
 .btn-area button{
@@ -15,3 +16,4 @@
   background-color: #46CC95;
   color: white;
 }
+

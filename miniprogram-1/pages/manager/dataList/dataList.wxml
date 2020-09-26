@@ -15,7 +15,7 @@
       </view>
     </view>
     <view class="setting">
-      <image src="/assest/images/manager/setting.png" />
+      <image src="/assest/icons/manager/setting.png" />
     </view>
   </view>
 
@@ -24,7 +24,7 @@
   </view>
   
   <movable-cpn>
-    <image src='/assest/images/manager/upLoad.png' bind:tap="upload" class="movable-img" />
+    <image src='/assest/icons/manager/upLoad.png' bind:tap="upload" class="movable-img" />
   </movable-cpn>
 
 </view>

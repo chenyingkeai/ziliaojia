@@ -1,7 +1,32 @@
 /* pages/manager/detail/detail.wxss */
+.img-container{
+  height: 478rpx;
+  width: 615rpx;
+  border-radius: 10rpx;
+  position: absolute;
+}
+.img-cover{
+  color: white;
+  font-size: 26rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 478rpx;
+  width: 615rpx;
+  border-radius: 10rpx;
+  background-color: #333333;
+  opacity: 0.35;
+  z-index: 3;
+}
+
 .fixed-bar{
   position: fixed;
   bottom: 0;
   width: 750rpx;
   height: 100rpx;
+  padding-top: 20rpx;
+  background-color: white;
+  z-index: 5;
 }
+

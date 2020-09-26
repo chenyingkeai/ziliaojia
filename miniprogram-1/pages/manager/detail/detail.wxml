@@ -1,4 +1,4 @@
-
+<wxs src="../wxs/filter.wxs" module="filter" />
 <detail-list listName="资料名称">
   <view>
     {{materianInfo.zlName}}
@@ -10,26 +10,35 @@
     <view> 类型：{{materianInfo.zlType}}</view>
     <view> 年份：{{materianInfo.zlYears}} </view>
     <view> 科目：{{materianInfo.zlSubject}} </view>
-    <view> 省份：{{materianInfo.zlArea}} </view>
-    <view> 市级：{{materianInfo.zlArea}} </view>
+    <view> 省份：{{filter.getPro(materianInfo.zlArea)}} </view>
+    <view> 市级：{{filter.getCity(materianInfo.zlArea)}} </view>
+  </view>
+  <view wx:elif="{{materianInfo.zlType == '知识点'}}">
+    <view> 类型：{{materianInfo.zlType}}</view>
+    <view> 年级：{{materianInfo.zlGrade}} </view>
+    <view> 学科：{{materianInfo.zlSubject}} </view>
+    <view> 类型：{{materianInfo.zlModule}} </view>
   </view>
 </detail-list>
 
 <detail-list listName="下载条件">
-  <view> 
-    <view> 下载扣除下载券数：{{materianInfo.zlType}}</view>
-    <view> 公众号下载关键字：{{materianInfo.zlYears}} </view>
-  </view>
+  <view> 下载扣除下载券数：{{materianInfo.zlDownload}}</view>
+  <view> 公众号下载关键字：{{materianInfo.zlKeyword}} </view>
 </detail-list>
 
 <detail-list listName="资料预览">
-  <view> 
-    无能为力
-  </view>
+  <!-- <view class="img-container" >   </view> -->
+  <image class="img-container" src="../../../assest/icons/manager/upload.png" mode="aspectFit|aspectFill|widthFix" />
+  <view class="img-cover"> 资料部分展示 </view>
 </detail-list>
 
-<btn-area class="fixed-bar"/>
 
+<modal showIcon="{{true}}" comfirmColor="#EA4E4E" bind:hideModel="hideModel" bind:sureClick="deleteMaterial" 
+       wx:if="{{showModale}}" title="删除警告" content="是否删除该资料，一旦删除不可恢复" />
+
+<view class="fixed-bar" style="position: relative;" /> 
+<btn-area class="fixed-bar" btnText="{{['删除资料', '修改资料']}}" 
+          bind:firstBtn="isDetlete" bind:secBtn="changeMaterial" />
 
 <!-- 
   资料

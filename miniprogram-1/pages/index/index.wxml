@@ -28,23 +28,23 @@
     <!-- 资料列表 -->
     <view class="list">
       <view>
-        <block wx:for="{{item}}" wx:key="key">
-          <view class="item" bindtap="toDetails">
+        <block wx:for="{{zlList}}" wx:key="key">
+          <view class="item">
             <image class="itemImg" src="../image/item.png"></image>
-            <view class="type">【{{item.type}}】</view>
-            <view class="itemName">{{item.itemName}}</view>
-            <view class="download">
+            <view class="type">【{{item.zlModule}}】</view>
+            <view class="itemName">{{item.zlName}}</view>
+            <view class="download" bindtap="toDetails"> 
               <image class="loadImg" src="../image/download.png"></image>
               <view class="loadText">立即下载</view>
             </view>
-            <view class="num">
+            <view class="num" bindtap="tapGood(key)">
               <view class="itemNum">
                 <image class="numImg1" src="../image/look.png"></image>
-                <view class="itemNum itemLook">{{item.itemLook}}</view>
+                <view class="itemNum itemLook">{{item.zlGood}}</view>
               </view>
               <view class="itemNum">
                 <image class="numImg2" src="../image/follow.png"></image>
-                <view class="itemNum itemFollow">{{item.itemFollow}}</view>
+                <view class="itemNum itemFollow">{{item.zlFavor}}</view>
               </view>
             </view>
           </view>

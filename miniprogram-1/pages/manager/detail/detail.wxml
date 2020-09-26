@@ -34,7 +34,7 @@
 
 
 <modal showIcon="{{true}}" comfirmColor="#EA4E4E" bind:hideModel="hideModel" bind:sureClick="deleteMaterial" 
-       wx:if="{{showModale}}" title="删除警告" content="是否删除该资料，一旦删除不可恢复" />
+       wx:if="{{showModal}}" title="删除警告" content="是否删除该资料，一旦删除不可恢复" />
 
 <view class="fixed-bar" style="position: relative;" /> 
 <btn-area class="fixed-bar" btnText="{{['删除资料', '修改资料']}}" 

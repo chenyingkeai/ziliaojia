@@ -42,9 +42,10 @@ Page({
     })
   },
 
+  //是否删除资料
   isDetlete() {
     this.setData({
-      showModale: true
+      showModal: true
     })
   },
   deleteMaterial() {
@@ -64,13 +65,14 @@ Page({
       console.log(err);          
     })
   },
-  changeMaterial() {
-    console.log('修改');
-  },
-
   hideModel() {
     this.setData({
-      showModale: false
+      showModal: false
     })
+  },
+  
+  //修改资料
+  changeMaterial() {
+    console.log('修改');
   },
 })

@@ -32,6 +32,16 @@ page {--primary-color-:#46CC95;}
   width: 57rpx;
 }
 
+
+.input-xzq{
+  color: #46CC95;
+  display: inline-block;
+  width: 30rpx;
+  font-size: 26rpx;
+  border-bottom: 1rpx solid #46CC95;
+  position: relative;
+  top: 15rpx;
+}
 .movable-img{
   height: 165rpx; 
   width: 136rpx;

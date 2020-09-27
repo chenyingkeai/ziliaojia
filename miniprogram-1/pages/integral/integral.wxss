@@ -1,0 +1,44 @@
+/* pages/integral/integral.wxss */
+page {--primary-color-:#46CC95;}
+
+.top{
+  height: 322rpx;
+  font-size: 70rpx;
+  text-align: center;
+  background-color: yellow;
+  border-radius: 20rpx;
+  margin: 20rpx 20rpx 0;
+}
+
+.share{
+  height: 450rpx;
+  text-align: center;
+}
+.shareText{
+  margin-top: 90rpx;
+  font-size: 42rpx;
+  font-weight: 700;
+}
+.shareNum{
+  font-size: 36rpx;
+  margin-top: 35rpx;
+}
+
+.font-color{
+  color: var(--primary-color-);
+  padding: 0 10rpx;
+}
+
+.share-btn{
+  width: 384rpx;
+  height: 86rpx;
+  font-size: 32rpx;
+  color: white;
+  background-color: var(--primary-color-);
+  border-radius: 43rpx;
+  margin-top: 122rpx;
+}
+
+.button-hover{
+  background-color: red;
+}

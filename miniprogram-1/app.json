@@ -6,6 +6,8 @@
     "pages/index/details/details",
     "pages/index/search/search",
     "pages/manager/dataList/dataList",
+    "pages/manager/detail/detail",
+    "pages/manager/uoload/uoload",
     "pages/manager/login/login",
     "pages/integral/integral",
     "pages/mine/mine",

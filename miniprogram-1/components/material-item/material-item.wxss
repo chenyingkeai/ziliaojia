@@ -1,0 +1,40 @@
+/* components/material-item/material-item.wxss */
+.item-container{
+  min-height: 166rpx;
+  width: 668rpx;
+  margin: 20rpx 20rpx;
+  padding: 20rpx 22rpx;
+  vertical-align: middle;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 6rpx 18rpx rgba(51, 51, 51, 0.04);
+}
+
+.material-head{
+  font-size: 28rpx;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  margin-left: -12rpx
+}
+.material-head :first-child{
+  margin-right: 10rpx;
+  white-space:nowrap;
+}
+
+.material-info{
+  font-size: 22rpx;
+}
+.material-info :last-child{
+  margin-left: 30rpx;
+}
+.watcher{
+  height: 14rpx;
+  width: 22rpx;
+}
+.think-good{
+  height: 18rpx;
+  width: 18rpx;
+}
+

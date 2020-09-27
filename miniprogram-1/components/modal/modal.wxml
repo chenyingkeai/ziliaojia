@@ -1,0 +1,25 @@
+<!--components/modal/modal.wxml-->
+<view class="modal-bag" bind:tap="hideModel" />
+
+<view class="modal-box">
+  <view class="title">
+    <image src="../../assest/icons/common/tip.png" wx:if="{{showIcon}}" />
+    {{title}}
+  </view>
+
+  <view class="content" wx:if="{{!slotContent}}">
+    {{content}}
+  </view>
+  <view class="content" wx:else>
+    <slot />
+  </view>
+  <view class="btn-area">
+    <view bind:tap="hideModel" >
+      取消
+    </view>
+    <view style="color:{{comfirmColor}}" bind:tap="sureClick">
+      确定
+    </view>
+
+  </view>
+</view>

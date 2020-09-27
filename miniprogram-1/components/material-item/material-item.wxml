@@ -1,0 +1,14 @@
+<!--components/material-item/material-item.wxml-->
+<view class="item-container" bindtap="toDetails">
+  <view class="material-head" >
+    <view class="type">【{{itemData.zlType}}】</view>
+    <view class="itemName">{{itemData.zlName}}</view>
+  </view>
+
+  <view class="material-info" >
+    <image src="../../assest/icons/material-item/watcher.png" class="watcher" />  
+      {{itemData.zlGood}}
+    <image src="../../assest/icons/material-item/think-good.png" class="think-good" />  
+      {{itemData.zlFavor}}
+  </view>
+</view>

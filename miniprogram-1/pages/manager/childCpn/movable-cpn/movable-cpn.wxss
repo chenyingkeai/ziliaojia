@@ -1,0 +1,7 @@
+/* pages/manager/childCpn/movable-cpn/movable-cpn.wxss */
+.publish_area{
+  height: 80vh;
+  width: 80vw;
+  position: absolute;
+  top: 0;
+}

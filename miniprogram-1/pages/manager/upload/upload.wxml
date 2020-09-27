@@ -1,0 +1,41 @@
+<!--pages/manager/upload/upload.wxml-->
+<view class="material-box">
+  <view class="material-info">
+    <view> 名称 </view>
+    <input class="" placeholder="你好啊" bindinput="" />
+  </view>
+  <view class="material-info">
+    <view> 模块 </view>
+    <input class="" placeholder="你好啊" bindinput="" />
+  </view>
+
+  <view class="line" /> 
+  
+  <view class="base-info">
+    <view> 下载券数 </view>
+    <input class="" placeholder="请输入下载分数"  bindinput="" />
+  </view>
+
+  <view class="base-info">
+    <view> 回复关键字 </view>
+    <input class="" placeholder="请输入下载分数"  bindinput="" />
+  </view>
+
+  <view class="base-info">
+    <view> 上传资料 </view>
+    <input class="" placeholder="请输入下载分数"  bindinput="" />
+  </view>
+
+ 
+</view>
+
+<view class="btn-area">
+  <button>
+    取消
+  </button>
+  <button>
+    确认上传
+  </button>
+</view>
+
+<toast message="修改成功" id="toast" />

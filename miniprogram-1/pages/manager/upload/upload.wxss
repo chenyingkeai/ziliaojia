@@ -1,0 +1,81 @@
+/* pages/manager/upload/upload.wxss */
+page{
+  background-color: #FCFCFC;
+  --primary-color-: #46CC95;
+}
+
+.material-box{
+  width: 590rpx;
+  height: 800rpx;
+  margin: 20rpx;
+  padding: 40rpx 60rpx;
+  border-radius: 10rpx;
+  background-color: white;
+}
+
+.material-info{
+  height: 88rpx;
+  width: 100%;
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.material-info view{
+  flex: 1;
+  font-weight: 600;
+}
+.material-info input{
+  flex: 5;
+  border: 1rpx solid #999999;
+  border-radius: 6rpx;
+  font-size: 28rpx;
+  height: 60rpx;
+  padding: 0 21rpx;
+  background-color: #FAFAFA;
+}
+
+
+.line{
+  height: 2rpx;
+  width: 690rpx;
+  background-color: #DDDDDD;
+  position: relative;
+  left: -40rpx;
+  margin: 56rpx;
+}
+
+.base-info{
+  margin-bottom: 15rpx;
+}
+.base-info view{
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-bottom: 18rpx;
+}
+.base-info input{
+  background-color: rebeccapurple;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 28rpx;
+  border-radius: 6rpx;
+  padding: 0 10rpx;
+}
+
+
+.btn-area{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.btn-area button{
+  width: 256rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  font-size: 28rpx;
+  border-radius: 32rpx;
+  background-color: var(--primary-color-);
+  color: white;
+}

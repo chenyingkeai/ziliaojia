@@ -21,17 +21,23 @@ page{
   align-items: center;
   flex-direction: row;
 }
-.material-info view{
+.material-info > view{
   flex: 1;
   font-weight: 600;
 }
 .material-info input{
   flex: 5;
-  border: 1rpx solid #999999;
   border-radius: 6rpx;
   font-size: 28rpx;
   height: 60rpx;
   padding: 0 21rpx;
+  background-color: #FAFAFA;
+}
+.material-select{
+  flex: 5;
+  border-radius: 6rpx;
+  font-size: 28rpx;
+  height: 60rpx;
   background-color: #FAFAFA;
 }
 
@@ -41,8 +47,9 @@ page{
   width: 690rpx;
   background-color: #DDDDDD;
   position: relative;
-  left: -40rpx;
-  margin: 56rpx;
+  left: -45rpx;
+  margin: 56rpx 0;
+  z-index: 2;
 }
 
 .base-info{
@@ -53,13 +60,31 @@ page{
   font-weight: 600;
   margin-bottom: 18rpx;
 }
-.base-info input{
-  background-color: rebeccapurple;
+.base-input{
+  background-color: #FAFAFA;
   height: 60rpx;
   line-height: 60rpx;
   font-size: 28rpx;
   border-radius: 6rpx;
-  padding: 0 10rpx;
+  padding: 0 20rpx;
+}
+
+.upload-statue{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #999999;
+  font-size: 28rpx !important;
+  font-weight: 400 !important;
+  line-height: 60rpx;
+}
+.upload-statue image{
+  height: 32rpx;
+  width: 32rpx;
+  margin-right: 20rpx;
+}
+.primary-color{
+  color: var(--primary-color-);
 }
 
 

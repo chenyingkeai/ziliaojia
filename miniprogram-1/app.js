@@ -40,6 +40,7 @@ App({
                 },
                 success (res) {
                   console.log("登陆成功")
+                  console.log(res);
                   console.log("openid",res.data.data);
                   that.globalData.openid=res.data.data.openId;
                   that.globalData.userId=res.data.data.userId;

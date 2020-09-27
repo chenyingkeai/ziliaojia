@@ -1,0 +1,23 @@
+/* pages/manager/upload/select/select.wxss */
+.select-box{
+  height: 59rpx;
+  font-size: 28rpx;
+  padding: 0 20rpx;
+  border: 1rpx solid #999999;
+  border-radius: 6rpx;
+  display: flex;
+  align-items: center;
+}
+.select-box view{
+  flex: 1;
+}
+.select-box image{
+  height: 18rpx;
+  width: 11rpx;
+}
+
+
+.selectList{
+  background-color: red;
+  padding: 10rpx 20rpx;
+}

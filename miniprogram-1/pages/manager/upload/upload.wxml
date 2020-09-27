@@ -1,29 +1,40 @@
 <!--pages/manager/upload/upload.wxml-->
 <view class="material-box">
+
   <view class="material-info">
     <view> 名称 </view>
-    <input class="" placeholder="你好啊" bindinput="" />
+    <input  placeholder="你好啊" bindinput="" />
   </view>
   <view class="material-info">
     <view> 模块 </view>
-    <input class="" placeholder="你好啊" bindinput="" />
+    <select class="material-select" style="z-index: 5;" />
   </view>
 
   <view class="line" /> 
   
   <view class="base-info">
     <view> 下载券数 </view>
-    <input class="" placeholder="请输入下载分数"  bindinput="" />
+    <input class="base-input" placeholder="请输入下载分数"  bindinput="baseInput" id="zlDownload" />
   </view>
-
   <view class="base-info">
     <view> 回复关键字 </view>
-    <input class="" placeholder="请输入下载分数"  bindinput="" />
+    <input class="base-input" placeholder="请输入回复关键字"  bindinput="baseInput" id="zlKeyword" />
   </view>
-
   <view class="base-info">
     <view> 上传资料 </view>
-    <input class="" placeholder="请输入下载分数"  bindinput="" />
+    <view class="base-input" bindtap="uploadFile">
+      <view class="upload-statue">
+        <block wx:if="{{formData.zlAddress}}" class="primary-color" >
+          <image src="../../../assest/icons/upload/success.png" />
+          上传成功
+        </block>
+        <block wx:else>
+          <image src="../../../assest/icons/upload/upload.png" />
+          从微信对话框选择文件
+        </block>
+          
+      </view>
+    </view>
   </view>
 
  

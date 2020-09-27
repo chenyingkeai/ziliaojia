@@ -1,15 +1,49 @@
 /* pages/manager/dataList/dataList.wxss */
+page {--primary-color-:#46CC95;}
+
 .choose{
   text-align: center;
 }
-.upload{
-  display: inline-block;
-  width: 190rpx;
-  text-align: center;
-  margin:5rpx 10rpx;
-  border: 1rpx solid #797979;
-  font-size: 32rpx;
-  line-height: 60rpx;
-  height: 60rpx;
-  border-radius: 20rpx;
+.top-bar{
+  display: flex;
+  align-items: center;
+  height: 108rpx;
+  width: 690rpx;
+  padding: 0 30rpx;
 }
+.select{
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+.select-btn{
+  width: 154rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: white;
+  background-color: #DDDDDD;
+  margin-right: 64rpx;
+  border-radius: 10rpx;
+}
+.setting image{
+  height: 40rpx;
+  width: 57rpx;
+}
+
+
+.input-xzq{
+  color: #46CC95;
+  display: inline-block;
+  width: 30rpx;
+  font-size: 26rpx;
+  border-bottom: 1rpx solid #46CC95;
+  position: relative;
+  top: 15rpx;
+}
+.movable-img{
+  height: 165rpx; 
+  width: 136rpx;
+}
+

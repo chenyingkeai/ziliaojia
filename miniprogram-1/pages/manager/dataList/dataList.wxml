@@ -1,9 +1,35 @@
 <!--pages/manager/dataList/dataList.wxml-->
 <view class="dataList">
-  <view class="choose">
-    <selects project="{{select1}}"></selects>
-    <selects project="{{select2}}"></selects>
-    <view class="upload">资料上传></view>
+  
+  <view class="top-bar">
+    <view class="select">
+      <view bind:tap="showSelect" class="select-btn" >
+        资料筛选
+      </view>
+      <view bind:tap="showSelect" class="select-btn" >
+        试卷筛选
+      </view>
+    </view>
+    <view class="setting" bind:tap="setting">
+      <image src="/assest/icons/manager/setting.png" />
+    </view>
   </view>
+
+  <view wx:for="{{materialList}}" wx:key="index">
+    <material-item itemData="{{item}}" bindtap="toDetail" data-id="{{item.zlId}}" />
+  </view>
+
+  <modal comfirmColor="#46CC95" bind:hideModel="hideModel" bind:sureClick="changeXzq" 
+         wx:if="{{showModal}}" title="邀请好友设置" slotContent="{{true}}" >
+    <view>
+      邀请成功一个好友将获得
+      <input  value="{{xzq}}" type="number" maxlength="2" class="input-xzq" bindinput="inputXzq" />
+      张下载券 
+    </view>             
+  </modal>
+
+  <movable-cpn >
+    <image src='/assest/icons/manager/upLoad.png' bind:tap="toUpload" class="movable-img"  />
+  </movable-cpn>
 
 </view>

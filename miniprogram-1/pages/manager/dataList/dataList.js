@@ -1,4 +1,5 @@
 // pages/manager/dataList/dataList.js
+import request from '../../../service/request.js'
 Page({
 
   /**
@@ -7,61 +8,115 @@ Page({
   data: {
     select1:"筛选1",
     select2:"筛选2",
+    xzq: 0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getMaterialList()
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  getMaterialList() {
+    request({
+      url: 'Yunying/getAllMaterialList',
+      method: 'POST',
+      data: {
+        zlModule: '试卷'
+      }
+    }).then(res =>{
+      if (res.data.code === 200) {
+        this.setData({
+          materialList: res.data.data
+        })
+      }
+    }).catch(err=>{
+      console.log(err);          
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  getXzq() {
+    request({
+      url: 'material/getXzq',
+      method: 'POST',
+    }).then(res =>{
+     this.setData({
+       xzq: res.data.data
+     });
+    }).catch(err=>{
+      console.log(err);          
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  showSelect() {
+    this.setData({
+      showSelect: true
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  //下载券相关
+  setting() {
+    if (!this.data.xzq) {
+      this.getXzq()
+    };
+    this.setData({
+      showModal: true
+    });
+  },
+  hideModel() {
+    this.setData({
+      showModal: false
+    });
+  },
+  inputXzq(e) {
+    this.setData({
+      xzq: e.detail.value
+    });
+  },
+  changeXzq() {
+    if (this.data.xzq) {
+      request({
+        url: 'Yunying/setXzq',
+        method: 'POST',
+        data: {
+          number: this.data.xzq
+        }
+      }).then(res =>{
+        if (res.data.code === 200) {
+          wx.showToast({
+            title: '修改成功',
+            icon: 'none',
+          });
+          setTimeout(() => {
+            this.hideModel()
+          }, 1000);
+        }
+      }).catch(err=>{
+        console.log(err);          
+      });
+    } else {
+      wx.showToast({
+        title: '请输入下载券数量',
+        icon: 'none',
+        duration: 1500,
+      });
+    }
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  // 上传材料
+  toUpload() {
+    // wx.navigateTo({
+    //   url: '../upload/upload',
+    // });
+    console.log('---');
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  toDetail(e) {
+    console.log(e);
+    console.log('++++');
+    // wx.navigateTo({
+    //   url: `../detail/detail?id=${e}`,
+    // });
   }
+
 })

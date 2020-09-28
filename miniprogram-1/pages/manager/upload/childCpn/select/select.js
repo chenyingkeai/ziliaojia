@@ -4,7 +4,8 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    propArray: Array,
+    placeholder: String,
   },
 
   /**
@@ -12,9 +13,7 @@ Component({
    */
   data: {
     selectShow:false,
-    nowText:"热门点击",
     animationData:{},
-    propArray: [1,2,3,4]
   },
 
   /**
@@ -22,34 +21,34 @@ Component({
    */
   methods: {
     showOption(){
-      var nowShow=this.data.selectShow;//获取当前option显示的状态
+      let nowShow = this.data.selectShow;//获取当前option显示的状态
       //创建动画
-      var animation = wx.createAnimation({
-          timingFunction:"ease"
+      let animation = wx.createAnimation({
+        timingFunction: "ease"
       })
       this.animation = animation;
       if(nowShow){
-          animation.rotate(0).step();
-          this.setData({
-            animationData: animation.export()
-          })
+        animation.rotate(0).step();
+        this.setData({
+          animationData: animation.export()
+        })
       }else{
-          animation.rotate(90).step();                
-          this.setData({
-            animationData: animation.export()
-          })
+        animation.rotate(90).step();                
+        this.setData({
+          animationData: animation.export()
+        })
       }
-      console.log(this.data.animationData);
       this.setData({
-          selectShow: !nowShow
+        selectShow: !nowShow
       })
     },
-  //设置内容
+
+    //设置内容
     setText(e){
-      var nowData = this.data.propArray;
-      var nowIdx = e.target.dataset.index;
-      var nowText = nowData[nowIdx];
-      this.triggerEvent('changType',nowData[nowIdx].type)
+      let nowData = this.properties.propArray;
+      let nowIdx = e.target.dataset.index;
+      let nowText = nowData[nowIdx];
+      this.triggerEvent('changSelect',nowData[nowIdx])
       //再次执行动画
       this.animation.rotate(0).step();
       this.setData({

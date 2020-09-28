@@ -20,7 +20,7 @@
 }
 .material-head :first-child{
   margin-right: 10rpx;
-  white-space:nowrap;
+  white-space: nowrap;
 }
 
 .material-info{

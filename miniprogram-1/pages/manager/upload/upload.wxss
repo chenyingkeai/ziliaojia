@@ -3,6 +3,9 @@ page{
   background-color: #FCFCFC;
   --primary-color-: #46CC95;
 }
+select{
+  z-index: 5;
+}
 
 .material-box{
   width: 590rpx;
@@ -24,6 +27,7 @@ page{
 .material-info > view{
   flex: 1;
   font-weight: 600;
+  white-space: nowrap;
 }
 .material-info input{
   flex: 5;
@@ -89,6 +93,10 @@ page{
 
 
 .btn-area{
+  position: fixed;
+  bottom: 40rpx;
+  width: 750rpx;
+  background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;

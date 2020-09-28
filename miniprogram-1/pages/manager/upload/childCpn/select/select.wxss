@@ -16,8 +16,24 @@
   width: 11rpx;
 }
 
-
 .selectList{
-  background-color: red;
+  background-color: #FAFAFA;
+  border: 1rpx solid red;
+  z-index: 151;
+}
+.selectList view{
   padding: 10rpx 20rpx;
+  border-top: 1rpx solid red;
+}
+
+
+.cover{
+  background-color: red;
+  opacity: 0.2;
+  z-index: 50;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
 }

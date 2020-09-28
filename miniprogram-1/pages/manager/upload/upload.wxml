@@ -3,13 +3,65 @@
 
   <view class="material-info">
     <view> 名称 </view>
-    <input  placeholder="你好啊" bindinput="" />
+    <input  placeholder="请输入资料名称" bindinput="baseInput" id="zlName" />
   </view>
-  <view class="material-info">
+  <view class="material-info" >
     <view> 模块 </view>
-    <select class="material-select" style="z-index: 5;" />
+    <select class="material-select" id="zlModule"  propArray="{{module}}" style="z-index: 10"
+            bind:changSelect="changSelect" />
   </view>
-
+  <view class="material-info" wx:if="{{haveModule}}" >
+    <view> 类型 </view>
+    <select class="material-select" id="zlType"  propArray="{{type}}" placeholder="请选择模块" 
+            nowText="{{formData.zlType}}" style="z-index: 9" bind:changSelect="changSelect" />
+  </view>
+  
+  <block wx:if="{{formData.zlType}}">
+    <view wx:if="{{formData.zlModule === '资料'}}">
+      <view class="material-info" >
+        <view> 年级 </view>
+        <select class="material-select" id="zlGrade"  propArray="{{grade}}" style="z-index: 8"
+                bind:changSelect="changSelect" />
+      </view>
+      <view class="material-info" >
+        <view> 科目 </view>
+        <select class="material-select" id="zlSubject"  propArray="{{subject}}" style="z-index: 7"
+                bind:changSelect="changSelect" />
+      </view>
+    </view>
+    <view wx:elif="{{formData.zlModule === '试卷' && formData.zlType === '中考'}}">
+      <view class="material-info" >
+        <view> 年份 </view>
+        <select class="material-select" id="zlYears"  propArray="{{years}}" style="z-index: 8"
+                bind:changSelect="changSelect" />
+      </view>
+      <view class="material-info" >
+        <view style="flex: 2;margin-right: 5rpx;" > 地区</view>
+        <select class="material-select" id="zlProvince"  propArray="{{province}}" style="z-index: 7"
+                bind:changSelect="changSelect" style="margin-right: 10rpx;" />
+        <select class="material-select" id="zlCity"  propArray="{{city}}" style="z-index: 7"
+                bind:changSelect="changSelect" style="margin-left: 10rpx;" />
+      </view>
+    </view>
+    <view wx:elif="{{formData.zlModule === '试卷' && formData.zlType !== undefined && formData.zlType !== ''}}">
+      <view class="material-info" >
+        <view> 年级 </view>
+        <select class="material-select" id="zlGrade"  propArray="{{grade}}" style="z-index: 8"
+                bind:changSelect="changSelect" />
+      </view>
+      <view class="material-info" >
+        <view> 科目 </view>
+        <select class="material-select" id="zlSubject"  propArray="{{subject}}" style="z-index: 7"
+                bind:changSelect="changSelect" />
+      </view>
+      <view class="material-info" >
+        <view> 版本 </view>
+        <select class="material-select" id="zlVersion"  propArray="{{version}}" style="z-index: 6"
+                bind:changSelect="changSelect" />
+      </view>
+    </view>
+  </block>
+    
   <view class="line" /> 
   
   <view class="base-info">
@@ -37,7 +89,6 @@
     </view>
   </view>
 
- 
 </view>
 
 <view class="btn-area">

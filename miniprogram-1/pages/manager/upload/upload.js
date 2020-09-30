@@ -53,10 +53,14 @@ Page({
     })
   },
   upload() {
+    let formData = this.data.formData
+    if (formData.zlProvince) {
+      formData.zlArea = formData.zlProvince + formData.zlCity
+    }
     request({
       url: 'Yunying/insertZl',
       method: 'POST',
-      data: this.data.formData
+      data: formData
     }).then(res =>{
       console.log(res);
       if (res.statusCode === 200 && res.data.code === 404) {

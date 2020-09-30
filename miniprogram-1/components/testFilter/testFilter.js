@@ -1,4 +1,5 @@
 // components/testFliter/testFliter.js
+import request from '../../service/request.js'
 Component({
   /**
    * 组件的属性列表
@@ -44,7 +45,11 @@ Component({
           })
         }
       } else if (e.currentTarget.id === 'zlProvince') {
-        this.getCity()
+        this.setData({
+          ['formData.zlCity']: "",
+          ['formData.zlArea']: e.detail
+        })
+        this.getCity(e.detail)
       }
 
       this.setData({
@@ -52,8 +57,15 @@ Component({
       })
     },
     confirm() {
-      console.log(this.data.formData);
-      this.triggerEvent('sureClick',this.data.formData)
+      let formData = this.data.formData
+      console.log(formData);
+      if (formData.zlProvince) {
+        formData.zlArea = formData.zlProvince
+        if (formData.zlCity) {
+          formData.zlArea += formData.zlCity
+        }
+      }
+      this.triggerEvent('sureClick',formData)
     },
     cleanSelect() {
       this.setData({
@@ -62,8 +74,21 @@ Component({
         others: false
       })
     },
-    getCity() {
-      console.log('---');
+    getCity(city) {
+      request({
+        url: 'Yunying/getCity',
+        method: 'POST',
+        data: {
+          pname: city
+        },
+      }).then(res =>{
+        console.log(res);
+        this.setData({
+          city: res.data.data
+        })
+      }).catch(err=>{
+        console.log(err);          
+      })
     },
     close() {
       this.triggerEvent('hide',{})

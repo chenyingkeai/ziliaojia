@@ -1,5 +1,6 @@
 <!--pages/manager/login/login.wxml-->
 <form  bindsubmit="managerLogin" >
+  <image src="/assest/icons/manager/loginBac.png" class="login-bac"  />
   <view class="login-box" >
     <view class="title">
       运营人员登录

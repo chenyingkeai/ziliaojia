@@ -27,6 +27,9 @@ page {--primary-color-:#46CC95;}
   margin-right: 64rpx;
   border-radius: 10rpx;
 }
+.active{
+  background-color: var(--primary-color-) !important;
+}
 .setting image{
   height: 40rpx;
   width: 57rpx;
@@ -45,5 +48,6 @@ page {--primary-color-:#46CC95;}
 .movable-img{
   height: 165rpx; 
   width: 136rpx;
+  z-index: 4;
 }
 

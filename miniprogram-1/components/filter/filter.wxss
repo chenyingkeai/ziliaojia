@@ -1,0 +1,81 @@
+/* components/filter/filter.wxss */
+
+/* 遮罩层 */
+.mask{
+  width:100%;   
+  height:100%;   
+  top:0;   
+  background:rgba(51, 51, 51, 0.1);   
+  overflow: hidden;   
+  /*要显示在wrap的上面 */   
+  z-index: 1;   
+  position: absolute;  
+}
+.shade{   
+  width: 100%;   
+  min-height: 428rpx;   
+  background-color: white;   
+  position: fixed;   
+  top: 100rpx;   
+  padding-bottom: 20rpx;
+  border-radius:0 0 48rpx 0;
+  margin-left:auto;
+  z-index: 2;
+}  
+.selectBlock{
+  margin-left: 30rpx;
+  margin-bottom: 60rpx;
+}
+.selectTitle{
+  color: #85e4ba;
+  font-size: 30rpx;
+  font-weight: 500;
+  margin:20rpx;
+  margin-bottom: 40rpx;
+}
+
+.selectItem{
+  /* align-items: center; */
+  justify-content: center;
+  font-size: 24rpx;
+  line-height: 45rpx;
+  display: inline-flex;
+  flex-wrap: wrap;
+  width: 120rpx;
+  padding: 0 10rpx;
+  border: 3rpx solid #cdcdcd;
+  margin:0 8rpx;
+  color:#cdcdcd ;
+  border-radius: 20rpx;
+  margin-bottom: 15rpx;
+}
+.list{
+  padding: 0 35rpx;
+}
+/* 点击 */
+.activeTag{
+  border: 3rpx solid #bbf9da;
+  background-color: #bbf9da;
+  color: #76deb1;
+}
+.closeSelect{
+  float: right;
+}
+.closeSelectBtn{
+  display: inline-block;
+  width: 150rpx;
+  font-size: 26rpx;
+  line-height: 40rpx;
+  height: 43rpx;
+  border-radius: 20rpx;
+  margin-right: 30rpx;
+  margin-top: 40rpx;
+}
+.clear{
+  border: 1rpx solid #EE5F5F;
+  color: #EE5F5F;
+}
+.confirm{
+  background-color: #45cb97;
+  color: white;
+}

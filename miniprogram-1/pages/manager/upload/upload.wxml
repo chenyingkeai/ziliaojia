@@ -3,12 +3,12 @@
 
   <view class="material-info">
     <view> 名称 </view>
-    <input  placeholder="请输入资料名称" bindinput="baseInput" id="zlName" />
+    <input  placeholder="请输入资料名称" bindinput="baseInput" id="zlName" value="{{formData.zlName}}" />
   </view>
   <view class="material-info" >
     <view> 模块 </view>
-    <select class="material-select" id="zlModule"  propArray="{{module}}" style="z-index: 10"
-            bind:changSelect="changSelect" />
+    <select class="material-select" id="zlModule"  propArray="{{module}}" style="z-index: 10" 
+            bind:changSelect="changSelect" nowText="{{formData.zlModule}}" />
   </view>
   <view class="material-info" wx:if="{{haveModule}}" >
     <view> 类型 </view>
@@ -21,25 +21,25 @@
       <view class="material-info" >
         <view> 年级 </view>
         <select class="material-select" id="zlGrade"  propArray="{{grade}}" style="z-index: 8"
-                bind:changSelect="changSelect" />
+                bind:changSelect="changSelect" nowText="{{formData.zlGrade}}" />
       </view>
       <view class="material-info" >
         <view> 科目 </view>
         <select class="material-select" id="zlSubject"  propArray="{{subject}}" style="z-index: 7"
-                bind:changSelect="changSelect" />
+                bind:changSelect="changSelect" nowText="{{formData.zlSubject}}" />
       </view>
     </view>
     <view wx:elif="{{formData.zlModule === '试卷' && formData.zlType === '中考'}}">
       <view class="material-info" >
         <view> 年份 </view>
         <select class="material-select" id="zlYears"  propArray="{{years}}" style="z-index: 8"
-                bind:changSelect="changSelect" />
+                bind:changSelect="changSelect" nowText="{{formData.zlYears}}"/>
       </view>
       <view class="material-info" >
         <view style="flex: 2;margin-right: 5rpx;" > 地区</view>
         <select class="material-select" id="zlProvince"  propArray="{{province}}" style="z-index: 7"
-                bind:changSelect="changSelect" style="margin-right: 10rpx;" />
-        <select class="material-select" id="zlCity"  propArray="{{city}}" style="z-index: 7"
+                bind:changSelect="changSelect" style="margin-right: 10rpx;"  />
+        <select class="material-select" id="zlCity"  propArray="{{city}}" style="z-index: 7" nowText="{{formData.zlCity}}"
                 bind:changSelect="changSelect" style="margin-left: 10rpx;" />
       </view>
     </view>
@@ -47,17 +47,17 @@
       <view class="material-info" >
         <view> 年级 </view>
         <select class="material-select" id="zlGrade"  propArray="{{grade}}" style="z-index: 8"
-                bind:changSelect="changSelect" />
+                bind:changSelect="changSelect" nowText="{{formData.zlGrade}}" />
       </view>
       <view class="material-info" >
         <view> 科目 </view>
         <select class="material-select" id="zlSubject"  propArray="{{subject}}" style="z-index: 7"
-                bind:changSelect="changSelect" />
+                bind:changSelect="changSelect" nowText="{{formData.zlSubject}}" />
       </view>
       <view class="material-info" >
         <view> 版本 </view>
         <select class="material-select" id="zlVersion"  propArray="{{version}}" style="z-index: 6"
-                bind:changSelect="changSelect" />
+                bind:changSelect="changSelect" nowText="{{formData.zlVersion}}" />
       </view>
     </view>
   </block>
@@ -66,11 +66,11 @@
   
   <view class="base-info">
     <view> 下载券数 </view>
-    <input class="base-input" placeholder="请输入下载分数"  bindinput="baseInput" id="zlDownload" />
+    <input class="base-input" placeholder="请输入下载分数" value="{{formData.zlDownload}}"  bindinput="baseInput" id="zlDownload" />
   </view>
   <view class="base-info">
     <view> 回复关键字 </view>
-    <input class="base-input" placeholder="请输入回复关键字"  bindinput="baseInput" id="zlKeyword" />
+    <input class="base-input" placeholder="请输入回复关键字"  bindinput="baseInput" id="zlKeyword" value="{{formData.zlKeyword}}" />
   </view>
   <view class="base-info">
     <view> 上传资料 </view>
@@ -95,7 +95,7 @@
   <button>
     取消
   </button>
-  <button>
+  <button bind:tap="upload" >
     确认上传
   </button>
 </view>

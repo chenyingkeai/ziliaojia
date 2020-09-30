@@ -6,9 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    select1:"筛选1",
-    select2:"筛选2",
+    activetab: 0,
     xzq: 0,
+    testSelect: false,
+    materialSelect: false
   },
 
   /**
@@ -18,17 +19,32 @@ Page({
     this.getMaterialList()
   },
 
-  getMaterialList() {
+  getMaterialList(e) {
+    console.log(e);
+    let data = { zlModule: '资料' }
+    if (e) {
+      data = e.detail;
+      if (e.detail.zlModule === '试卷') {
+        this.setData({
+          activetab: 1
+        })
+      } else {
+        this.setData({
+          activetab: 0
+        })
+      }
+    }
     request({
       url: 'Yunying/getAllMaterialList',
       method: 'POST',
-      data: {
-        zlModule: '试卷'
-      }
+      data,
     }).then(res =>{
+      console.log(res.data);
       if (res.data.code === 200) {
         this.setData({
-          materialList: res.data.data
+          materialList: res.data.data,
+          materialSelect: false,
+          testSelect: false
         })
       }
     }).catch(err=>{
@@ -49,9 +65,14 @@ Page({
     });
   },
 
-  showSelect() {
+  materialSelect() {
     this.setData({
-      showSelect: true
+      materialSelect: !this.data.materialSelect
+    });
+  },
+  testSelect() {
+    this.setData({
+      testSelect: !this.data.testSelect
     });
   },
 
@@ -106,17 +127,15 @@ Page({
 
   // 上传材料
   toUpload() {
-    // wx.navigateTo({
-    //   url: '../upload/upload',
-    // });
-    console.log('---');
+    wx.navigateTo({
+      url: '../upload/upload',
+    });
   },
   toDetail(e) {
-    console.log(e);
-    console.log('++++');
-    // wx.navigateTo({
-    //   url: `../detail/detail?id=${e}`,
-    // });
-  }
+    console.log(e.currentTarget.dataset.id);
+    wx.navigateTo({
+      url: `../detail/detail?id=${e.currentTarget.dataset.id}`,
+    });
+  },
 
 })

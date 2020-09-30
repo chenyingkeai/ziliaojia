@@ -6,6 +6,7 @@ Component({
   properties: {
     propArray: Array,
     placeholder: String,
+    nowText: String,
   },
 
   /**

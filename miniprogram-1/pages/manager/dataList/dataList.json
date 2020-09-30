@@ -3,6 +3,8 @@
   "usingComponents": {
     "movable-cpn": "../childCpn/movable-cpn/movable-cpn",
     "selects": "../../../components/selects/selects",
+    "filter": "../../../components/filter/filter",
+    "testFilter": "../../../components/testFilter/testFilter",
     "modal": "../../../components/modal/modal",
     "material-item": "../../../components/material-item/material-item"
   }

@@ -1,12 +1,13 @@
 <!--pages/manager/dataList/dataList.wxml-->
+<filter bind:sureClick="getMaterialList" bind:hide="materialSelect" show="{{materialSelect}}" />
+<testFilter bind:sureClick="getMaterialList" bind:hide="testSelect" show="{{testSelect}}"/>
 <view class="dataList">
-  
   <view class="top-bar">
     <view class="select">
-      <view bind:tap="showSelect" class="select-btn" >
+      <view bind:tap="materialSelect" class="select-btn {{activetab===0?'active':''}}"  >
         资料筛选
       </view>
-      <view bind:tap="showSelect" class="select-btn" >
+      <view bind:tap="testSelect" class="select-btn {{activetab===1?'active':''}}" >
         试卷筛选
       </view>
     </view>
@@ -15,7 +16,7 @@
     </view>
   </view>
 
-  <view wx:for="{{materialList}}" wx:key="index">
+  <view wx:for="{{materialList}}" wx:key="index"  >
     <material-item itemData="{{item}}" bindtap="toDetail" data-id="{{item.zlId}}" />
   </view>
 
@@ -28,8 +29,8 @@
     </view>             
   </modal>
 
-  <movable-cpn >
-    <image src='/assest/icons/manager/upLoad.png' bind:tap="toUpload" class="movable-img"  />
-  </movable-cpn>
+  <!-- <movable-cpn >
+    <image src='/assest/icons/manager/upLoad.png' bindtap="toUpload"  class="movable-img"  />
+  </movable-cpn> -->
 
 </view>

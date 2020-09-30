@@ -1,14 +1,14 @@
 {
   "pages": [
-    "pages/manager/upload/upload",
+    "pages/manager/dataList/dataList",
     "pages/index/index",
     "pages/data/list/list",
     "pages/data/data",
     "pages/index/details/details",
     "pages/index/search/search",
-    "pages/manager/dataList/dataList",
-    "pages/manager/detail/detail",
     "pages/manager/login/login",
+    "pages/manager/detail/detail",
+    "pages/manager/upload/upload",
     "pages/integral/integral",
     "pages/mine/mine",
     "pages/logs/logs"

@@ -20,6 +20,7 @@
   background-color: #FAFAFA;
   border: 1rpx solid red;
   z-index: 151;
+  max-height: 500rpx;
 }
 .selectList view{
   padding: 10rpx 20rpx;
@@ -30,7 +31,6 @@
 .cover{
   background-color: red;
   opacity: 0.2;
-  z-index: 50;
   height: 100%;
   width: 100%;
   position: fixed;

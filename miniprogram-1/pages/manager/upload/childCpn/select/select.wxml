@@ -3,8 +3,8 @@
   <view> {{nowText}} </view>
   <image src="/assest/icons/upload/downArr.png" animation="{{animationData}}"/>
 </view>
-<view class='selectList'  wx:if="{{selectShow}}">
+<scroll-view class='selectList' wx:if="{{selectShow}}" style="z-index: 10;" scroll-y="{{true}}">
   <view wx:for="{{propArray}}" data-index="{{index}}" wx:key='index' bindtap='setText'>
     {{item}}
   </view>
-</view>
+</scroll-view>

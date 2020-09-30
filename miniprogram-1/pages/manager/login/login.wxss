@@ -3,13 +3,19 @@ page {--primary-color-:#46CC95;}
 
 .login-box{
   height: 574rpx;
-  width: 550rpx;
+  width: 486rpx;
   margin-left: 132rpx;
   margin-top: 47rpx;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1rpx solid red;
+}
+.login-bac{
+  height: 574rpx;
+  width: 550rpx;
+  margin-left: 132rpx;
+  position: absolute;
 }
 
 .title{

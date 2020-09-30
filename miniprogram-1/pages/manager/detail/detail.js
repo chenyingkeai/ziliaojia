@@ -13,7 +13,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let id = 8
+    let id = options.id || 8
     this.setData({
       id,
     })
@@ -59,7 +59,9 @@ Page({
     }).then(res =>{
       console.log(res);
       if (res.data.code === '200') {
-        console.log('删除成功');
+        wx.navigateBack({
+          delta: 1
+        });
       }
     }).catch(err=>{
       console.log(err);          
@@ -73,6 +75,10 @@ Page({
 
   //修改资料
   changeMaterial() {
-    console.log('修改');
+    let formData = JSON.stringify(this.data.materianInfo)
+    wx.navigateTo({
+      url: `../upload/upload?formData=${formData}`,
+    });
+      
   },
 })

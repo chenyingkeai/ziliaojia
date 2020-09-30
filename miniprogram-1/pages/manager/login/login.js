@@ -41,7 +41,7 @@ Page({
         console.log(res);
         const { code, data } = res.data;
         if (code === 200) {
-          console.log('登录成功');
+          this.loginSuccess()
         } else {
           console.log('登录失败');
         }
@@ -59,6 +59,12 @@ Page({
     }
     
   },
+  loginSuccess() {
+    wx.navigateTo({
+      url: '../dataList/dataList',
+    });
+      
+  }
 //   getUserName: function(e) {
 //     var value = e.detail.value; //获取输入的内容
 //     this.setData({

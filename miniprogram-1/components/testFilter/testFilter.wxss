@@ -46,17 +46,16 @@
 }
 
 .closeSelect{
-  float: right;
+  margin-left: 340rpx;
 }
 .closeSelectBtn{
+  font-size: 25rpx;
   display: inline-block;
-  width: 150rpx;
-  font-size: 26rpx;
-  line-height: 40rpx;
-  height: 43rpx;
-  border-radius: 20rpx;
-  margin-right: 30rpx;
-  margin-top: 40rpx;
+  width: 128rpx;
+  height: 46rpx;
+  line-height: 46rpx;
+  border-radius: 23rpx;
+  margin: 40rpx 15rpx 0;
 }
 .clear{
   border: 1rpx solid #EE5F5F;

@@ -48,15 +48,16 @@ page {--primary-color-:#46CC95;}
 .movable-img{
   height: 165rpx; 
   width: 136rpx;
-
-  position: fixed;
+  z-index: 10;
+  /* position: fixed;
   bottom: 200rpx;
-  right: 100rpx;
+  right: 100rpx; */
 }
 
 .publish_area{
-  height: 80vh;
-  width: 80vw;
+  height: 25vh;
+  width: 20vw;
   position: fixed;
-  top: 0;
+  bottom: 165rpx;
+  right: 136rpx;
 }

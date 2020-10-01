@@ -32,10 +32,10 @@
   <!-- <movable-cpn >
     <image src='/assest/icons/manager/upLoad.png' bindtap="toUpload"  class="movable-img"  />
   </movable-cpn> -->
-  <!-- <movable-area  class="publish_area"  >
-    <movable-view direction="all" x="520rpx" y="920rpx" >
-      <image src='/assest/icons/manager/upLoad.png' bindtap="toUpload" class="movable-img"  />
-    </movable-view>
-  </movable-area> -->
-   <image src='/assest/icons/manager/upLoad.png' bindtap="toUpload" class="movable-img"  />
+  
 </view>
+<movable-area  class="publish_area"  >
+  <movable-view direction="all"  out-of-bounds="{[true]}" >
+    <image src='/assest/icons/manager/upLoad.png' bindtap="toUpload" class="movable-img"  />
+  </movable-view>
+</movable-area>

@@ -25,6 +25,8 @@
 
 .material-info{
   font-size: 22rpx;
+  display: flex;
+  align-items: center;
 }
 .material-info :last-child{
   margin-left: 30rpx;
@@ -32,9 +34,11 @@
 .watcher{
   height: 14rpx;
   width: 22rpx;
+  margin-right: 8rpx;
 }
 .think-good{
   height: 18rpx;
   width: 18rpx;
+  margin-right: 8rpx;
 }
 

@@ -54,19 +54,19 @@
 }
 /* 点击 */
 .activeTag{
-  border: 3rpx solid #bbf9da;
   background-color: #bbf9da;
   color: #76deb1;
 }
 .closeSelect{
   float: right;
+  margin-right: 50rpx;
 }
 .closeSelectBtn{
   display: inline-block;
-  width: 150rpx;
-  font-size: 26rpx;
-  line-height: 40rpx;
-  height: 43rpx;
+  width: 128rpx;
+  font-size: 25rpx;
+  line-height: 46rpx;
+  height: 46rpx;
   border-radius: 20rpx;
   margin-right: 30rpx;
   margin-top: 40rpx;

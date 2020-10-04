@@ -1,13 +1,13 @@
 // pages/manager/login/login.js
+import request from '../../../service/request.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    username:"",
-    password:"",
-
+    loginId:"",
+    passWord:"",
   },
 
   /**
@@ -17,63 +17,54 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  input(e) {
+    this.setData({
+      [`${e.target.id}`]: e.detail.value
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-  Mlogin: function(e) {
-    console.log( e.detail.value);
-      wx.navigateTo({
-        url: '/pages/manager/dataList/dataList',
-        success: function(res){
-          console.log("跳转至管理资料列表");
+  managerLogin(e) {
+    const {loginId: adminName, passWord: adminPassword } = e.detail.value;
+    console.log(adminName, adminPassword);
+    if (adminName && adminPassword) {
+      request({
+        url: 'Yunying/login',
+        method: 'POST',
+        data: {
+          adminName,
+          adminPassword
         },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        }
+      }).then(res =>{
+        console.log(res);
+        const { code, data } = res.data;
+        if (code === 200) {
+          this.loginSuccess()
+        } else {
+          console.log('登录失败');
+        }
+      }).catch(err=>{
+        console.log(err);          
       })
-    },
+    } else {
+      wx.showToast({
+        title: '请输入完整账号密码',
+        icon: 'none',
+        duration: 1500,
+        mask: false,
+      });        
+        
+    }
+    
+  },
+  loginSuccess() {
+    wx.navigateTo({
+      url: '../dataList/dataList',
+    });
+      
+  }
 //   getUserName: function(e) {
 //     var value = e.detail.value; //获取输入的内容
 //     this.setData({

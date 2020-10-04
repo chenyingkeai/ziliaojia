@@ -1,0 +1,10 @@
+<!--pages/manager/upload/select/select.wxml-->
+<view class="select-box" bind:tap="showOption" >
+  <view> {{nowText}} </view>
+  <image src="/assest/icons/upload/downArr.png" animation="{{animationData}}"/>
+</view>
+<scroll-view class='selectList' wx:if="{{selectShow}}" style="z-index: 10;" scroll-y="{{true}}">
+  <view wx:for="{{propArray}}" data-index="{{index}}" wx:key='index' bindtap='setText'>
+    {{item}}
+  </view>
+</scroll-view>

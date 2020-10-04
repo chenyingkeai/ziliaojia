@@ -1,0 +1,41 @@
+<!--components/filter/filter.wxml-->
+<view class='mask' wx:if="{{show}}" bind:tap="close"/>
+<view class="shade" wx:if="{{show}}"> 
+    <view class="selectTap">
+      <view class="selectTitle">年级</view>
+      <view class="selectBlock">
+        <block wx:for="{{selectList1}}" wx:key="index">
+          <view class="selectItem {{selectNum1==index?'activeTag':''}}" bindtap="selectChange" 
+                data-num="{{index}}" data-value="{{item}}" data-preNum="{{selectNum1}}" data-name="zlGrade" data-item="selectNum1">
+            {{item}}
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class="selectTap">
+      <view class="selectTitle">科目</view>
+      <view class="selectBlock">
+        <block wx:for="{{selectList2}}" wx:key="index">
+          <view class="selectItem {{selectNum2==index?'activeTag':''}}" bindtap="selectChange" 
+                data-num="{{index}}" data-value="{{item}}" data-preNum="{{selectNum2}}" data-name="zlSubjec" data-item="selectNum2">
+            {{item}}
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class="selectTap">
+      <view class="selectTitle">类型</view>
+      <view class="selectBlock">
+        <block wx:for="{{selectList3}}" wx:key="index">
+          <view class="selectItem {{selectNum3==index?'activeTag':''}}" bindtap="selectChange" 
+                data-num="{{index}}" data-value="{{item}}" data-preNum="{{selectNum3}}" data-name="zlType" data-item="selectNum3">
+            {{item}}
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class="closeSelect"> 
+      <button class="clear closeSelectBtn" bind:tap="cleanSelect">清除</button>
+      <button class="confirm closeSelectBtn" bind:tap="confirm">确认</button>
+    </view>
+  </view>

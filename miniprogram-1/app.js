@@ -40,6 +40,7 @@ App({
                 },
                 success (res) {
                   console.log("登陆成功")
+                  console.log(res);
                   console.log("openid",res.data.data);
                   that.globalData.openid=res.data.data.openId;
                   that.globalData.userId=res.data.data.userId;
@@ -68,4 +69,27 @@ App({
     openid:null,
     userId:null,
   },
+  // 设置监听器
+  watch: function (ctx, obj) {
+    Object.keys(obj).forEach(key => {
+      this.observer(ctx.data, key, ctx.data[key], function (value) {
+        obj[key].call(ctx, value)
+      })
+    })
+  },
+  // 监听属性，并执行监听函数
+  observer: function (data, key, val, fn) {
+    Object.defineProperty(data, key, {
+      configurable: true,
+      enumerable: true,
+      get: function () {
+        return val
+      },
+      set: function (newVal) {
+        if (newVal === val) return
+        fn && fn(newVal)
+        val = newVal
+      },
+    })
+  }
 })

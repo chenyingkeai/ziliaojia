@@ -1,0 +1,39 @@
+/* pages/manager/upload/select/select.wxss */
+.select-box{
+  height: 59rpx;
+  font-size: 28rpx;
+  padding: 0 20rpx;
+  border: 1rpx solid #999999;
+  border-radius: 6rpx;
+  display: flex;
+  align-items: center;
+}
+.select-box view{
+  flex: 1;
+}
+.select-box image{
+  height: 18rpx;
+  width: 11rpx;
+}
+
+.selectList{
+  background-color: #FAFAFA;
+  border: 1rpx solid red;
+  z-index: 151;
+  max-height: 500rpx;
+}
+.selectList view{
+  padding: 10rpx 20rpx;
+  border-top: 1rpx solid red;
+}
+
+
+.cover{
+  background-color: red;
+  opacity: 0.2;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}

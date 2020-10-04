@@ -1,0 +1,22 @@
+/* components/toast/toast.wxss */
+.toast{
+  font-size: 25rpx;
+  color: white;
+  border-radius: 10rpx;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 14rpx 80rpx;
+  background-color: #333333;
+  z-index: 100;
+  opacity: 0.7;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.toast-icon{
+  height: 27rpx;
+  width: 27rpx;
+  margin-right: 10rpx;
+}

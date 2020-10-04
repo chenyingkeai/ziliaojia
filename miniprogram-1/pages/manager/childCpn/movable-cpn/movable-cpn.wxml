@@ -1,0 +1,6 @@
+<!--pages/manager/childCpn/movable-cpn/movable-cpn.wxml-->
+<movable-area  class="publish_area"  >
+  <movable-view direction="{{direction}}" x="{{x}}" y="{{y}}" >
+    <slot />
+  </movable-view>
+</movable-area>

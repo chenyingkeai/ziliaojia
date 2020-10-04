@@ -1,0 +1,13 @@
+var getPro = function (address) {
+  return address.slice(0,3)
+}
+
+var getCity = function (address) {
+  return address.slice(3,6)
+}
+
+module.exports = {
+  getPro: getPro,
+  getCity: getCity
+}
+

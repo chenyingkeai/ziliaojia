@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "select": "../../../pages/manager/upload/childCpn/select/select"
+  }
+}

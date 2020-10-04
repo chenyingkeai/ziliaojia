@@ -8,7 +8,8 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    flag:false,
+    flag:false,//遮罩层是否
+    shadeLeng:"",
     selectNum1:-1,//年级选择
     selectNum2:-1,//科目选择
     selectNum3:-1,//类型选择
@@ -16,7 +17,14 @@ Page({
     selectList2:['语文','数学','英语','物理','化学','道德与法治'],
     selectList3:['知识点','教案','课件'],
     selectNum:"",//筛选
-    zlList:[]
+    zlList:[],
+    showActionsheet:false,//智能排序选择
+    groups: [//智能排序选项
+      { text: '智能排序', value: 1 },
+      { text: '点赞量', value: 2 },
+      { text: '时间', value: 3 },
+    ],
+    groupsChoose:1,
   },
   //事件处理函数
   // bindViewTap: function() {
@@ -24,6 +32,23 @@ Page({
   //     url: '../logs/logs'
   //   })
   // },
+  close: function () {
+    this.setData({
+        showActionsheet: false
+    })
+  },
+  upClick(){
+    this.setData({
+      showActionsheet: true
+  })
+  },
+  btnClick(e) {
+      console.log(e.detail.value)
+      this.close()
+      this.setData({
+        groupsChoose:e.detail.value
+      })
+  },
   onLoad: function () {
     if (app.globalData.userInfo) {
       console.log(app.globalData.userInfo);
@@ -78,18 +103,38 @@ Page({
     })
   },
   // 点赞资料
-  tapGood(){
+  tapGood(e){
     let that=this;
+    let openid =wx.getStorageSync('openid');
+    console.log(openid);
     wx.request({
-      url: "http://134.175.246.52:8080/material/setGood/{openId}/{zlId}?openId="+this.globalData.openId+"&zlId="+14,
+      url: "http://134.175.246.52:8080/material/setGood/{openId}/{zlId}?openId="+openid+"&zlId="+e.currentTarget.dataset.index,
       method:"POST",
       success(res) {
         that.setData({
           zlList:res.data.data
         })
+        console.log("成功点赞资料：",e.currentTarget.dataset.index);
+        console.log(res);
       },
     })
+    this.getzlList();
+  },
+  // 点击任意位置关闭遮罩层
+  closeMask(e){
+    let that =this
+    console.log(e.detail.y);
+    let leng=e.detail.y
+    if(that.data.flag){
+      if(leng>that.data.shadeLeng){
+        that.setData({
+          flag:!that.data.flag
+        })
+        console.log("成功关闭");
+        
+      }
 
+    }
   },
   // 跳转到搜索页
   toSearch(){
@@ -101,9 +146,12 @@ Page({
     })
   },
   // 跳转到详情页
-  toDetails(){
+  toDetails(e){
+    let that =this;
+    let num =e.currentTarget.dataset.id;
+    console.log("num",num);
     wx.navigateTo({
-      url: "/pages/index/details/details",
+      url: "/pages/index/details/details?id="+num,
       success: function(res){
         console.log("跳转至详情页");
       },
@@ -122,36 +170,28 @@ Page({
       console.log(this.data.code);
       let that =this
       // 可以将 res 发送给后台解码出 unionId
-      wx.request({
-        url: 'http://134.175.246.52:8080/wxLogin',
-        method:"POST",
-        data:{
-          "code": this.globalData.code,
-          "userImage": this.globalData.userInfo.avatarUrl,
-          "userName": this.globalData.userInfo.nickName
-        },
-        success (res) {
-          console.log(res.data)
-          console.log("index登陆中");
-          app.globalData.openid=res.data.data.openId
-          app.globalData.userId=res.data.data.userId
-        }
-      })              
+         
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       if (this.userInfoReadyCallback) {
         this.userInfoReadyCallback(res)
       }
-      wx.switchTab({
-        url: '../index1/index1'
-      })
     }
   },
+  // 打开遮罩层
   onTap(e){
     let that = this
     this.setData({
       flag:!that.data.flag
     })
+    var query = wx.createSelectorQuery()
+    query.select('.shade').boundingClientRect(function (res) {
+      console.log("shade长度");
+      console.log(res.bottom);
+      that.setData({
+        shadeLeng:res.bottom
+      })
+    }).exec();
   },
   subjectChange1(e){//改变学科
     console.log(e.currentTarget.dataset.num);
@@ -171,5 +211,29 @@ Page({
       selectNum3:  e.currentTarget.dataset.num,
    })
   },
+  // 清除选择
+  tapClear(){
+    this.setData({
+      selectNum1:-1,
+      selectNum2:-1,
+      selectNum3:-1
+    })
+  },
+  tapConfirm(){ 
+    let that=this;                 
+    wx.request({
+      url: "http://134.175.246.52:8080/material/selectMaterialByTag",
+      method:"POST",
+      data:{
 
+      },
+      success(res) {
+        that.setData({
+          zlList:res.data.data
+        })
+        console.log("成功点赞资料：",e.currentTarget.dataset.index);
+        console.log(res);
+      },
+    })   
+  },
 })

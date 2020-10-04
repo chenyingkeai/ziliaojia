@@ -1,10 +1,36 @@
 <!--pages/index/search/search.wxml-->
 <view class="searchSth">
-  <icon  type='search' size="38rpx"></icon>
-  <input class="searchText" type="text" placeholder="搜索你需要的学习资料" />
+  <input bindblur='handleInputChange' bindconfirm='handleInputChange' bindinput='handleInputChange' class="searchText" value="{{searchText}}" type="text" placeholder="搜索你需要的学习资料" />
+  <image bindtap="tosearchSth" class="searchImg" src="../../image/search.png"></image>
 </view>
 <view wx:if="{{!hasSearch}}">
     <view class="noSearch">
       <image mode="widthFix  " src="../../image/nosearch.png" class="noSearchImg"></image>
     </view>
+</view>
+<view wx:else>
+  <view class="list">
+    <view>
+        <block wx:for="{{nameList}}" wx:key="key">
+          <view class="item">
+            <view class="type">【{{item.zlModule}}】</view>
+            <view class="itemName">{{item.zlName}}</view>
+            <view class="download" bindtap="toDetails"> 
+              <image class="loadImg" src="../../image/download.png"></image>
+              <view class="loadText">立即下载</view>
+            </view>
+            <view class="num" bindtap="tapGood" data-index="{{item.zlId}}">
+              <view class="itemNum">
+                <image class="numImg1" src="../../image/look.png"></image>
+                <view class="itemNum itemLook">{{item.zlGood}}</view>
+              </view>
+              <view class="itemNum">
+                <image class="numImg2" src="../../image/follow.png"></image>
+                <view class="itemNum itemFollow">{{item.zlFavor}}</view>
+              </view>
+            </view>
+          </view>
+        </block>
+    </view>
+  </view>
 </view>

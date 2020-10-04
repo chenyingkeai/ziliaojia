@@ -5,8 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    hasSearch:false
-
+    hasSearch:false,
+    searchText:"",
+    nameList:[],
   },
 
   /**
@@ -15,7 +16,34 @@ Page({
   onLoad: function (options) {
 
   },
-
+  // input输入
+  handleInputChange(e) {
+    console.log(e.detail.value);
+    this.setData({
+      searchText:e.detail.value,
+    });
+   },
+  tosearchSth(res){
+    let that =this;
+    let text =this.data.searchText;
+    this.setData({
+      hasSearch:true,
+    });
+    wx.request({
+      url: "http://134.175.246.52:8080/material/qureyMaterialByName",
+      method:"POST",
+      data:{
+        "zlName": text,
+      },
+      success(res) {
+      let list =res.data.data;
+        that.setData({
+          nameList:list,
+        });
+        console.log(that.data.nameList);
+      },
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

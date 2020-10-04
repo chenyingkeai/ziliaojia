@@ -141,6 +141,11 @@ button::after{
 .list{
   padding: 0 35rpx;
 }
+.change{
+  padding: 0 35rpx;
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+}
 /* 点击 */
 .activeTag{
   border: 3rpx solid #bbf9da;
@@ -178,18 +183,17 @@ button::after{
 }
 .type{
   /* border: 1rpx solid black; */
-  font-size: 29rpx;
+  font-size: 31rpx;
   font-weight: 500;
   display: inline-block;
   width: 120rpx;
   height: 120rpx;
   position: absolute;
   margin-left: 10rpx;
-
 }
 .itemName{
   display: inline-block;
-  font-size: 29rpx;
+  font-size: 30rpx;
   font-weight: 500;
   width: 420rpx;
   min-height: 120rpx;
@@ -202,6 +206,9 @@ button::after{
   width: 157rpx;
   height: 160rpx;
 }
+.itemFollow{
+  color: #7ed7b4;
+}
 .num{
   position: absolute;
   bottom: 25rpx;
@@ -212,6 +219,14 @@ button::after{
   font-size: 22rpx;
   margin-right: 20rpx;
 }
+.numImg{
+  width: 22rpx;
+  height: 14rpx;
+  margin-right: 4rpx;
+  position: relative;
+  top: -1rpx;
+  margin-left: 10rpx;
+}
 .numImg1{
   width: 22rpx;
   height: 14rpx;
@@ -219,7 +234,6 @@ button::after{
   position: relative;
   top: -1rpx;
   margin-left: 20rpx;
-
 }
 .numImg2{
   width: 18rpx;
@@ -241,4 +255,9 @@ button::after{
 .loadText{
   color: #46cc95;
   font-size: 24rpx;
+}
+.searchImg{
+  width: 36rpx;
+  height: 36rpx;
+  margin: 0 5rpx;
 }

@@ -6,6 +6,7 @@ Page({
    */
   data: {
     item:{
+        detailsId:"",//index页传来的数据
         type:"试卷",
         itemName:"广雅中学高中语文·必修三第二单元测试卷",
         itemLook:200,
@@ -19,6 +20,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
+    that.setData({
+      detailsId:options.id
+    })
     wx.downloadFile({
       // 示例 url，并非真实存在
       url: 'http://example.com/somefile.pdf',

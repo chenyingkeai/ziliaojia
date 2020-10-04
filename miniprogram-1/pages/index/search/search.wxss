@@ -13,6 +13,11 @@
   display: inline-block;
   /* text-align: left; */
 }
+.searchImg{
+  width: 36rpx;
+  height: 36rpx;
+  margin: 0 5rpx;
+}
 .noSearch{
   margin-top: 200rpx;
   text-align: center;
@@ -20,4 +25,107 @@
 .noSearchImg{
   width: 284rpx;
   height: 226rpx;
+}
+.list{
+  padding: 0 35rpx;
+}
+.selectImg{
+  display: inline-block;
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 5rpx;
+}
+.sortImg{
+  float: right;
+  width: 22rpx;
+  height: 12rpx;
+  margin-right: 55rpx;
+  position: relative;
+  top: 5rpx;
+}
+.selectText{
+  display:inline-block;
+  position: relative;
+  top: -8rpx;
+  color: #69d5a8;
+}
+.sortText{
+  float: right;
+  position: relative;
+  top: -8rpx;
+  color: #9e9e9e;
+}
+/* 资料列表 */
+.item{
+  min-height: 180rpx;
+  width: 100%;
+  position:relative;
+  vertical-align: middle
+}
+.type{
+  /* border: 1rpx solid black; */
+  font-size: 29rpx;
+  font-weight: 500;
+  display: inline-block;
+  width: 120rpx;
+  height: 120rpx;
+  position: absolute;
+  margin-left: 10rpx;
+  top: 5rpx;
+
+}
+.itemName{
+  display: inline-block;
+  font-size: 29rpx;
+  font-weight: 500;
+  width: 420rpx;
+  min-height: 120rpx;
+  margin-left: 120rpx;
+}
+.itemImg{
+  /* border: 1rpx solid red; */
+  position: absolute;
+  z-index: -99;
+  width: 157rpx;
+  height: 160rpx;
+}
+.num{
+  position: absolute;
+  bottom: 25rpx;
+}
+.itemNum{
+  display: inline-block;
+  color: #888888;
+  font-size: 22rpx;
+  margin-right: 20rpx;
+}
+.numImg1{
+  width: 22rpx;
+  height: 14rpx;
+  margin-right: 4rpx;
+  position: relative;
+  top: -1rpx;
+  margin-left: 20rpx;
+
+}
+.numImg2{
+  width: 18rpx;
+  height: 18rpx;
+  margin-right: 3rpx;
+  position: relative;
+  top: 1rpx;
+}
+.download{
+  float: right;
+}
+.loadImg{
+  width: 70rpx;
+  height: 70rpx;
+  display: inline-block;
+  position: relative;
+  left: 12rpx;
+}
+.loadText{
+  color: #46cc95;
+  font-size: 24rpx;
 }

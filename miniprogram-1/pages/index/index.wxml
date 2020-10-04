@@ -18,7 +18,7 @@
         <view class="selectText">筛选</view>
     </view>
     <view class="search" bindtap="toSearch">
-      <icon  type='search' size="38rpx"></icon>
+      <image class="searchImg" src="../image/search.png"></image>
       <input class="searchText" type="text" disabled="disabled" placeholder="搜索你需要的学习资料" />
     </view>
     </view>
@@ -26,6 +26,14 @@
       <image ></image>
     </view>
     <!-- 资料列表 -->
+    <view class="change" bindtap="upClick">
+      <text wx:if="{{groupsChoose==1}}">智能排序</text>
+      <text wx:if="{{groupsChoose==2}}">按点赞量</text>
+      <text wx:if="{{groupsChoose==3}}">按时间</text>
+      <image class="numImg" src="../image/yuanjiao.png"></image>
+    </view>
+    <mp-actionSheet bindactiontap="btnClick" show="{{showActionsheet}}" actions="{{groups}}" title="">
+    </mp-actionSheet>
     <view class="list">
       <view>
         <block wx:for="{{zlList}}" wx:key="key">
@@ -33,25 +41,27 @@
             <image class="itemImg" src="../image/item.png"></image>
             <view class="type">【{{item.zlModule}}】</view>
             <view class="itemName">{{item.zlName}}</view>
-            <view class="download" bindtap="toDetails"> 
+            <view class="download" bindtap="toDetails" data-id="{{item.zlId}}"> 
               <image class="loadImg" src="../image/download.png"></image>
               <view class="loadText">立即下载</view>
             </view>
-            <view class="num" bindtap="tapGood(key)">
+            <view class="num" bindtap="tapGood" data-index="{{item.zlId}}">
               <view class="itemNum">
                 <image class="numImg1" src="../image/look.png"></image>
                 <view class="itemNum itemLook">{{item.zlGood}}</view>
               </view>
               <view class="itemNum">
                 <image class="numImg2" src="../image/follow.png"></image>
-                <view class="itemNum itemFollow">{{item.zlFavor}}</view>
+                <view class="itemNum itemFollow" wx:if="{{item.zlFavor==0}}">收藏</view>
+                <view class="itemNum itemhasFollow" wx:else>已收藏</view>
               </view>
             </view>
           </view>
         </block>
       </view>
     </view>
-    <view class='mask' wx:if="{{flag}}">
+    <view class='mask' wx:if="{{flag}}" catchtouchmove='ture'
+ bindtap="closeMask">
       <view class="shade"> 
         <view class="selectTap">
           <view class="selectTitle">年级</view>
@@ -78,8 +88,8 @@
           </view>
         </view>
         <view class="closeSelect"> 
-          <button class="clear closeSelectBtn">清除</button>
-          <button class="confirm closeSelectBtn">确认</button>
+          <button class="clear closeSelectBtn" bindtap="tapClear">清除</button>
+          <button class="confirm closeSelectBtn" bindtap="tapConfirm">确认</button>
         </view>
       </view>
     </view>

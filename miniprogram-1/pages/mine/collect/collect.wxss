@@ -1,1 +1,4 @@
 /* pages/mine/collect/collect.wxss */
+page{
+  background-color: rgba(250, 250, 250, 1);
+}

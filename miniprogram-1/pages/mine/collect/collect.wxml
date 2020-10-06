@@ -1,2 +1,5 @@
 <!--pages/mine/collect/collect.wxml-->
-<text>pages/mine/collect/collect.wxml</text>
+<block wx:for="{{myCollect}}" >
+  <material-item itemData="{{item}}" bindtap="toDetail" data-id="{{item.zlId}}" />
+</block>
+  

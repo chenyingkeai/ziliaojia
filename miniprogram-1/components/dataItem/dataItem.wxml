@@ -1,0 +1,26 @@
+<!--components/dataItem/dataItem.wxml-->
+<view class="list">
+  <view>
+    <block wx:for="{{zlList}}" wx:key="key">
+      <view class="item">
+        <image class="itemImg" src="/pages/image/item.png"></image>
+        <view class="type">【{{item.zlModule}}】</view>
+        <view class="itemName">{{item.zlName}}</view>
+        <view class="download" bindtap="toDetails" data-id="{{item.zlId}}"> 
+          <image class="loadImg" src="/pages/image/download.png"></image>
+          <view class="loadText">立即下载</view>
+        </view>
+        <view class="num" bindtap="tapGood" data-index="{{item.zlId}}">
+          <view class="itemNum">
+            <image class="numImg1" src="/pages/image/look.png"></image>
+            <view class="itemNum itemLook">{{item.zlGood}}</view>
+          </view>
+          <view class="itemNum">
+            <image class="numImg2" src="/pages/image/follow.png"></image>
+            <view class="itemNum itemFollow" >{{item.zlGood}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

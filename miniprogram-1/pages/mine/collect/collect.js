@@ -1,4 +1,5 @@
 // pages/mine/collect/collect.js
+import request from '../../../service/request.js'
 Page({
 
   /**
@@ -12,55 +13,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getMyCollect(options.openid || 'oz1uB4lw87FZsFeCBjo4xHLsBma8')
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  getMyCollect(openId) {
+    request({
+      url: 'myInfo/getPeopleFavoriteList',
+      method: 'POST',
+      data: {
+        openId,
+      }
+    }).then( res => {
+      console.log(res);
+      if (res.data.code === 200) {
+        this.setData({
+          myCollect: res.data.data
+        })
+      }
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  toDetail(e) {
+    wx.navigateTo({
+      url: `/pages/index/details/details?id=${e.currentTarget.dataset.id}`,
+    });
   }
+  
 })

@@ -1,16 +1,26 @@
 /* components/material-item/material-item.wxss */
 .item-container{
-  min-height: 166rpx;
+  min-height: 146rpx;
   width: 668rpx;
   margin: 20rpx 20rpx;
   padding: 20rpx 22rpx;
   vertical-align: middle;
   border-radius: 10rpx;
+  box-shadow: 0 6rpx 18rpx rgba(51, 51, 51, 0.04);
+  display: flex;
+  background-color: white;
+}
+.itemImg{
+  position: absolute;
+  z-index: -99;
+  width: 157rpx;
+  height: 160rpx;
+}
+.item-data{
+  flex: 1;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 6rpx 18rpx rgba(51, 51, 51, 0.04);
 }
-
 .material-head{
   font-size: 28rpx;
   flex: 1;
@@ -42,3 +52,17 @@
   margin-right: 8rpx;
 }
 
+.download{
+  margin-top: 30rpx;
+}
+.loadImg{
+  width: 70rpx;
+  height: 70rpx;
+  display: inline-block;
+  position: relative;
+  left: 12rpx;
+}
+.loadText{
+  color: #46cc95;
+  font-size: 24rpx;
+}

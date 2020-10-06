@@ -2,15 +2,15 @@
 <view>
   <view class="myInfo">
     <view class="alignCenter">
-      <image class="avatarUrl" src="{{avatarUrl}}" mode="widthFix" />
-      <view > {{nickName}}杨哥哥 </view>
+      <image class="avatarUrl" src="{{myInfo.userImage}}" mode="aspectFill" />
+      <view > {{myInfo.userName}} </view>
     </view>
     <view class="uploadTick">
       <view class="uploadTitle">
         剩余下载券
         <image src="/assest/icons/mine/tick.png" />
       </view>
-      38
+      {{myInfo.userXzj}}
     </view>
   </view>
 

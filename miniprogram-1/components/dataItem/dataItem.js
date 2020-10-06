@@ -1,14 +1,10 @@
-// components/material-item/material-item.js
+// components/dataItem/dataItem.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    itemData: Object,
-    showLoading: {
-      type: Boolean,
-      value: true
-    }
+    zlList: Object,
   },
 
   /**

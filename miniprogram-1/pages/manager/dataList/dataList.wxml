@@ -17,7 +17,7 @@
   </view>
 
   <view wx:for="{{materialList}}" wx:key="index"  >
-    <material-item itemData="{{item}}" bindtap="toDetail" data-id="{{item.zlId}}" />
+    <material-item itemData="{{item}}" bindtap="toDetail" data-id="{{item.zlId}}" showLoading="{{false}}" />
   </view>
 
   <modal comfirmColor="#46CC95" bind:hideModel="hideModel" bind:sureClick="changeXzq" 

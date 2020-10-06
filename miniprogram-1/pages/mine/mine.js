@@ -1,5 +1,6 @@
 // pages/mine/mine.js
 const app = getApp()
+import request from '../../service/request.js'
 
 Page({
 
@@ -19,24 +20,29 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.getUserInfo({
-      success: res => {
-        app.globalData.userInfo = res.userInfo
-        console.log(app.globalData.userInfo);
-        console.log(app.globalData.openid);
+    this.getUserInfo()
+
+  },
+  getUserInfo() {
+    request({
+      url: 'myInfo/getUserInfo',
+      method: 'POST',
+      data: {
+        openId: 'oz1uB4lw87FZsFeCBjo4xHLsBma8'
+      }
+    }).then( res => {
+      console.log(res);
+      if (res.data.code === 200) {
         this.setData({
-          avatarUrl: res.userInfo.avatarUrl,
-          nickName:res.userInfo.nickName,
-          openid:app.globalData.openid
+          myInfo: res.data.data
         })
       }
     })
-
   },
 
   toCollect() {
     wx.navigateTo({
-      url: './collect/collect'
+      url: `./collect/collect?openid=${this.data.myInfo.openId}`
     });
       
   },

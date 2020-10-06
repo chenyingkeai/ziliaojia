@@ -27,18 +27,20 @@ Page({
     const {loginId: adminName, passWord: adminPassword } = e.detail.value;
     console.log(adminName, adminPassword);
     if (adminName && adminPassword) {
+      wx.showLoading({
+        title: '正在登录中',
+        mask: true,
+      });
       request({
         url: 'Yunying/login',
         method: 'POST',
         data: {
           adminName,
           adminPassword
-        },
-        header: {
-          'content-type': 'application/x-www-form-urlencoded'
         }
       }).then(res =>{
         console.log(res);
+        wx.hideLoading();
         const { code, data } = res.data;
         if (code === 200) {
           this.loginSuccess()

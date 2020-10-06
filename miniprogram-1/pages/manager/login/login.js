@@ -43,7 +43,12 @@ Page({
         if (code === 200) {
           this.loginSuccess()
         } else {
-          console.log('登录失败');
+          wx.showToast({
+            title: '账号或密码错误！请检查输入',
+            icon: 'none',
+            duration: 1500,
+            mask: false,
+          });
         }
       }).catch(err=>{
         console.log(err);          

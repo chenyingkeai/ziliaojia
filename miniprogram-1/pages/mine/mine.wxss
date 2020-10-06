@@ -1,48 +1,65 @@
 /* pages/mine/mine.wxss */
 .myInfo{
-  background-color: white;
-  border-radius: 25rpx;
-  border: 3rpx solid #020e0f;
-  margin: 30rpx 20rpx;
-  padding: 30rpx 15rpx;
+  height: 274rpx;
+  padding: 0 48rpx 0 62rpx;
+  border-radius: 20rpx;
+  margin: 20rpx 20rpx 80rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 5rpx 18rpx rgba(51, 51, 51, 0.08);
 }
-.nickName{
-  font-size: 38rpx;
-  display: inline-block;
-  position: relative;
-  top: -60rpx;
-  left: 30rpx;
+.alignCenter{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 1;
+  font-size: 34rpx;
+  font-weight: bold;
 }
 .avatarUrl{
   border-radius: 100%;
-  width: 150rpx;
-  height: 150rpx;
+  width: 112rpx;
+  height: 112rpx;
+  background-color: aqua;
+  margin-right: 20rpx;
+  flex-shrink: 0;
 }
-.turn{
-  /* background-color: white; */
-  border: 3rpx solid #020e0f;
-  border-radius: 25rpx;
-  margin: 30rpx 20rpx;
-  padding: 30rpx 15rpx;
-  
+.uploadTick{
+  height: 116rpx;
+  color: #FEBC6F;
+  font-weight: 500;
+  font-size: 83rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.turnIcon{
-  margin-left: 20rpx;
-  width: 30rpx;
-  height: 35rpx;
+.uploadTick > view{
+  font-size: 25rpx;
+  display: flex;
+  align-items: center;
+  margin-bottom: -10rpx;
 }
-.turnText{
-  /* font-size: 34rpx; */
-  margin-left: 30rpx;
-  position: relative;
-  top: -6rpx;
-  color: #3e3e3e;
+.uploadTick > view > image{
+  height: 26rpx;
+  width: 32rpx;
+  margin-left: 10rpx;
 }
-.turnSign{
-  float:right;
-  font-size:40rpx;
-  margin-right:30rpx; 
-  position:relative;
-  top:-7rpx
 
+.navigateBar{
+  font-size: 28rpx;
+  margin: 17rpx 20rpx;
+  display: flex;
+  align-items: center;
 }
+.navigateBar > view {
+  width: 800rpx;
+  padding: 22rpx 10rpx;
+  border-bottom: 1rpx solid #DDDDDD;
+}
+.navigateBar > image{
+  height: 38rpx;
+  width: 38rpx;
+  margin-right: 10rpx;
+  flex-shrink: 0;
+}
+

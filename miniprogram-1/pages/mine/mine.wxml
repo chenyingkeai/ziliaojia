@@ -1,20 +1,25 @@
 <!--pages/mine/mine.wxml-->
 <view>
   <view class="myInfo">
-    <image class="avatarUrl" src="{{avatarUrl}}" mode="widthFix" lazy-load="false" binderror="" bindload="">
-    </image>
-    <view class="nickName" hover-class="none" hover-stop-propagation="false">
-        {{nickName}}
+    <view class="alignCenter">
+      <image class="avatarUrl" src="{{avatarUrl}}" mode="widthFix" />
+      <view > {{nickName}}杨哥哥 </view>
+    </view>
+    <view class="uploadTick">
+      <view class="uploadTitle">
+        剩余下载券
+        <image src="/assest/icons/mine/tick.png" />
+      </view>
+      38
     </view>
   </view>
-  <view class="turn">
-    <image class="turnIcon"></image>
-    <text class="turnText">我的收藏</text>
-    <text class="turnSign">></text>
+
+  <view class="navigateBar" bind:tap="toCollect">
+    <image src="/assest/icons/mine/collect.png" />
+    <view> 我的收藏  </view>
   </view>
-    <view class="turn" bindtap="toLogin">
-    <image class="turnIcon"></image>
-    <text class="turnText">运营人员入口</text>
-    <text class="turnSign">></text>
+  <view class="navigateBar" bind:tap="toManager">
+    <image src="/assest/icons/mine/teacher.png" />
+    <view> 教师登录  </view>
   </view>
 </view>

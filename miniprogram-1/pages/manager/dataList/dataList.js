@@ -17,10 +17,10 @@ Page({
    */
   onLoad: function (options) {
     this.getMaterialList()
+
   },
 
   getMaterialList(e) {
-    console.log(e);
     let data = { zlModule: '资料' }
     if (e) {
       data = e.detail;
@@ -39,7 +39,6 @@ Page({
       method: 'POST',
       data,
     }).then(res =>{
-      console.log(res.data);
       if (res.data.code === 200) {
         this.setData({
           materialList: res.data.data,

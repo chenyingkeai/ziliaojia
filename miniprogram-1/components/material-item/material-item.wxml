@@ -9,9 +9,9 @@
 
     <view class="material-info" >
       <image src="/assest/icons/material-item/watcher.png" class="watcher" />  
-        {{itemData.zlGood}}
+        {{itemData.zlView}}
       <image src="/assest/icons/material-item/think-good.png" class="think-good" />  
-        {{itemData.zlFavor}}
+        {{itemData.zlGood}}
     </view>
   </view>
   <view wx:if="{{showLoading}}">

@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/manager/dataList/dataList",
     "pages/mine/mine",
     "pages/mine/collect/collect",
     "pages/index/index",
@@ -9,7 +10,6 @@
     "pages/index/search/search",
     "pages/manager/login/login",
     "pages/manager/detail/detail",
-    "pages/manager/dataList/dataList",
     "pages/manager/upload/upload",
     "pages/integral/integral",
     "pages/logs/logs"

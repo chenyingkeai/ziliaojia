@@ -12,7 +12,7 @@
     <view> 学科：{{materianInfo.zlSubject}} </view>
     <view> 类型：{{materianInfo.zlModule}} </view>
   </view>
-  <view wx:elif="{{materianInfo.zlType == '中考模拟' && materianInfo.zlType == '中考真题'}}"> 
+  <view wx:elif="{{materianInfo.zlType == '中考模拟' || materianInfo.zlType == '中考'}}"> 
     <view> 类型：{{materianInfo.zlType}}</view>
     <view> 年份：{{materianInfo.zlYears}} </view>
     <view> 科目：{{materianInfo.zlSubject}} </view>

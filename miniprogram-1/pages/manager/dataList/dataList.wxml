@@ -1,6 +1,6 @@
 <!--pages/manager/dataList/dataList.wxml-->
-<filter bind:sureClick="getMaterialList" bind:hide="materialSelect" show="{{materialSelect}}" />
-<testFilter bind:sureClick="getMaterialList" bind:hide="testSelect" show="{{testSelect}}"/>
+<filter bind:sureClick="getMaterialList" bind:hide="materialSelect" show="{{materialSelect}}" style="z-index:100;" />
+<testFilter bind:sureClick="getMaterialList" bind:hide="testSelect" show="{{testSelect}}" style="z-index:100;"/>
 <view class="dataList">
   <view class="top-bar">
     <view class="select">
@@ -32,10 +32,10 @@
   <!-- <movable-cpn >
     <image src='/assest/icons/manager/upLoad.png' bindtap="toUpload"  class="movable-img"  />
   </movable-cpn> -->
-  
+  <image src='/assest/icons/manager/upLoad.png' bindtap="toUpload"  class="movable-img"  />
 </view>
-<movable-area  class="publish_area"  >
+<!-- <movable-area  class="publish_area"  >
   <movable-view direction="all"  out-of-bounds="{[true]}" >
     <image src='/assest/icons/manager/upLoad.png' bindtap="toUpload" class="movable-img"  />
   </movable-view>
-</movable-area>
+</movable-area> -->

@@ -24,6 +24,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options);
     options.formData && this.setDefaultData(options.formData)
     // this.selectComponent('#toast').showToast('修改成功', 'success', 10000)
 
@@ -37,6 +38,7 @@ Page({
     this.haveModule(formData.zlModule)
     this.setData({
       formData,
+      isUpdata: true
     })
   },
   getYears(starY = 2015) {
@@ -66,6 +68,14 @@ Page({
       console.log(err);          
     })
   },
+
+  comfirmBtn() {
+    if (this.data.isUpdata) {
+      this.updata()
+    } else {
+      this.upload()
+    }
+  },
   upload() {
     let formData = this.data.formData
     if (formData.zlProvince) {
@@ -73,6 +83,43 @@ Page({
     }
     request({
       url: 'Yunying/insertZl',
+      method: 'POST',
+      data: formData
+    }).then(res =>{
+      console.log(res);
+      if (res.statusCode === 200 && res.data.code === 404) {
+        wx.showToast({
+          title: '请填写完整信息',
+          icon: 'none',
+          duration: 1500,
+          mask: false,
+        });
+      } else if (res.statusCode === 200 && res.data.code === 200) {
+        this.selectComponent('#toast').showToast('上传资料成功', 'success', 1500)
+        setTimeout(() => {
+          wx.navigateBack({
+            delta: 1
+          });
+        }, 1500);
+      } else {
+        wx.showToast({
+          title: '上传失败，请稍后重试',
+          icon: 'none',
+          duration: 1500,
+          mask: false,
+        });
+      }
+    }).catch(err=>{
+      console.log(err);          
+    })
+  },
+  updata() {
+    let formData = this.data.formData
+    if (formData.zlProvince) {
+      formData.zlArea = formData.zlProvince + formData.zlCity
+    }
+    request({
+      url: 'Yunying/updateMaterialByZlId',
       method: 'POST',
       data: formData
     }).then(res =>{

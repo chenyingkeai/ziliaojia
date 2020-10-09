@@ -3,7 +3,7 @@
   <image src="/assest/icons/manager/loginBac.png" class="login-bac"  />
   <view class="login-box" >
     <view class="title">
-      运营人员登录
+      教师登录
     </view>
     <input class="input-class" value="{{loginId}}" type="text"  placeholder="账号" 
           placeholder-class="default-font"  bindinput="input" id="loginId" name="loginId" />

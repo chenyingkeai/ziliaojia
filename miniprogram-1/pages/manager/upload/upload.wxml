@@ -95,7 +95,7 @@
   <button>
     取消
   </button>
-  <button bind:tap="upload" >
+  <button bind:tap="comfirmBtn" >
     确认上传
   </button>
 </view>

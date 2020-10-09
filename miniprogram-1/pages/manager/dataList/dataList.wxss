@@ -49,9 +49,9 @@ page {--primary-color-:#46CC95;}
   height: 165rpx; 
   width: 136rpx;
   z-index: 10;
-  /* position: fixed;
+  position: fixed;
   bottom: 200rpx;
-  right: 100rpx; */
+  right: 100rpx;
 }
 
 .publish_area{

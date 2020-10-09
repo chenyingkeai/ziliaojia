@@ -16,6 +16,9 @@ Page({
   onLoad: function (options) {
 
   },
+  onShow() {
+    this.hasLogin()
+  },
 
   input(e) {
     this.setData({
@@ -43,6 +46,7 @@ Page({
         wx.hideLoading();
         const { code, data } = res.data;
         if (code === 200) {
+          this.saveTeacherInfo(adminName, adminPassword)
           this.loginSuccess()
         } else {
           wx.showToast({
@@ -66,28 +70,42 @@ Page({
     }
     
   },
+
   loginSuccess() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../dataList/dataList',
     });
-      
-  }
-//   getUserName: function(e) {
-//     var value = e.detail.value; //获取输入的内容
-//     this.setData({
-//       username:value,//改变page--data中username的值
-//     })
-//     console.log(this.data.username);
     
-//     //wx.setStorageSync('username', value);//将获取到的username值存入本地缓存空间
-//   },
-//   getPassword:function(e) {
-//     var value = e.detail.value;
-//     this.setData({
-//       password: value,
-//     })
-//     console.log(this.data.password);
+  },
 
-//     //wx.setStorageSync('password', value);
-//   },
+  saveTeacherInfo(loginId, passWord) {
+    const teacherInfo = {
+      loginId,
+      passWord
+    }
+    console.log(teacherInfo);
+    wx.setStorage({
+      key: 'teacherInfo',
+      data: teacherInfo,
+    });
+      
+  },
+
+  hasLogin() {
+    wx.getStorage({
+      key: 'teacherInfo',
+      success: (result) => {
+        this.setData({
+          hasLogin: true,
+          loginId: result.data.loginId,
+          passWord: result.data.passWord
+        })
+      },
+      fail: () => {
+        this.setData({
+          hasLogin: false
+        })
+      },
+    });
+  }
 })

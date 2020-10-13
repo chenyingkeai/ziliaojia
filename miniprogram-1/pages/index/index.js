@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
+import request from '../../service/request.js'
 
 Page({
   data: {
@@ -104,21 +105,29 @@ Page({
   },
   // 点赞资料
   tapGood(e){
-    let that=this;
     let openid =wx.getStorageSync('openid');
     console.log(openid);
-    wx.request({
-      url: "http://134.175.246.52:8080/material/setGood/{openId}/{zlId}?openId="+openid+"&zlId="+e.currentTarget.dataset.index,
-      method:"POST",
-      success(res) {
-        that.setData({
-          zlList:res.data.data
-        })
-        console.log("成功点赞资料：",e.currentTarget.dataset.index);
-        console.log(res);
-      },
+    let index =e.currentTarget.dataset.index;
+    console.log(index);
+    request({
+      url: 'material/setGood/{openId}/{zlId}?openId='+openid+'&zlId='+index,
+      method: 'POST',
+      data: {
+        "openId" : openid,
+        "zlId" :index
+      }
+    }).then(res =>{
+      let that = this
+      console.log(res.data);
+      if (res.data.code === 200) {
+        console.log("点赞成功");
+        this.getzlList();
+      } else {
+        console.log('点赞失败');
+      }
+    }).catch(err=>{
+      console.log(err);          
     })
-    this.getzlList();
   },
   // 点击任意位置关闭遮罩层
   closeMask(e){

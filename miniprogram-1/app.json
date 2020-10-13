@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/manager/dataList/dataList",
     "pages/mine/mine",
     "pages/manager/dataList/dataList",
     "pages/mine/collect/collect",
-    "pages/index/index",
     "pages/data/list/list",
     "pages/data/data",
     "pages/index/details/details",

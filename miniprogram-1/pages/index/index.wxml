@@ -48,12 +48,11 @@
             <view class="num" bindtap="tapGood" data-index="{{item.zlId}}">
               <view class="itemNum">
                 <image class="numImg1" src="../image/look.png"></image>
-                <view class="itemNum itemLook">{{item.zlGood}}</view>
+                <view class="itemNum itemLook">{{item.zlView}}</view>
               </view>
               <view class="itemNum">
-                <image class="numImg2" src="../image/follow.png"></image>
-                <view class="itemNum itemFollow" wx:if="{{item.zlFavor==0}}">收藏</view>
-                <view class="itemNum itemhasFollow" wx:else>已收藏</view>
+                <image class="numImg2"  src="../image/follow.png"></image>
+                <view class="itemNum itemLook">{{item.zlGood}}</view>
               </view>
             </view>
           </view>

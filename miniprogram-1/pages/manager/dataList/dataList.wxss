@@ -48,7 +48,7 @@ page {--primary-color-:#46CC95;}
 .movable-img{
   height: 165rpx; 
   width: 136rpx;
-  z-index: 10;
+  z-index: 3;
   position: fixed;
   bottom: 200rpx;
   right: 100rpx;

@@ -1,5 +1,5 @@
 <!--pages/manager/upload/select/select.wxml-->
-<view class="select-box" bind:tap="showOption" >
+<view class="select-box  {{selectShow?'borderBtm':''}}" bind:tap="showOption" >
   <view> {{nowText}} </view>
   <image src="/assest/icons/upload/downArr.png" animation="{{animationData}}"/>
 </view>

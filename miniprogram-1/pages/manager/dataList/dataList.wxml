@@ -32,7 +32,7 @@
   <!-- <movable-cpn >
     <image src='/assest/icons/manager/upLoad.png' bindtap="toUpload"  class="movable-img"  />
   </movable-cpn> -->
-  <image src='/assest/icons/manager/upLoad.png' bindtap="toUpload"  class="movable-img"  />
+  <image src='/assest/icons/manager/upLoad.png' bindtap="toUpload" hidden="{{materialSelect}}" class="movable-img" />
 </view>
 <!-- <movable-area  class="publish_area"  >
   <movable-view direction="all"  out-of-bounds="{[true]}" >

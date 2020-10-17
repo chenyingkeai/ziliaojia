@@ -1,5 +1,6 @@
 // pages/manager/upload/upload.js
 import request from '../../../service/request.js'
+import { watch } from "../../../app.js";
 const app =  getApp();
 Page({
 
@@ -26,8 +27,7 @@ Page({
   onLoad: function (options) {
     console.log(options);
     options.formData && this.setDefaultData(options.formData)
-    // this.selectComponent('#toast').showToast('修改成功', 'success', 10000)
-
+    
     let years = this.getYears()
     this.setData({
       years
@@ -78,8 +78,8 @@ Page({
   },
   upload() {
     let formData = this.data.formData
-    if (formData.zlProvince) {
-      formData.zlArea = formData.zlProvince + formData.zlCity
+    if (formData.zlPros) {
+      formData.zlArea = formData.zlPros + formData.zlCity
     }
     request({
       url: 'Yunying/insertZl',
@@ -101,6 +101,11 @@ Page({
             delta: 1
           });
         }, 1500);
+        let pages = getCurrentPages();
+        let prepage = pages[pages.length-2];
+        prepage.setData({
+          refreshData: true
+        })
       } else {
         wx.showToast({
           title: '上传失败，请稍后重试',
@@ -132,7 +137,7 @@ Page({
           mask: false,
         });
       } else if (res.statusCode === 200 && res.data.code === 200) {
-        this.selectComponent('#toast').showToast('上传资料成功', 'success', 1500)
+        this.selectComponent('#toast').showToast('修改资料成功', 'success', 1500)
         setTimeout(() => {
           wx.navigateBack({
             delta: 1
@@ -167,7 +172,7 @@ Page({
       })
     } else if (e.currentTarget.id === 'zlType') {
       this.haveType()
-    } else if (e.currentTarget.id === 'zlProvince') {
+    } else if (e.currentTarget.id === 'zlPros') {
       this.getCity(e.detail)
       this.setData({
         ['formData.zlCity']: null,

@@ -9,7 +9,10 @@ Page({
     activetab: 0,
     xzq: 0,
     testSelect: false,
-    materialSelect: false
+    materialSelect: false,
+    lastSelect: {
+      zlModule: "资料"
+    }
   },
 
   /**
@@ -20,10 +23,26 @@ Page({
 
   },
 
+  onShow() {
+    if (this.data.refreshData === true) {
+      let e = {}
+      e.detail = this.data.lastSelect
+      console.log(e);
+      this.getMaterialList(e)
+      this.setData({
+        refreshData: false
+      })
+    }
+  },
+
   getMaterialList(e) {
     let data = { zlModule: '资料' }
     if (e) {
+      console.log(e);
       data = e.detail;
+      this.setData({
+        lastSelect: data
+      })
       if (e.detail.zlModule === '试卷') {
         this.setData({
           activetab: 1
@@ -35,10 +54,11 @@ Page({
       }
     }
     request({
-      url: 'Yunying/getAllMaterialList',
+      url: 'material/selectMaterialByTag',
       method: 'POST',
       data,
     }).then(res =>{
+      console.log(res);
       if (res.data.code === 200) {
         this.setData({
           materialList: res.data.data,

@@ -58,10 +58,21 @@ Page({
       }
     }).then(res =>{
       console.log(res);
-      if (res.data.code === '200') {
-        wx.navigateBack({
-          delta: 1
-        });
+      if (res.data.code === 200) {
+        this.setData({
+          showModal: false
+        })
+        this.selectComponent('#toast').showToast('删除成功', 'success', 1500)
+        setTimeout(() => {
+          wx.navigateBack({
+            delta: 1
+          });
+        }, 1500);
+        let pages = getCurrentPages();
+        let prepage = pages[pages.length-2];
+        prepage.setData({
+          refreshData: true
+        })
       }
     }).catch(err=>{
       console.log(err);          

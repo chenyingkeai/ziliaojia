@@ -37,7 +37,7 @@
       </view>
       <view class="material-info" >
         <view style="flex: 2;margin-right: 5rpx;" > 地区</view>
-        <select class="material-select" id="zlProvince"  propArray="{{province}}" style="z-index: 7"
+        <select class="material-select" id="zlPros"  propArray="{{province}}" style="z-index: 7"
                 bind:changSelect="changSelect" style="margin-right: 10rpx;"  />
         <select class="material-select" id="zlCity"  propArray="{{city}}" style="z-index: 7" nowText="{{formData.zlCity}}"
                 bind:changSelect="changSelect" style="margin-left: 10rpx;" />
@@ -100,4 +100,4 @@
   </button>
 </view>
 
-<toast message="修改成功" id="toast" />
+<toast  id="toast" />

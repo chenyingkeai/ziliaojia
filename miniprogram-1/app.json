@@ -1,9 +1,8 @@
 {
   "pages": [
+    "pages/manager/dataList/dataList",
     "pages/index/index",
-    "pages/manager/dataList/dataList",
     "pages/mine/mine",
-    "pages/manager/dataList/dataList",
     "pages/mine/collect/collect",
     "pages/data/list/list",
     "pages/data/data",
@@ -50,6 +49,7 @@
     ]
   },
   "useExtendedLib": {
+    "kbone": true,
     "weui": true
   },
   "sitemapLocation": "sitemap.json"

@@ -12,23 +12,29 @@ Page({
     avatarUrl:'',
     nickName:"",
     openid:"",
-
-
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getUserInfo()
-
+    wx.getStorage({
+      key: 'openid',
+      success: (result) => {
+        this.setData({
+          openid: result.data
+        })
+        this.getUserInfo(result.data)
+      },
+    });
+    
   },
-  getUserInfo() {
+  getUserInfo(openid) {
     request({
       url: 'myInfo/getUserInfo',
       method: 'POST',
       data: {
-        openId: 'oz1uB4lw87FZsFeCBjo4xHLsBma8'
+        openId: openid 
       }
     }).then( res => {
       console.log(res);

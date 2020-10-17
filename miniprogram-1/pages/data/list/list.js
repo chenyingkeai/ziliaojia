@@ -1,4 +1,6 @@
 // pages/data/list/list.js
+import request from '../../../service/request.js'
+
 Page({
 
   /**
@@ -8,6 +10,7 @@ Page({
     flag1:false,//筛选
     flag2:false,//排序
     show1:false,//第一个下拉框
+    type:"",//传入的文字
     selectData1:['中考真题','中考模拟','期中','期末','单元测试卷'],//下拉列表的数据
     index1:0,//选择的下拉列表下标
     show2:false,//第2个下拉框
@@ -19,20 +22,7 @@ Page({
     show4:false,//第4个下拉框
     selectData4:['2015','2016','2018','2019','2020'],//下拉列表的数据
     index4:0,//选择的下拉列表下标
-    item:[
-      {
-        type:"试卷",
-        itemName:"广雅中学高中语文·必修三第二单元测试卷",
-        itemLook:200,
-        itemFollow:316,
-      },
-      {
-        type:"试卷",
-        itemName:"2222222广雅中学高中语文·必修三第二单元测试卷广雅中学高中语文·必修三第二单元测试卷",
-        itemLook:200,
-        itemFollow:316,
-      }
-    ]
+    zlList:[]
   },
   onTapSelect(){
     let that = this
@@ -139,11 +129,44 @@ Page({
     show4:!this.data.show4,
     });
   },
+    // 跳转到详情页
+    toDetail(e){
+      let that =this;
+      let num =e.currentTarget.dataset.id;
+      console.log("num",num);
+      request({
+        url: 'material/setView',
+        method: 'POST',
+        data: {
+          "openId" : wx.getStorageSync('openid'),
+          "zlId" :num
+        }
+      }).then(res =>{
+        let that = this
+        console.log(res.data);
+        if (res.data.code === 200) {
+          console.log("浏览量增加");
+        } else {
+          console.log('浏览量增加失败');
+        }
+      }).catch(err=>{
+        console.log(err);          
+      })
+      wx.navigateTo({
+        url: "/pages/index/details/details?id="+num,
+        success: function(res){
+          console.log("跳转至详情页");
+        },
+      })
+    },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    that.setData({
+      type:options.name
+    })
   },
 
   /**

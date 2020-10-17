@@ -10,27 +10,9 @@
   </view>
   <view class="list">
     <view>
-      <block wx:for="{{item}}" wx:key="key">
-        <view class="item" bindtap="toDetails">
-          <image class="itemImg" src="/pages/image/item.png"></image>
-          <view class="type">【{{item.type}}】</view>
-          <view class="itemName">{{item.itemName}}</view>
-          <view class="download">
-            <image class="loadImg" src="/pages/image/download.png"></image>
-            <view class="loadText">立即下载</view>
-          </view>
-          <view class="num">
-            <view class="itemNum">
-              <image class="numImg1" src="/pages/image/look.png"></image>
-              <view class="itemNum itemLook">{{item.itemLook}}</view>
-            </view>
-            <view class="itemNum">
-              <image class="numImg2" src="/pages/image/follow.png"></image>
-              <view class="itemNum itemFollow">{{item.itemFollow}}</view>
-            </view>
-          </view>
-        </view>
-      </block>
+      <block wx:for="{{zlList}}" >
+        <material-item itemData="{{item}}" bindtap="toDetail" data-id="{{item.zlId}}" />
+      </block>    
     </view>
   </view>
   <view class='mask' wx:if="{{flag1}}">

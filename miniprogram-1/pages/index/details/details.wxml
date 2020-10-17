@@ -1,13 +1,13 @@
 <!--pages/index/details/details.wxml-->
 <view>
   <view class="top">
-    <view class="type">【{{item.type}}】</view>
-    <view class="itemName">{{item.itemName}}</view>
-    <view class="select">{{item.itemSelect}}</view>
+    <view class="type">【{{item.zlType}}】</view>
+    <view class="itemName">{{item.zlName}}</view>
+    <view class="select">{{item.zlVersion}}·{{item.zlGrade}}·{{item.zlSubject}}</view>
     <view class="num">
-      <view class="itemNum">
+      <view class="itemNum"  bindtap="tapGood" data-index="{{item.zlId}}">
         <image class="numImg1" src="../../image/follow.png"></image>
-        <view class="itemNum itemLook">{{item.itemFollow}}</view>
+        <view class="itemNum itemLook">{{item.zlGood}}</view>
       </view>
       <view class="itemNum">
         <image class="numImg2" src="../../image/collect.png"></image>

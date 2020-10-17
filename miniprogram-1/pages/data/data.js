@@ -11,9 +11,11 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  toList(){
+  toList(e){
+    let name =e.currentTarget.dataset.name;
+    console.log(name);
     wx.navigateTo({
-      url: "/pages/data/list/list",
+      url: "/pages/data/list/list?id="+name,
       success: function(res){
         console.log("跳转至试卷库");
       },

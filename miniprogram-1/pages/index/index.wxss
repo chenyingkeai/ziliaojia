@@ -174,7 +174,7 @@ button::after{
   background-color: #45cb97;
   color: white;
 }
-/* 资料列表 */
+/* 资料列表
 .item{
   min-height: 180rpx;
   width: 100%;
@@ -182,7 +182,6 @@ button::after{
   vertical-align: middle
 }
 .type{
-  /* border: 1rpx solid black; */
   font-size: 31rpx;
   font-weight: 500;
   display: inline-block;
@@ -200,7 +199,6 @@ button::after{
   margin-left: 120rpx;
 }
 .itemImg{
-  /* border: 1rpx solid red; */
   position: absolute;
   z-index: -99;
   width: 157rpx;
@@ -212,7 +210,7 @@ button::after{
 .num{
   position: absolute;
   bottom: 25rpx;
-}
+} */
 .itemNum{
   display: inline-block;
   color: #888888;
@@ -227,7 +225,7 @@ button::after{
   top: -1rpx;
   margin-left: 10rpx;
 }
-.numImg1{
+/* .numImg1{
   width: 22rpx;
   height: 14rpx;
   margin-right: 4rpx;
@@ -255,9 +253,23 @@ button::after{
 .loadText{
   color: #46cc95;
   font-size: 24rpx;
-}
+} */
 .searchImg{
   width: 36rpx;
   height: 36rpx;
   margin: 0 5rpx;
+}
+.select-btn{
+  width: 154rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: white;
+  background-color: #DDDDDD;
+  margin-right: 64rpx;
+  border-radius: 10rpx;
+}
+.active{
+  background-color: var(--primary-color-) !important;
 }

@@ -7,17 +7,18 @@ Page({
   data: {
     // motto: 'Hello World',
     userInfo: {},
-    hasUserInfo: false,
+    hasUserInfo: true,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    flag:false,//遮罩层是否
+    materialSelect:false,//遮罩层是否
+    activetab: 0,
     shadeLeng:"",
-    selectNum1:-1,//年级选择
-    selectNum2:-1,//科目选择
-    selectNum3:-1,//类型选择
-    selectList1:["七年级上册","七年级下册","八年级上册","八年级下册","九年级上册","九年级下册","中考","会考"],
-    selectList2:['语文','数学','英语','物理','化学','道德与法治'],
-    selectList3:['知识点','教案','课件'],
-    selectNum:"",//筛选
+    // selectNum1:-1,//年级选择
+    // selectNum2:-1,//科目选择
+    // selectNum3:-1,//类型选择
+    // selectList1:["七年级上册","七年级下册","八年级上册","八年级下册","九年级上册","九年级下册","中考","会考"],
+    // selectList2:['语文','数学','英语','物理','化学','道德与法治'],
+    // selectList3:['知识点','教案','课件'],
+    // selectNum:"",//筛选
     zlList:[],
     showActionsheet:false,//智能排序选择
     groups: [//智能排序选项
@@ -50,101 +51,101 @@ Page({
         groupsChoose:e.detail.value
       })
   },
-  onLoad: function () {
+  onLoad: function (options) {
     if (app.globalData.userInfo) {
-      console.log(app.globalData.userInfo);
+      console.log("84");
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-      console.log(app.globalData.userInfo);
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
+      wx.showTabBar()
+    } 
+      else {
+      console.log("100");
       // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
+      this.setData({
+        userInfo: app.globalData.userInfo,
+        hasUserInfo: false
       })
-    };
-    try {
-      var value = wx.getStorageSync('openid')
-      if (value) {
-        // Do something with return value
-        console.log("value",value);
-      }
-    } catch (e) {
-      // Do something when catch error
+      wx.hideTabBar()
     }
     this.getzlList();
   },
   // 获取资料列表
   getzlList(){
-    let that=this;
-    wx.request({
-      url: "http://134.175.246.52:8080/material/selectByGood",
-      method:"POST",
-      success(res) {
-        that.setData({
-          zlList:res.data.data
-        })
-      },
-    })
-  },
-  // 点赞资料
-  tapGood(e){
-    let openid =wx.getStorageSync('openid');
-    console.log(openid);
-    let index =e.currentTarget.dataset.index;
-    console.log(index);
+    console.log('---')
     request({
-      url: 'material/setGood/{openId}/{zlId}?openId='+openid+'&zlId='+index,
+      url: 'material/selectByGood',
       method: 'POST',
-      data: {
-        "openId" : openid,
-        "zlId" :index
-      }
-    }).then(res =>{
-      let that = this
-      console.log(res.data);
+    }).then( res => {
+      console.log('----')
       if (res.data.code === 200) {
-        console.log("点赞成功");
-        this.getzlList();
-      } else {
-        console.log('点赞失败');
+        this.setData({
+          zlList: res.data.data
+        })
+      }
+    })
+    // let that=this;
+    // wx.request({
+    //   url: "http://134.175.246.52:8080/material/selectByGood",
+    //   method:"POST",
+    //   success(res) {
+    //     that.setData({
+    //       zlList:res.data.data
+    //     })
+    //   },
+    // })
+  },
+  // 遮罩层
+  materialSelect() {
+    this.setData({
+      materialSelect: !this.data.materialSelect
+    });
+  },
+  getMaterialList(e) {
+    let data = { zlModule: '资料' }
+    // if (e) {
+    //   data = e.detail;
+    //   if (e.detail.zlModule === '试卷') {
+    //     this.setData({
+    //       activetab: 1
+    //     })
+    //   } else {
+    //     this.setData({
+    //       activetab: 0
+    //     })
+    //   }
+    // }
+    request({
+      url: 'Yunying/getAllMaterialList',
+      method: 'POST',
+      data,
+    }).then(res =>{
+      if (res.data.code === 200) {
+        this.setData({
+          zlList: res.data.data,
+          materialSelect: false
+        })
       }
     }).catch(err=>{
       console.log(err);          
-    })
+    });
   },
-  // 点击任意位置关闭遮罩层
-  closeMask(e){
-    let that =this
-    console.log(e.detail.y);
-    let leng=e.detail.y
-    if(that.data.flag){
-      if(leng>that.data.shadeLeng){
-        that.setData({
-          flag:!that.data.flag
-        })
-        console.log("成功关闭");
+  // closeMask(e){
+  //   let that =this
+  //   console.log(e.detail.y);
+  //   let leng=e.detail.y
+  //   if(that.data.flag){
+  //     if(leng>that.data.shadeLeng){
+  //       that.setData({
+  //         flag:!that.data.flag
+  //       })
+  //       console.log("成功关闭");
         
-      }
+  //     }
 
-    }
-  },
+  //   }
+  // },
   // 跳转到搜索页
   toSearch(){
     wx.navigateTo({
@@ -155,10 +156,28 @@ Page({
     })
   },
   // 跳转到详情页
-  toDetails(e){
+  toDetail(e){
     let that =this;
     let num =e.currentTarget.dataset.id;
     console.log("num",num);
+    request({
+      url: 'material/setView',
+      method: 'POST',
+      data: {
+        "openId" : wx.getStorageSync('openid'),
+        "zlId" :num
+      }
+    }).then(res =>{
+      let that = this
+      console.log(res.data);
+      if (res.data.code === 200) {
+        console.log("浏览量增加");
+      } else {
+        console.log('浏览量增加失败');
+      }
+    }).catch(err=>{
+      console.log(err);          
+    })
     wx.navigateTo({
       url: "/pages/index/details/details?id="+num,
       success: function(res){
@@ -186,22 +205,23 @@ Page({
         this.userInfoReadyCallback(res)
       }
     }
+      wx.showTabBar()
   },
   // 打开遮罩层
-  onTap(e){
-    let that = this
-    this.setData({
-      flag:!that.data.flag
-    })
-    var query = wx.createSelectorQuery()
-    query.select('.shade').boundingClientRect(function (res) {
-      console.log("shade长度");
-      console.log(res.bottom);
-      that.setData({
-        shadeLeng:res.bottom
-      })
-    }).exec();
-  },
+  // onTap(e){
+  //   let that = this
+  //   this.setData({
+  //     flag:!that.data.flag
+  //   })
+  //   var query = wx.createSelectorQuery()
+  //   query.select('.shade').boundingClientRect(function (res) {
+  //     console.log("shade长度");
+  //     console.log(res.bottom);
+  //     that.setData({
+  //       shadeLeng:res.bottom
+  //     })
+  //   }).exec();
+  // },
   subjectChange1(e){//改变学科
     console.log(e.currentTarget.dataset.num);
     this.setData({
@@ -229,20 +249,31 @@ Page({
     })
   },
   tapConfirm(){ 
-    let that=this;                 
-    wx.request({
-      url: "http://134.175.246.52:8080/material/selectMaterialByTag",
-      method:"POST",
-      data:{
-
-      },
-      success(res) {
+    let that=this; 
+    let openid =wx.getStorageSync('openid');
+    let key1=this.selectList1[this.selectNum1];
+    let key2=this.selectList2[this.selectNum2];
+    let key3=this.selectList3[this.selectNum3];
+    request({
+      url: 'material/selectMaterialByTag',
+      method: 'POST',
+      data: {
+        "openId" : openid,
+        "zlId" :index
+      }
+    }).then(res =>{
+      let that = this
+      console.log(res.data);
+      if (res.data.code === 200) {
+        console.log("筛选成功");
         that.setData({
           zlList:res.data.data
         })
-        console.log("成功点赞资料：",e.currentTarget.dataset.index);
-        console.log(res);
-      },
-    })   
+      } else {
+        console.log('筛选失败');
+      }
+    }).catch(err=>{
+      console.log(err);          
+    })          
   },
 })

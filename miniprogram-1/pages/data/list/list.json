@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText":"资料列表",
   "usingComponents": {
-    "selects": "/components/selects/selects"
+    "selects": "/components/selects/selects",
+    "material-item": "../../../components/material-item/material-item"
   }
 }

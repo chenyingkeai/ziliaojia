@@ -1,21 +1,16 @@
 // pages/index/details/details.js
+import request from '../../../service/request.js'
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    item:{
-        detailsId:"",//index页传来的数据
-        type:"试卷",
-        itemName:"广雅中学高中语文·必修三第二单元测试卷",
-        itemLook:200,
-        itemFollow:316,
-        itemCollect:26,
-        itemSelect:'人教版·高一·语文·下学期'
-    }
+    detailsId:"",//index页传来的数据
+    item:{}
   },
-  
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -24,29 +19,76 @@ Page({
     that.setData({
       detailsId:options.id
     })
-    wx.downloadFile({
-      // 示例 url，并非真实存在
-      url: 'http://example.com/somefile.pdf',
-      success: function (res) {
-        const filePath = res.tempFilePath
-        wx.openDocument({
-          filePath: filePath,
-          success: function (res) {
-            console.log(res);
-            console.log('打开文档成功')
-          },
-          fail:function (res){
-            console.log("打开文档失败")
-          }
-        })
-      },
-      fail:function (res){
-        console.log(res)
-      }
-    })
-    
+    this.openDetail()
+    // wx.downloadFile({
+    //   // 示例 url，并非真实存在
+    //   url: 'http://example.com/somefile.pdf',
+    //   success: function (res) {
+    //     const filePath = res.tempFilePath
+    //     wx.openDocument({
+    //       filePath: filePath,
+    //       success: function (res) {
+    //         console.log(res);
+    //         console.log('打开文档成功')
+    //       },
+    //       fail:function (res){
+    //         console.log("打开文档失败")
+    //       }
+    //     })
+    //   },
+    //   fail:function (res){
+    //     console.log(res)
+    //   }
+    // })
   },
-
+  // 请求资料数据
+  openDetail(){
+    let that =this
+    request({
+      url: 'material/getMaterialInfo',
+      method: 'POST',
+      data: {
+        "zlId" :this.data.detailsId
+      }
+    }).then(res =>{
+      console.log(res.data);
+      if (res.data.code === 200) {
+        console.log("成功获得对应文件信息");
+        this.setData({
+          item:res.data.data
+        })
+      } else {
+        console.log('获得对应文件信息失败');
+      }
+    }).catch(err=>{
+      console.log(err);          
+    })
+  },
+    // 点赞资料
+    tapGood(e){
+      let openid =wx.getStorageSync('openid');
+      console.log(openid);
+      let index =e.currentTarget.dataset.index;
+      console.log(index);
+      request({
+        url: 'material/setGood/{openId}/{zlId}?openId='+openid+'&zlId='+index,
+        method: 'POST',
+        data: {
+          "openId" : openid,
+          "zlId" :index
+        }
+      }).then(res =>{
+        let that = this
+        console.log(res.data);
+        if (res.data.code === 200) {
+          console.log("点赞成功");
+        } else {
+          console.log('点赞失败');
+        }
+      }).catch(err=>{
+        console.log(err);          
+      })
+    },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

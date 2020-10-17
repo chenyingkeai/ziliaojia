@@ -38,5 +38,4 @@ Page({
       url: `/pages/index/details/details?id=${e.currentTarget.dataset.id}`,
     });
   }
-  
 })

@@ -2,6 +2,8 @@
   "navigationBarTitleText":"初中学习资料库",
   "usingComponents": {
     "selects": "../../components/selects/selects",
-    "mp-actionSheet": "weui-miniprogram/actionsheet/actionsheet"
+    "mp-actionSheet": "weui-miniprogram/actionsheet/actionsheet",
+    "material-item": "../../../components/material-item/material-item",
+    "filter": "../../../components/filter/filter"
   }
 }

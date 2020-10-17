@@ -21,7 +21,6 @@ Page({
    */
   onLoad: function (options) {
     this.getUserInfo()
-
   },
   getUserInfo() {
     request({

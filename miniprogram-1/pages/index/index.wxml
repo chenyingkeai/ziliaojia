@@ -1,3 +1,4 @@
+<filter bind:sureClick="getMaterialList" bind:hide="materialSelect" show="{{materialSelect}}" style="z-index:100;" />
 <view wx:if="{{canIUse}}">
   <view wx:if="{{!hasUserInfo}}" class='headView'>
     <view>
@@ -13,7 +14,7 @@
   </view> 
   <view  wx:else>
     <view class="top">
-      <view class="select" bindtap="onTap">
+      <view bind:tap="materialSelect" class="select active">
         <image class="selectImg" src="../../pages/image/select.png"></image>
         <view class="selectText">筛选</view>
     </view>
@@ -34,8 +35,11 @@
     </view>
     <mp-actionSheet bindactiontap="btnClick" show="{{showActionsheet}}" actions="{{groups}}" title="">
     </mp-actionSheet>
-    <view class="list">
-      <view>
+    <view>
+    <block wx:for="{{zlList}}" >
+      <material-item itemData="{{item}}" bindtap="toDetail" data-id="{{item.zlId}}" />
+    </block>    
+      <!-- <view>
         <block wx:for="{{zlList}}" wx:key="key">
           <view class="item">
             <image class="itemImg" src="../image/item.png"></image>
@@ -57,10 +61,10 @@
             </view>
           </view>
         </block>
-      </view>
+      </view> -->
     </view>
-    <view class='mask' wx:if="{{flag}}" catchtouchmove='ture'
- bindtap="closeMask">
+    <!-- <view class='mask' wx:if="{{flag}}" catchtouchmove='ture'
+      bindtap="closeMask">
       <view class="shade"> 
         <view class="selectTap">
           <view class="selectTitle">年级</view>
@@ -91,7 +95,7 @@
           <button class="confirm closeSelectBtn" bindtap="tapConfirm">确认</button>
         </view>
       </view>
-    </view>
+    </view> -->
   </view>
 </view>
 <view wx:else>请升级微信版本</view>

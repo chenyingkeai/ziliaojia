@@ -52,24 +52,18 @@ Page({
       })
   },
   onLoad: function (options) {
-    if (app.globalData.userInfo) {
-      console.log("84");
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-      wx.showTabBar()
-    } 
-      else {
-      console.log("100");
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: false
-      })
-      wx.hideTabBar()
-    }
     this.getzlList();
+  },
+  onShow() {
+    let openid =wx.getStorageSync('openid');
+    console.log(openid);
+    if(openid){
+      console.log("登陆成功");
+    }else{
+      wx.redirectTo({
+        url: '/pages/turn/turn?id='+1
+      })   
+    }
   },
   // 获取资料列表
   getzlList(){
@@ -184,28 +178,6 @@ Page({
         console.log("跳转至详情页");
       },
     })
-  },
-  // 获取个人信息
-  getUserInfo: function(e) {
-    if (e.detail.userInfo) {
-      app.globalData.userInfo = e.detail.userInfo
-      console.log(e.detail.userInfo)      
-      this.setData({
-        userInfo: e.detail.userInfo,
-        hasUserInfo: true,
-        code:app.globalData.code
-      })
-      console.log(this.data.code);
-      let that =this
-      // 可以将 res 发送给后台解码出 unionId
-         
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      if (this.userInfoReadyCallback) {
-        this.userInfoReadyCallback(res)
-      }
-    }
-      wx.showTabBar()
   },
   // 打开遮罩层
   // onTap(e){

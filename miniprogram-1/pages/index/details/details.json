@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText":"资料详情",
-  "usingComponents": {}
+  "usingComponents": {
+    "detail-list": "/pages/manager/detail/childCpn/detail-list/detail-list"
+  }
 }

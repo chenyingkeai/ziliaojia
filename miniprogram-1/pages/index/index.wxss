@@ -2,53 +2,6 @@
 button::after{
   border:none;
 }
-.headView {
-  font-size: 33rpx;
-  /* margin:50px auto; */
-  text-align: center;
-}
-.headImageView {
-  display: block;
-  /* margin-left: 25px; */
-  margin-top: 25px;
-  margin-right: 25px;
-  margin-bottom: 0px;
-  height: 50px;
-}
-.pic{
-  position:absolute;
-  left: 0;
-  right: 0;
-  margin:auto;
-  /* right: 0px; */
-  width: 500rpx;
-  /* margin-top:235rpx */
-}
-.text{
-  margin-left: 120rpx;
-  color: #4fce9a;
-}
-.titleText{
-  margin-top: 55px;
-  margin-bottom: 6px;
-  /* font-size: 14px; */
-  text-align: left;
-}
-.contentText{
-  text-align: left;
-}
-/* 授权按钮 */
-.authBtn{
-  font-size: 34rpx;
-  line-height: 80rpx;
-  width: 360rpx;
-  height: 80rpx;
-  margin-top: 280rpx;
-  color: #4fce9a;
-  font-weight: 500;
-  border: 2rpx solid #4fce9a;
-  background-color: white;
-}
 .banner{
   height: 360rpx;
   border-radius: 20rpx;
@@ -58,6 +11,7 @@ button::after{
 }
 .top{
   text-align: center;
+  margin-bottom: 26rpx;
 }
 .select{
   display: inline-block;
@@ -76,19 +30,28 @@ button::after{
 }
 .selectImg{
   display: inline-block;
-  width: 35rpx;
-  height: 35rpx;
+  width: 28rpx;
+  height: 28rpx;
   margin-right: 5rpx;
+  position: relative;
+  bottom: 2rpx;
 }
 .selectText{
   display:inline-block;
   position: relative;
   top: -8rpx;
+  color: #69d5a8;
 }
 .searchText{
   display: inline-block;
   width: 500rpx;
+  height: 50rpx;
   text-align: left;
+}
+.place-holder{
+  font-size: 28rpx;
+  margin-top: 5rpx;
+  margin-left: 35rpx;
 }
 /* 遮罩层 */
 .mask{
@@ -174,43 +137,7 @@ button::after{
   background-color: #45cb97;
   color: white;
 }
-/* 资料列表
-.item{
-  min-height: 180rpx;
-  width: 100%;
-  position:relative;
-  vertical-align: middle
-}
-.type{
-  font-size: 31rpx;
-  font-weight: 500;
-  display: inline-block;
-  width: 120rpx;
-  height: 120rpx;
-  position: absolute;
-  margin-left: 10rpx;
-}
-.itemName{
-  display: inline-block;
-  font-size: 30rpx;
-  font-weight: 500;
-  width: 420rpx;
-  min-height: 120rpx;
-  margin-left: 120rpx;
-}
-.itemImg{
-  position: absolute;
-  z-index: -99;
-  width: 157rpx;
-  height: 160rpx;
-}
-.itemFollow{
-  color: #7ed7b4;
-}
-.num{
-  position: absolute;
-  bottom: 25rpx;
-} */
+
 .itemNum{
   display: inline-block;
   color: #888888;
@@ -225,39 +152,10 @@ button::after{
   top: -1rpx;
   margin-left: 10rpx;
 }
-/* .numImg1{
-  width: 22rpx;
-  height: 14rpx;
-  margin-right: 4rpx;
-  position: relative;
-  top: -1rpx;
-  margin-left: 20rpx;
-}
-.numImg2{
-  width: 18rpx;
-  height: 18rpx;
-  margin-right: 3rpx;
-  position: relative;
-  top: 1rpx;
-}
-.download{
-  float: right;
-}
-.loadImg{
-  width: 70rpx;
-  height: 70rpx;
-  display: inline-block;
-  position: relative;
-  left: 12rpx;
-}
-.loadText{
-  color: #46cc95;
-  font-size: 24rpx;
-} */
 .searchImg{
   width: 36rpx;
   height: 36rpx;
-  margin: 0 5rpx;
+  margin-left: 25rpx;
 }
 .select-btn{
   width: 154rpx;

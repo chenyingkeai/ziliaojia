@@ -1,0 +1,13 @@
+<!--pages/turn/turn.wxml-->
+  <view class='headView'>
+    <view>
+        <image mode="widthFix" class="pic" src="../image/empower.png"></image>
+    </view>
+    <view class="text">
+      <view class='titleText'>欢迎来到初中学习资料库</view>
+      <view class='contentText'>为了给您带来更好的服务，</view>
+      <view class='contentText'>请允许我们获得您的微信公开信息。</view>
+    </view>
+    <button class='authBtn'   open-type='getUserInfo'     
+    bindgetuserinfo='getUserInfo'>允许</button>
+  </view> 

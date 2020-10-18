@@ -28,17 +28,24 @@
 }
 .itemNum{
   display: inline-block;
-  color: #888888;
   font-size: 25rpx;
+  color: #888888;
+}
+.active{
+  color: #46cc95;
 }
 .numImg1{
   width: 22rpx;
   height: 22rpx;
   margin-right: 3rpx;
+  position: relative;
+  top:2rpx
 }
 .numImg2{
   width: 22rpx;
   height: 22rpx;
   margin-left: 20rpx;
   margin-right: 3rpx;
+  position: relative;
+  top:2rpx
 }

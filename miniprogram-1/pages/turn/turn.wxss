@@ -1,0 +1,51 @@
+/* pages/turn/turn.wxss */
+button::after{
+  border:none;
+}
+.headView {
+  font-size: 33rpx;
+  /* margin:50px auto; */
+  text-align: center;
+}
+.headImageView {
+  display: block;
+  /* margin-left: 25px; */
+  margin-top: 25px;
+  margin-right: 25px;
+  margin-bottom: 0px;
+  height: 50px;
+}
+.pic{
+  position:absolute;
+  left: 0;
+  right: 0;
+  margin:auto;
+  /* right: 0px; */
+  width: 500rpx;
+  /* margin-top:235rpx */
+}
+.text{
+  margin-left: 120rpx;
+  color: #4fce9a;
+}
+.titleText{
+  margin-top: 55px;
+  margin-bottom: 6px;
+  /* font-size: 14px; */
+  text-align: left;
+}
+.contentText{
+  text-align: left;
+}
+/* 授权按钮 */
+.authBtn{
+  font-size: 34rpx;
+  line-height: 80rpx;
+  width: 360rpx;
+  height: 80rpx;
+  margin-top: 280rpx;
+  color: #4fce9a;
+  font-weight: 500;
+  border: 2rpx solid #4fce9a;
+  background-color: white;
+}

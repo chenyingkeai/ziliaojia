@@ -28,7 +28,9 @@
       张下载券 
     </view>             
   </modal>
-
+<view bind:tap="test">
+  123
+</view>
   <!-- <movable-cpn >
     <image src='/assest/icons/manager/upLoad.png' bindtap="toUpload"  class="movable-img"  />
   </movable-cpn> -->

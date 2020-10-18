@@ -1,4 +1,5 @@
 //app.js
+import request from "./service/request.js";
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -42,10 +43,10 @@ App({
                   console.log("登陆成功")
                   console.log(res);
                   console.log("openid",res.data.data);
-                  that.globalData.openid=res.data.data.openId;
-                  that.globalData.userId=res.data.data.userId;
+                  that.globalData.openid=res.data.data.user.openId;
+                  that.globalData.userId=res.data.data.user.userId;
                   try {
-                    wx.setStorageSync('openid', res.data.data.openId)
+                    wx.setStorageSync('openid', res.data.data.user.openId)
                   } catch (e) {
                     console.log("存入setStorageSync出错");
                     console.log(e);
@@ -69,27 +70,43 @@ App({
     openid:null,
     userId:null,
   },
-  // 设置监听器
-  watch: function (ctx, obj) {
-    Object.keys(obj).forEach(key => {
-      this.observer(ctx.data, key, ctx.data[key], function (value) {
-        obj[key].call(ctx, value)
-      })
+
+  addXzq(e) {
+    
+    request({
+      url: 'addXzq',
+      method: 'POST',
+      data: {
+        openId: e.openid
+      }
+    }).then( res => {
+      console.log(res);
+      if (res.data.code === 200) {
+        console.log('增加成功');
+      }
     })
   },
-  // 监听属性，并执行监听函数
-  observer: function (data, key, val, fn) {
-    Object.defineProperty(data, key, {
+
+  setWatcher(data, watch) { // 接收index.js传过来的data对象和watch对象
+    Object.keys(watch).forEach(v => { // 将watch对象内的key遍历
+      this.observe(data, v,watch[v]); // 监听data内的v属性，传入watch内对应函数以调用
+    })
+  },
+  /**
+   * 监听属性 并执行监听函数
+   */
+  observe(obj, key,watchFun) {
+    let val = obj[key]; // 给该属性设默认值
+    Object.defineProperty(obj, key, {
       configurable: true,
       enumerable: true,
-      get: function () {
-        return val
+      set: function(value) {
+        val = value;
+        watchFun(value,val); // 赋值(set)时，调用对应函数
       },
-      set: function (newVal) {
-        if (newVal === val) return
-        fn && fn(newVal)
-        val = newVal
-      },
+      get: function() {
+        return val;
+      }
     })
   }
 })

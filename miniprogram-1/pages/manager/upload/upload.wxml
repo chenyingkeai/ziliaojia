@@ -92,7 +92,7 @@
 </view>
 
 <view class="btn-area">
-  <button>
+  <button bind:tap="cancel">
     取消
   </button>
   <button bind:tap="comfirmBtn" >

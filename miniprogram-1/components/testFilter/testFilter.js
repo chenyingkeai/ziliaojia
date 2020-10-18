@@ -27,13 +27,66 @@ Component({
     }
   },
 
+  observers: {
+    'formData.zlSubject': function(newVal) {
+      console.log(newVal);
+      if (newVal === '化学') {
+        console.log('化学');
+        this.setData({
+          grade: ['九年级上册', '九年级下册', '中考/会考'],
+        })
+      } else if (newVal === '物理') {
+        console.log('物理');
+        this.setData({
+          grade: [ '八年级上册', '八年级下册', '九年级', '中考/会考'],
+        })
+      } else if (newVal === '生物' || newVal === '地理') {
+        console.log('生物地理');
+        this.setData({
+          grade: ['七年级上册', '八年级上册', '七年级下册', '八年级下册', '中考/会考'],
+        })
+      } else {
+        this.setData({
+          grade: ['七年级上册', '八年级上册', '九年级上册', '七年级下册', '八年级下册', '九年级下册', '中考/会考'],
+        })
+      }
+
+      if (this.data.grade.indexOf(this.data.formData.zlGrade) < 0) {
+        this.setData({
+          'formData.zlGrade': ''
+        })
+      } 
+    },
+    'formData.zlGrade': function(newVal) {
+      console.log(newVal);
+      console.log(newVal.indexOf('七年级'));
+      console.log(newVal.indexOf('八年级'));
+      console.log(newVal.indexOf('九年级'));
+    },
+    'formData.zlType': function(newVal) {
+      console.log(newVal);
+      if (newVal === '中考') {
+        this.setData({
+          zhongkao: true,
+          others: false
+        })
+      } else {
+        this.setData({
+          zhongkao: false,
+          others: true
+        })
+      }
+    },
+
+  },
+
   /**
    * 组件的方法列表
    */
   methods: {
     changSelect(e) {
       console.log(e);
-      this.changeStatue(e)
+      // this.changeStatue(e)
 
       this.setData({
         [`formData.${e.currentTarget.id}`]: e.detail
@@ -41,17 +94,7 @@ Component({
     },
     changeStatue(e) {
       if (e.currentTarget.id === 'zlType') {
-        if (e.detail === '中考') {
-          this.setData({
-            zhongkao: true,
-            others: false
-          })
-        } else {
-          this.setData({
-            zhongkao: false,
-            others: true
-          })
-        }
+        
       } else if (e.currentTarget.id === 'zlProvince') {
         this.setData({
           ['formData.zlCity']: "",

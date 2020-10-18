@@ -1,6 +1,5 @@
 // pages/manager/upload/upload.js
 import request from '../../../service/request.js'
-import { watch } from "../../../app.js";
 const app =  getApp();
 Page({
 
@@ -44,7 +43,6 @@ Page({
   getYears(starY = 2015) {
     let date= new Date;
     let y = date.getFullYear()
-    console.log(typeof y);
     let years = []
     for (let i = starY; i <= y; i++) {
       years.push(i)
@@ -69,6 +67,11 @@ Page({
     })
   },
 
+  cancel() {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   comfirmBtn() {
     if (this.data.isUpdata) {
       this.updata()

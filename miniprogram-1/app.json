@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/turn/turn",
     "pages/manager/dataList/dataList",
     "pages/index/index",
     "pages/mine/mine",

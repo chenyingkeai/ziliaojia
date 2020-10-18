@@ -1,10 +1,10 @@
 <!--components/toast/toast.wxml-->
 <view class="toast" wx:if="{{isShow}}">
   <image wx:if="{{statue == 'success'}}" 
-         src="../../assest/icons/common/success.png" 
+         src="../../assest/icons/manager/setting.png" 
          class="toast-icon"/>
   <image wx:if="{{statue == 'fail'}}" 
-         src="../../assest/icons/common/fail.png" 
+         src="../../assest/icons/manager/upload.png" 
          class="toast-icon"/>
   {{title}}
 </view>

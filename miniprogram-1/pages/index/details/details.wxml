@@ -6,13 +6,25 @@
     <view class="select">{{item.zlVersion}}·{{item.zlGrade}}·{{item.zlSubject}}</view>
     <view class="num">
       <view class="itemNum"  bindtap="tapGood" data-index="{{item.zlId}}">
-        <image class="numImg1" src="../../image/follow.png"></image>
-        <view class="itemNum itemLook">{{item.zlGood}}</view>
+        <image wx:if="{{!isGood}}" class="numImg1" src="../../image/follow.png"></image>
+        <image wx:if="{{isGood}}" class="numImg1" src="../../image/followLight.png"></image>
+        <view class="itemNum itemLook {{isGood?'active':''}}">{{item.zlGood}}</view>
       </view>
-      <view class="itemNum">
-        <image class="numImg2" src="../../image/collect.png"></image>
-        <view class="itemNum itemFollow">{{item.itemCollect}}</view>
+      <view class="itemNum" bindtap="tapCollect" data-index="{{item.zlId}}">
+        <image wx:if="{{!isCollect}}" class="numImg2" src="../../image/collect.png"></image>
+        <image wx:if="{{isCollect}}" class="numImg2" src="../../image/collectLight.png"></image>
+        <view class="itemNum itemFollow {{isCollect?'active':''}}">{{item.itemCollect}}</view>
       </view>
     </view>
+  </view>
+  <view class="preview">
+    <detail-list listName="资料预览">
+      <!-- <view class="img-container" >   </view> -->
+      <image class="img-container" src="{{materianInfo.zlAddress}}" mode="aspectFit|aspectFill|widthFix" />
+      <view class="img-cover"> 资料部分展示 </view>
+    </detail-list>
+    <detail-list listName="怎么兑换">
+      <view>使用下载券兑换资料，下载券可通过“邀请好友”“分享资料”等方式获得。资料兑换后获得【下载关键字】关注公众号回复关键字即可下载。</view>
+    </detail-list>
   </view>
 </view>

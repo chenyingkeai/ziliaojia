@@ -1,26 +1,28 @@
 <!--pages/data/list/list.wxml-->
+<testFilter bind:sureClick="getMaterialList" bind:hide="testSelect" show="{{testSelect}}" style="z-index:100;"/>
 <view class="whole">
   <view class="top">
-    <view bindtap="onTapSelect" style="display:inline-block"> 
-      <image class="selectImg"  src="/pages/image/select.png"></image>
+    <view bind:tap="testSelect" class="select active">
+      <image class="selectImg" src="/pages/image/select.png"></image>
       <view class="selectText">筛选</view>
     </view>
-    <image class="sortImg" src="/pages/image/sort.png"></image>
-    <view class="sortText">智能排序</view>
-  </view>
-  <view class="list">
-    <view>
-      <block wx:for="{{zlList}}" >
-        <material-item itemData="{{item}}" bindtap="toDetail" data-id="{{item.zlId}}" />
-      </block>    
+    <view class="change" bindtap="upClick">
+      <text wx:if="{{groupsChoose==1}}">智能排序</text>
+      <text wx:if="{{groupsChoose==2}}">按点赞量</text>
+      <text wx:if="{{groupsChoose==3}}">按时间</text>
+      <image class="numImg" src="/pages/image/yuanjiao.png"></image>
     </view>
+    <mp-actionSheet bindactiontap="btnClick" show="{{showActionsheet}}" actions="{{groups}}" title="">
+    </mp-actionSheet>
   </view>
-  <view class='mask' wx:if="{{flag1}}">
-    <view class="selectShade" bindtap="onTapSelect" style="display:inline-block"> 
-      <image class="selectImg"  src="/pages/image/select.png"></image>
-      <view class="selectText">筛选</view>
-    </view>
-    <view class="shade"> 
+  <view>
+    <block wx:for="{{zlList}}" >
+      <material-item itemData="{{item}}" bindtap="toDetail" data-id="{{item.zlId}}" />
+    </block>    
+  </view>
+  <view>
+
+    <!-- <view class="shade"> 
       <view>
         <form class="submit" report-submit="false" bindsubmit="formSubmit" >
             <view  class="sect">
@@ -77,6 +79,6 @@
         <button class="clear closeSelectBtn">清除</button>
         <button class="confirm closeSelectBtn">确认</button>
       </view>
-    </view>
+    </view> -->
   </view>
 </view>

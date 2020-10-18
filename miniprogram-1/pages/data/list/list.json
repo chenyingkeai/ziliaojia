@@ -2,6 +2,9 @@
   "navigationBarTitleText":"资料列表",
   "usingComponents": {
     "selects": "/components/selects/selects",
-    "material-item": "../../../components/material-item/material-item"
+    "mp-actionSheet": "weui-miniprogram/actionsheet/actionsheet",
+    "material-item": "../../../components/material-item/material-item",
+    "filter": "../../../components/filter/filter",
+    "testFilter": "../../../components/testFilter/testFilter"
   }
 }

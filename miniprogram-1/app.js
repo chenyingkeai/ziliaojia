@@ -6,6 +6,7 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+<<<<<<< HEAD
 
     // 登录
     wx.login({
@@ -57,12 +58,24 @@ App({
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
                 this.userInfoReadyCallback(res)
+=======
+    const that = this;
+      wx.getSetting({
+        success: res => {
+          if (res.authSetting['scope.userInfo']) {
+            console.log("正在登陆");
+            // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+            wx.getUserInfo({
+              success: res => {
+                let that =this
+                // 可以将 res 发送给后台解码出 unionId
+                that.globalData.userInfo = res.userInfo
+>>>>>>> cd55c44c4965009378b2abda5f2e0732520baa0d
               }
-            }
-          })
+            })
+          }
         }
-      }
-    })
+      })
   },
   globalData: {
     userInfo: null,

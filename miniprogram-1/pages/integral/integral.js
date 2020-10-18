@@ -36,8 +36,8 @@ Page({
     let myOpenid = wx.getStorageSync("openid")
     return {
       title: '海量初中学习资料',
-      path: `/pages/index/index?myOpenid=${myOpenid}`,
-     // imageUrl: 'http://static.e-mallchina.com/pic/product/brand/detail/hgds.jpg'//自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径。支持PNG及JPG。显示图片长宽比是 5:4。
-    }
-  }
+      path: `/pages/index/index?hisOpenid=${myOpenid}`,
+      // imageUrl: 'http://static.e-mallchina.com/pic/product/brand/detail/hgds.jpg'//自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径。支持PNG及JPG。显示图片长宽比是 5:4。
+    } 
+  } 
 })

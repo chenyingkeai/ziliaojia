@@ -32,13 +32,14 @@
     <select class="material-select" id="zlGrade" nowText="{{formData.zlGrade}}"  propArray="{{grade}}" 
             bind:changSelect="changSelect" />
   </view>
-
-  <!--  基本 -->
-  <view class="material-info" >
+  <view class="material-info"  wx:if="{{others}}">
     <view class="info-title"> 科目 </view>
     <select class="material-select" id="zlSubject" nowText="{{formData.zlSubject}}"  propArray="{{subject}}" 
             bind:changSelect="changSelect" />
   </view>
+
+  <!--  基本 -->
+  
   <view class="material-info" >
     <view class="info-title"> 类型 </view>
     <select class="material-select" id="zlType" nowText="{{formData.zlType}}"  propArray="{{type}}" 

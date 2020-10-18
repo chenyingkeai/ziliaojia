@@ -29,7 +29,7 @@
                 bind:changSelect="changSelect" nowText="{{formData.zlSubject}}" />
       </view>
     </view>
-    <view wx:elif="{{formData.zlModule === '试卷' && formData.zlType === '中考'}}">
+    <view wx:elif="{{formData.zlModule === '试卷' && (formData.zlType === '中考真题' || formData.zlType === '中考模拟') }}">
       <view class="material-info" >
         <view> 年份 </view>
         <select class="material-select" id="zlYears"  propArray="{{years}}" style="z-index: 8"

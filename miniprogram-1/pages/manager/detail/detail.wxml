@@ -10,12 +10,12 @@
     <view> 类型：{{materianInfo.zlType}}</view>
     <view> 年级：{{materianInfo.zlGrade}} </view>
     <view> 学科：{{materianInfo.zlSubject}} </view>
-    <view> 类型：{{materianInfo.zlModule}} </view>
+    <view> 模块：{{materianInfo.zlModule}} </view>
   </view>
   <view wx:elif="{{materianInfo.zlType == '中考模拟' || materianInfo.zlType == '中考'}}"> 
     <view> 类型：{{materianInfo.zlType}}</view>
     <view> 年份：{{materianInfo.zlYears}} </view>
-    <view> 科目：{{materianInfo.zlSubject}} </view>
+    <!-- <view> 科目：{{materianInfo.zlSubject}} </view> -->
     <view> 省份：{{filter.getPro(materianInfo.zlArea)}} </view>
     <view> 市级：{{filter.getCity(materianInfo.zlArea)}} </view>
   </view>
@@ -41,6 +41,7 @@
 
 <modal showIcon="{{true}}" comfirmColor="#EA4E4E" bind:hideModel="hideModel" bind:sureClick="deleteMaterial" 
        wx:if="{{showModal}}" title="删除警告" content="是否删除该资料，一旦删除不可恢复" />
+<toast  id="toast" />
 
 <view class="fixed-bar" style="position: relative;" /> 
 <btn-area class="fixed-bar" btnText="{{['删除资料', '修改资料']}}" 

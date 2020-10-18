@@ -3,9 +3,7 @@ page {--primary-color-:#46CC95;}
 
 .top{
   height: 322rpx;
-  font-size: 70rpx;
-  text-align: center;
-  background-color: yellow;
+  width: 710rpx;
   border-radius: 20rpx;
   margin: 20rpx 20rpx 0;
 }

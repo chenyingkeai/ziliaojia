@@ -3,6 +3,7 @@
   "usingComponents": {
     "detail-list": "./childCpn/detail-list/detail-list",
     "btn-area": "../childCpn/btn-area/btn-area",
+    "toast": "../../../components/toast/toast",
     "modal": "../../../components/modal/modal"
   }
 }

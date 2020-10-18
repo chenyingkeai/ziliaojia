@@ -32,6 +32,14 @@ Component({
    */
   methods: {
     changSelect(e) {
+      console.log(e);
+      this.changeStatue(e)
+
+      this.setData({
+        [`formData.${e.currentTarget.id}`]: e.detail
+      })
+    },
+    changeStatue(e) {
       if (e.currentTarget.id === 'zlType') {
         if (e.detail === '中考') {
           this.setData({
@@ -50,12 +58,13 @@ Component({
           ['formData.zlArea']: e.detail
         })
         this.getCity(e.detail)
+      } else if (e.currentTarget.id === 'zlSubject') {
+        console.log('zlSubject');
+      } else if (e.currentTarget.id === 'zlGrade') {
+        console.log('zlGrade');
       }
-
-      this.setData({
-        [`formData.${e.currentTarget.id}`]: e.detail
-      })
     },
+
     confirm() {
       let formData = this.data.formData
       console.log(formData);

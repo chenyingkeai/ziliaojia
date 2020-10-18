@@ -1,6 +1,6 @@
 <!--pages/integral/integral.wxml-->
 <view>
-  <view class="top">邀请好友赚下载券</view>
+  <image src="/assest/icons/common/shareImg.png" class="top"/>
 
   <view class="share">
     <view class="shareText">分享小程序给好友获得下载券</view>

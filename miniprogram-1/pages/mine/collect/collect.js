@@ -17,6 +17,7 @@ Page({
   },
 
   getMyCollect(openId) {
+    console.log(openId);
     request({
       url: 'myInfo/getPeopleFavoriteList',
       method: 'POST',

@@ -101,6 +101,7 @@ select{
   align-items: center;
   justify-content: center;
   flex-direction: row;
+  padding-top: 20rpx;
 }
 
 .btn-area button{

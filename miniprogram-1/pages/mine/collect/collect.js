@@ -36,7 +36,7 @@ Page({
 
   toDetail(e) {
     wx.navigateTo({
-      url: `/pages/index/details/details?id=${e.currentTarget.dataset.id}`,
+      url: `../../index/details/details?id=${e.currentTarget.dataset.id}`,
     });
   }
 })

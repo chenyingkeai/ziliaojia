@@ -1,0 +1,23 @@
+/* pages/index/details/haszl/haszl.wxss */
+.haszl{
+  text-align: center;
+
+}
+.top{
+  font-size: 55rpx;
+  font-weight: 700;
+  color:#70d7b0 ;
+}
+.pic{
+  border-radius: 20rpx;
+  margin-top: 60rpx;
+  margin-bottom: 80rpx;
+}
+.img-container{
+  height: 450rpx;
+  width: 450rpx;
+  border-radius: 10rpx;
+}
+.content{
+  margin: 0rpx 60rpx;
+}

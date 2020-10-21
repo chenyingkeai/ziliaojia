@@ -1,0 +1,16 @@
+<!--pages/index/details/haszl/haszl.wxml-->
+<view class="haszl">  
+  <view class="top">
+  兑换成功
+  </view>
+  <view class="pic">
+    <image bindtap="previewImage" class="img-container" src="https://ziliaojia-1259743100.cos.ap-shanghai.myqcloud.com/images/5801602911148132.jpg" mode="aspectFit|aspectFill|widthFix" />
+  </view>
+  <view class="content">
+  截图扫码关注公众号【初中学习资料库】
+  </view>
+  <view class="content">
+  回复关键字【{{zlKeyWord}}】即可获得下载链接！
+  </view>
+
+</view>

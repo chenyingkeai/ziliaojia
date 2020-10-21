@@ -49,3 +49,34 @@
   position: relative;
   top:2rpx
 }
+/* 按键 */
+
+.btn-area{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  z-index: 5;
+}
+
+.btn-area button{
+  width: 256rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  font-size: 28rpx;
+  border-radius: 32rpx;
+  background-color: #46CC95;
+  color: white;
+}
+.fixed-bar{
+  position: fixed;
+  bottom: 0;
+  width: 750rpx;
+  height: 100rpx;
+  padding-top: 20rpx;
+  background-color: white;
+  z-index: 5;
+}
+
+
+

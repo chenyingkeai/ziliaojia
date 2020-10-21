@@ -62,12 +62,7 @@ Page({
       console.log(err);          
     })
   },
-  // 下拉菜单
-  testSelect() {
-    this.setData({
-      testSelect: !this.data.testSelect
-    });
-  },
+
   // 智能排序
   close: function () {
     this.setData({
@@ -85,6 +80,51 @@ Page({
     this.setData({
       groupsChoose:e.detail.value
     })
+    if(e.detail.value==1){
+      console.log("智能排序")
+      request({
+        url: 'material/selectByGood',
+        method: 'POST',
+      }).then( res => {
+        console.log('----')
+        if (res.data.code === 200) {
+          this.setData({
+            zlList: res.data.data
+          })
+        }
+      })
+    }
+    if(e.detail.value==2){
+      request({
+        url: 'material/selectByGood',
+        method: 'POST',
+      }).then( res => {
+        console.log('----')
+        if (res.data.code === 200) {
+          this.setData({
+            zlList: res.data.data
+          })
+        }
+      })
+    }else{
+      request({
+        url: 'material/getMaterialByTime',
+        method: 'POST',
+      }).then( res => {
+        console.log('----')
+        if (res.data.code === 200) {
+          this.setData({
+            zlList: res.data.data
+          })
+        }
+      })
+    }
+},
+// 筛选
+testSelect() {
+  this.setData({
+    testSelect: !this.data.testSelect
+  });
 },
   /**
    * 生命周期函数--监听页面初次渲染完成

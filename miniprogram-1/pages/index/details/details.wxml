@@ -13,7 +13,8 @@
       <view class="itemNum" bindtap="tapCollect" data-index="{{item.zlId}}">
         <image wx:if="{{!isCollect}}" class="numImg2" src="../../image/collect.png"></image>
         <image wx:if="{{isCollect}}" class="numImg2" src="../../image/collectLight.png"></image>
-        <view class="itemNum itemFollow {{isCollect?'active':''}}">{{item.itemCollect}}</view>
+        <view wx:if="{{!isCollect}}" class="itemNum itemFollow">收藏</view>
+        <view wx:if="{{isCollect}}" class="itemNum itemFollow {{isCollect?'active':''}}">已收藏</view>
       </view>
     </view>
   </view>
@@ -26,5 +27,11 @@
     <detail-list listName="怎么兑换">
       <view>使用下载券兑换资料，下载券可通过“邀请好友”“分享资料”等方式获得。资料兑换后获得【下载关键字】关注公众号回复关键字即可下载。</view>
     </detail-list>
+  </view>
+  <view class="fixed-bar" style="position: relative;" /> 
+  <view class="btn-area fixed-bar"  > 
+  <button open-type="share"  bindtap="shareZl">分享资料</button>
+  <button wx:if="{{!isDownLoad}}" bindtap="buyKeyword">{{materianInfo.zlDownload}}下载券兑换</button>
+  <button wx:else bindtap="checkKeyword">查看关键字</button>
   </view>
 </view>

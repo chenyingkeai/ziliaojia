@@ -50,6 +50,45 @@ Page({
       this.setData({
         groupsChoose:e.detail.value
       })
+      if(e.detail.value==1){
+        console.log("智能排序")
+        request({
+          url: 'material/selectByGood',
+          method: 'POST',
+        }).then( res => {
+          console.log('----')
+          if (res.data.code === 200) {
+            this.setData({
+              zlList: res.data.data
+            })
+          }
+        })
+      }
+      if(e.detail.value==2){
+        request({
+          url: 'material/selectByGood',
+          method: 'POST',
+        }).then( res => {
+          console.log('----')
+          if (res.data.code === 200) {
+            this.setData({
+              zlList: res.data.data
+            })
+          }
+        })
+      }else{
+        request({
+          url: 'material/getMaterialByTime',
+          method: 'POST',
+        }).then( res => {
+          console.log('----')
+          if (res.data.code === 200) {
+            this.setData({
+              zlList: res.data.data
+            })
+          }
+        })
+      }
   },
   onLoad: function (options) {
     this.getzlList();

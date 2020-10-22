@@ -28,6 +28,7 @@ Page({
               }
             })
           }
+          console.log(app.globalData.userInfo)
           wx.login({
             success: (res) => {
               console.log("登陆");
@@ -51,7 +52,7 @@ Page({
                   app.globalData.userId=res.data.data.user.userId;
                   try {
                     wx.setStorageSync('openid', res.data.data.user.openId)
-                    
+                    wx.setStorageSync('userid', res.data.data.user.userId)
                     console.log("成功存入setStorageSync");
                     if(that.data.turnNum==1){
                       wx.switchTab({

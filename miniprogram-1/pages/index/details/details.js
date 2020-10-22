@@ -1,5 +1,6 @@
 // pages/index/details/details.js
 import request from '../../../service/request.js'
+const app = getApp()
 
 Page({
 
@@ -11,8 +12,12 @@ Page({
     item:{},
     isGood:'',
     zlGood:'',
+    isDownLoad:"",
     isCollect:"",
-    materianInfo:""
+    materianInfo:"",
+    SecTap:'',//二号按键
+    haveShare: 0,
+    points: 0
   },
 
   /**
@@ -23,7 +28,67 @@ Page({
     that.setData({
       detailsId:options.id
     })
-    this.openDetail()
+    if (options.shareTicket) {
+      wx.getShareInfo({
+        shareTicket: options.shareTicket,
+        success: res => {
+          console.error(res)
+          console.error({
+            referrer: options.query.inviter_id,//分享人的用户id
+            encryptedData: res.encryptedData,
+            iv: res.iv
+          })
+        }
+      })
+    }
+    let openId =wx.getStorageSync('openid');
+    let userId =wx.getStorageSync('userid');
+    console.log(openId)
+    console.log(userId)
+    console.log(that.data.detailsId)
+    request({
+      url: 'material/getMaterialInfo',
+      method: 'POST',
+      data: {
+        "zlId" :that.data.detailsId
+      }
+    }).then(res =>{
+      console.log(res.data);
+      if (res.data.code === 200) {
+        console.log("成功获得对应文件信息");
+        that.setData({
+          item:res.data.data,
+          zlGood:res.data.data.zlGood
+        })
+        request({
+          url: 'material/getGoodAndFavorite',
+          method: 'POST',
+          data: {
+            "openId":openId ,
+            "userId":userId ,
+            "zlId" :that.data.detailsId
+          }
+        }).then(res =>{
+          console.log(res.data);
+          if (res.data.code === 200) {
+            console.log("成功获得点赞收藏信息");
+            that.setData({
+              isGood:res.data.data.isGood,
+              isCollect:res.data.data.isCollect,
+              isDownLoad:res.data.data.isDownLoad
+            })
+          } else {
+            console.log('获得对应点赞收信息失败');
+          }
+        }).catch(err=>{
+          console.log(err);          
+        })
+      } else {
+        console.log('获得对应文件信息失败');
+      }
+    }).catch(err=>{
+      console.log(err);          
+    })
     this.getMaterianInfo()
     // wx.downloadFile({
     //   // 示例 url，并非真实存在
@@ -47,51 +112,6 @@ Page({
     // })
   },
   // 请求资料数据
-  openDetail(){
-    let that =this
-    let openId =wx.getStorageSync('openid');
-    request({
-      url: 'material/getMaterialInfo',
-      method: 'POST',
-      data: {
-        "zlId" :that.data.detailsId
-      }
-    }).then(res =>{
-      console.log(res.data);
-      if (res.data.code === 200) {
-        console.log("成功获得对应文件信息");
-        that.setData({
-          item:res.data.data,
-          zlGood:res.data.data.zlGood
-        })
-        request({
-          url: 'material/getGoodAndFavorite',
-          method: 'POST',
-          data: {
-            "openId":openId ,
-            "zlId" :that.data.item.zlId
-          }
-        }).then(res =>{
-          console.log(res.data);
-          if (res.data.code === 200) {
-            console.log("成功获得点赞收藏信息");
-            that.setData({
-              isGood:res.data.data.isGood,
-              isCollect:res.data.data.isCollect
-            })
-          } else {
-            console.log('获得对应点赞收信息失败');
-          }
-        }).catch(err=>{
-          console.log(err);          
-        })
-      } else {
-        console.log('获得对应文件信息失败');
-      }
-    }).catch(err=>{
-      console.log(err);          
-    })
-  },
   getMaterianInfo(){
     request({
       url: 'Yunying/getMaterialInfo',
@@ -115,9 +135,10 @@ Page({
   },
     // 点赞资料
     tapGood(e){
+      let that =this
       let openid =wx.getStorageSync('openid');
       console.log(openid);
-      let index =e.currentTarget.dataset.index;
+      let index =this.data.detailsId;
       console.log(index);
       request({
         url: 'material/setGood/{openId}/{zlId}?openId='+openid+'&zlId='+index,
@@ -132,9 +153,22 @@ Page({
         if (res.data.code === 200) {
           console.log("点赞成功");
           that.setData({
-            isGood:!this.data.isGood,
+            isGood:res.data.data,
           })
-          this.openDetail()
+          console.log(res.data.data)
+          if(res.data.data){
+            let zlGood=+that.data.item.zlGood+1
+            console.log(zlGood)
+            that.setData({
+              'item.zlGood':zlGood
+            })
+          }else{
+            let zlGood=+that.data.item.zlGood-1
+            console.log(zlGood)
+            that.setData({
+                'item.zlGood':zlGood
+            })
+          }
         } else {
           console.log('点赞失败');
         }
@@ -168,6 +202,41 @@ Page({
       }).catch(err=>{
         console.log(err);          
       }) 
+    },
+    // 兑换
+    buyKeyword(){
+      let userId =wx.getStorageSync('userid');
+      let zlDownload=this.data.materianInfo.zlDownload
+      let index =this.data.detailsId;
+      console.log(index);
+      request({
+        url: 'material/updateXzqByUserId',
+        method: 'POST',
+        data: {
+          "userId" : userId,
+          "xzq":zlDownload,
+          "zlId" :index
+        }
+      }).then(res =>{
+        let that = this
+        let Keyword =this.data.item.zlKeyword
+        console.log(res.data);
+        if (res.data.code === 200) {
+          console.log("兑换成功");
+          wx.navigateTo({
+            url: '/pages/index/details/haszl/haszl?id='+Keyword
+            })
+        } else {
+        }
+      }).catch(err=>{
+        console.log(err);          
+      }) 
+    },
+    checkKeyword(){
+      let Keyword =this.data.item.zlKeyword
+      wx.navigateTo({
+        url: '/pages/index/details/haszl/haszl?id='+Keyword
+        })
     },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -223,6 +292,12 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    let myOpenid = wx.getStorageSync("openid")
+    let ziId=this.data.detailsId
+    return {
+      title: '海量初中学习资料',
+      path: `/pages/index/index?hisOpenid=${myOpenid}&ZLiD=${ziId}`,
+     // imageUrl: 'http://static.e-mallchina.com/pic/product/brand/detail/hgds.jpg'//自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径。支持PNG及JPG。显示图片长宽比是 5:4。
+    }
   }
 })

@@ -15,7 +15,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    type: [ '中考真题', '中考模拟', '期中', '期末', '单元测试卷' ],
+    type: [ '中考', '期中', '期末', '单元测试卷' ],
     years: [ '2015', '2016', '2017', '2018', '2019', '2020' ],
     province: [ "北京市", "天津市", "上海市", "重庆市", "河北省", "山西省", "台湾省", "辽宁省", "吉林省", "黑龙江省", "江苏省", "浙江省", "安徽省", "福建省", "江西省", "山东省", "河南省", "湖北省", "湖南省", "广东省", "甘肃省", "四川省", "贵州省", "海南省", "云南省", "青海省", "陕西省", "广西壮族自治区", "西藏自治区", "宁夏回族自治区", "新疆维吾尔自治区", "内蒙古自治区", "澳门特别行政区", "香港特别行政区" ],
     grade: ['七年级上册', '八年级上册', '九年级上册', '七年级下册', '八年级下册', '九年级下册', '中考/会考'],
@@ -27,6 +27,7 @@ Component({
     }
   },
 
+<<<<<<< HEAD
   observers: {
     'formData.zlSubject': function(newVal) {
       console.log(newVal);
@@ -111,13 +112,15 @@ Component({
 
   },
 
+=======
+>>>>>>> 262854573a0ef0ef98b75f99d8c4447710dc936a
   /**
    * 组件的方法列表
    */
   methods: {
     changSelect(e) {
       console.log(e);
-      // this.changeStatue(e)
+      this.changeStatue(e)
 
       this.setData({
         [`formData.${e.currentTarget.id}`]: e.detail
@@ -125,7 +128,17 @@ Component({
     },
     changeStatue(e) {
       if (e.currentTarget.id === 'zlType') {
-        
+        if (e.detail === '中考') {
+          this.setData({
+            zhongkao: true,
+            others: false
+          })
+        } else {
+          this.setData({
+            zhongkao: false,
+            others: true
+          })
+        }
       } else if (e.currentTarget.id === 'zlProvince') {
         this.setData({
           ['formData.zlCity']: "",

@@ -1,7 +1,7 @@
 <!--pages/manager/detail/childCpn/detail-list/detail-list.wxml-->
 <view class="list-box">
   <view class="title">
-    <image class="title-icon" src="{{iconUrl}}" />
+    <image class="title-icon" src="/assest/icons/manager-detail/name.png" />
     <view>
       {{listName}}
     </view>

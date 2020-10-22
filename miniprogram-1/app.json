@@ -1,9 +1,13 @@
 {
   "pages": [
+<<<<<<< HEAD
     "pages/manager/dataList/dataList",
+=======
+>>>>>>> 262854573a0ef0ef98b75f99d8c4447710dc936a
     "pages/index/index",
     "pages/manager/upload/upload",
     "pages/turn/turn",
+    "pages/manager/dataList/dataList",
     "pages/mine/mine",
     "pages/mine/collect/collect",
     "pages/data/list/list",
@@ -12,8 +16,10 @@
     "pages/index/search/search",
     "pages/manager/login/login",
     "pages/manager/detail/detail",
+    "pages/manager/upload/upload",
     "pages/integral/integral",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/index/details/haszl/haszl"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -26,26 +32,26 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "selectedIconPath":"pages/image/index.png",
-        "iconPath":"pages/image/unindex.png"
+        "selectedIconPath": "pages/image/index.png",
+        "iconPath": "pages/image/unindex.png"
       },
       {
         "pagePath": "pages/data/data",
         "text": "资料库",
-        "selectedIconPath":"pages/image/data.png",
-        "iconPath":"pages/image/undata.png"
+        "selectedIconPath": "pages/image/data.png",
+        "iconPath": "pages/image/undata.png"
       },
       {
         "pagePath": "pages/integral/integral",
         "text": "赚下载券",
-        "selectedIconPath":"pages/image/integral.png",
-        "iconPath":"pages/image/unintegral.png"
+        "selectedIconPath": "pages/image/integral.png",
+        "iconPath": "pages/image/unintegral.png"
       },
       {
         "pagePath": "pages/mine/mine",
         "text": "我的",
-        "selectedIconPath":"pages/image/mine.png",
-        "iconPath":"pages/image/unmine.png"
+        "selectedIconPath": "pages/image/mine.png",
+        "iconPath": "pages/image/unmine.png"
       }
     ]
   },

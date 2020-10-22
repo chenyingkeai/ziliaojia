@@ -25,6 +25,12 @@ Page({
    */
   onLoad: function (options) { 
     var that = this;
+    if (options.hisOpenid) {
+      wx.setStorage({
+        key: 'hisOpenid',
+        data: options.hisOpenid,
+      });        
+    }
     that.setData({
       detailsId:options.id
     })
@@ -293,10 +299,10 @@ Page({
    */
   onShareAppMessage: function () {
     let myOpenid = wx.getStorageSync("openid")
-    let ziId=this.data.detailsId
+    let zlId = this.data.detailsId
     return {
       title: '海量初中学习资料',
-      path: `/pages/index/index?hisOpenid=${myOpenid}&ZLiD=${ziId}`,
+      path: `/pages/details/details?hisOpenid=${myOpenid}&id=${zlId}`,
      // imageUrl: 'http://static.e-mallchina.com/pic/product/brand/detail/hgds.jpg'//自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径。支持PNG及JPG。显示图片长宽比是 5:4。
     }
   }

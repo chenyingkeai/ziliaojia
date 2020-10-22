@@ -1,5 +1,6 @@
 // pages/turn/turn.js
 const app = getApp();
+import request from '../../service/request.js'
 
 Page({
 
@@ -48,6 +49,9 @@ Page({
                   console.log("登陆成功")
                   console.log(res);
                   console.log("openid",res.data.data);
+                  if (res.data.data.isNew) {
+                    that.addXzq()
+                  }
                   app.globalData.openid=res.data.data.user.openId;
                   app.globalData.userId=res.data.data.user.userId;
                   try {
@@ -77,6 +81,39 @@ Page({
       if (this.userInfoReadyCallback) {
         this.userInfoReadyCallback(res)
       }
+  },
+
+  // 给邀请者增加下载券
+  addXzq() {
+    wx.getStorage({
+      key: 'hisOpenid',
+      success: (result) => {
+        console.log(result);
+        request({
+          url: 'addXzq',
+          method: 'POST',
+          data: {
+            openId: result.data
+          }
+        }).then( res => {
+          console.log(res);
+          if (res.data.code === 200) {
+            wx.removeStorage({
+              key: 'hisOpenid',
+              success: (result) => {
+                console.log(result);
+              },
+            });
+              
+          }
+        })
+      },
+      fail: (err) => {
+        console.log(err);
+      },
+      complete: () => {}
+    });
+      
   },
   /**
    * 生命周期函数--监听页面加载

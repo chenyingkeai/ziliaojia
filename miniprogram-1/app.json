@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/manager/dataList/dataList",
     "pages/index/index",
+    "pages/manager/dataList/dataList",
     "pages/turn/turn",
     "pages/mine/mine",
     "pages/mine/collect/collect",

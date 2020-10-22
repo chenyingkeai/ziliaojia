@@ -2,9 +2,7 @@
   "pages": [
     "pages/manager/dataList/dataList",
     "pages/index/index",
-    "pages/manager/upload/upload",
     "pages/turn/turn",
-    "pages/manager/dataList/dataList",
     "pages/mine/mine",
     "pages/mine/collect/collect",
     "pages/data/list/list",

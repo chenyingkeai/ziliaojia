@@ -27,7 +27,6 @@ Component({
     }
   },
 
-<<<<<<< HEAD
   observers: {
     'formData.zlSubject': function(newVal) {
       console.log(newVal);
@@ -112,8 +111,6 @@ Component({
 
   },
 
-=======
->>>>>>> 262854573a0ef0ef98b75f99d8c4447710dc936a
   /**
    * 组件的方法列表
    */

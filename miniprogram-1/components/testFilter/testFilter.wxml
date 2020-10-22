@@ -10,7 +10,7 @@
   <!--  中考 -->
   <view class="material-info" wx:if="{{zhongkao}}">
     <view class="info-title" style="flex: 2;margin-right: 5rpx;" > 地区 </view>
-    <select class="material-select" id="zlProvince" nowText="{{formData.zlProvince}}"  propArray="{{province}}" style="z-index: 7"
+    <select class="material-select" id="zlPros" nowText="{{formData.zlPros}}"  propArray="{{province}}" style="z-index: 7"
             bind:changSelect="changSelect" style="margin-right: 10rpx;"  />
     <select class="material-select" id="zlCity" nowText="{{formData.zlCity}}"  propArray="{{city}}" style="z-index: 7" nowText="{{formData.zlCity}}"
             bind:changSelect="changSelect" style="margin-left: 10rpx;" />

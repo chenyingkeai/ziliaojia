@@ -1,9 +1,6 @@
 {
   "pages": [
-<<<<<<< HEAD
     "pages/manager/dataList/dataList",
-=======
->>>>>>> 262854573a0ef0ef98b75f99d8c4447710dc936a
     "pages/index/index",
     "pages/manager/upload/upload",
     "pages/turn/turn",

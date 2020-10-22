@@ -9,39 +9,38 @@
 
   <!--  中考 -->
   <view class="material-info" wx:if="{{zhongkao}}">
-    <view class="info-title" style="flex: 2;margin-right: 5rpx;" > 地区 </view>
+    <view style="flex: 2;margin-right: 5rpx;" > 地区 </view>
     <select class="material-select" id="zlProvince" nowText="{{formData.zlProvince}}"  propArray="{{province}}" style="z-index: 7"
             bind:changSelect="changSelect" style="margin-right: 10rpx;"  />
     <select class="material-select" id="zlCity" nowText="{{formData.zlCity}}"  propArray="{{city}}" style="z-index: 7" nowText="{{formData.zlCity}}"
             bind:changSelect="changSelect" style="margin-left: 10rpx;" />
   </view>
   <view class="material-info" wx:if="{{zhongkao}}">
-    <view class="info-title"> 年份 </view>
+    <view> 年份 </view>
     <select class="material-select" id="zlYears" nowText="{{formData.zlYears}}"  propArray="{{years}}" 
             bind:changSelect="changSelect" />
   </view>
 
   <!--  不是中考 -->
   <view class="material-info" wx:if="{{others}}">
-    <view class="info-title"> 版本 </view>
+    <view> 版本 </view>
     <select class="material-select" id="zlVersion" nowText="{{formData.zlVersion}}"  propArray="{{version}}" 
             bind:changSelect="changSelect" />
   </view>
   <view class="material-info" wx:if="{{others}}">
-    <view class="info-title"> 年级 </view>
+    <view> 年级 </view>
     <select class="material-select" id="zlGrade" nowText="{{formData.zlGrade}}"  propArray="{{grade}}" 
-            bind:changSelect="changSelect" />
-  </view>
-  <view class="material-info"  wx:if="{{others}}">
-    <view class="info-title"> 科目 </view>
-    <select class="material-select" id="zlSubject" nowText="{{formData.zlSubject}}"  propArray="{{subject}}" 
             bind:changSelect="changSelect" />
   </view>
 
   <!--  基本 -->
-  
   <view class="material-info" >
-    <view class="info-title"> 类型 </view>
+    <view> 科目 </view>
+    <select class="material-select" id="zlSubject" nowText="{{formData.zlSubject}}"  propArray="{{subject}}" 
+            bind:changSelect="changSelect" />
+  </view>
+  <view class="material-info" >
+    <view> 类型 </view>
     <select class="material-select" id="zlType" nowText="{{formData.zlType}}"  propArray="{{type}}" 
             bind:changSelect="changSelect" />
   </view>

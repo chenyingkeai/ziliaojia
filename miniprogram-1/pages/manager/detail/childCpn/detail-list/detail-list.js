@@ -5,10 +5,6 @@ Component({
    */
   properties: {
     listName: String,
-    iconUrl: {
-      type: String,
-      value: "/assest/icons/manager-detail/name.png"
-    }
   },
 
   /**

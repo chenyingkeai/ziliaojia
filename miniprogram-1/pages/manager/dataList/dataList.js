@@ -1,7 +1,5 @@
 // pages/manager/dataList/dataList.js
 import request from '../../../service/request.js'
-let app =  getApp();
-
 Page({
 
   /**
@@ -21,19 +19,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    app.setWatcher(this.data, this.watch); // 设置监听器
     this.getMaterialList()
 
-  },
-  watch:{
-    xzq (newValue){
-      console.log(newValue); // name改变时，调用该方法输出新值。
-    }
-  },
-  test() {
-    this.setData({
-     xzq: this.data.xzq++
-    })
   },
 
   onShow() {

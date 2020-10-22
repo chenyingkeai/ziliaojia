@@ -41,32 +41,6 @@ Page({
         }
       })
     }
-    this.openDetail()
-    this.getMaterianInfo()
-    // wx.downloadFile({
-    //   // 示例 url，并非真实存在
-    //   url: 'http://example.com/somefile.pdf',
-    //   success: function (res) {
-    //     const filePath = res.tempFilePath
-    //     wx.openDocument({
-    //       filePath: filePath,
-    //       success: function (res) {
-    //         console.log(res);
-    //         console.log('打开文档成功')
-    //       },
-    //       fail:function (res){
-    //         console.log("打开文档失败")
-    //       }
-    //     })
-    //   },
-    //   fail:function (res){
-    //     console.log(res)
-    //   }
-    // })
-  },
-  // 请求资料数据
-  openDetail(){
-    let that =this
     let openId =wx.getStorageSync('openid');
     let userId =wx.getStorageSync('userid');
     console.log(openId)
@@ -115,7 +89,29 @@ Page({
     }).catch(err=>{
       console.log(err);          
     })
+    this.getMaterianInfo()
+    // wx.downloadFile({
+    //   // 示例 url，并非真实存在
+    //   url: 'http://example.com/somefile.pdf',
+    //   success: function (res) {
+    //     const filePath = res.tempFilePath
+    //     wx.openDocument({
+    //       filePath: filePath,
+    //       success: function (res) {
+    //         console.log(res);
+    //         console.log('打开文档成功')
+    //       },
+    //       fail:function (res){
+    //         console.log("打开文档失败")
+    //       }
+    //     })
+    //   },
+    //   fail:function (res){
+    //     console.log(res)
+    //   }
+    // })
   },
+  // 请求资料数据
   getMaterianInfo(){
     request({
       url: 'Yunying/getMaterialInfo',
@@ -235,6 +231,12 @@ Page({
       }).catch(err=>{
         console.log(err);          
       }) 
+    },
+    checkKeyword(){
+      let Keyword =this.data.item.zlKeyword
+      wx.navigateTo({
+        url: '/pages/index/details/haszl/haszl?id='+Keyword
+        })
     },
   /**
    * 生命周期函数--监听页面初次渲染完成

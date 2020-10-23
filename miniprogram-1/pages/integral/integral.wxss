@@ -38,5 +38,5 @@ page {--primary-color-:#46CC95;}
 }
 
 .button-hover{
-  background-color: red;
+  opacity: 0.9;
 }

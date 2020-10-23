@@ -19,12 +19,21 @@
 .selectList{
   background-color: #FAFAFA;
   border: 1rpx solid red;
+  border: 1rpx solid #999999;
   z-index: 151;
   max-height: 500rpx;
+  border-radius: 0 0 6rpx 6rpx;
+  position: relative;
+  top: -1rpx;
+  right: 1rpx;
+}
+.selectList :first-child{
+  border-top: none;
 }
 .selectList view{
   padding: 10rpx 20rpx;
-  border-top: 1rpx solid red;
+  /* border-top: 1rpx solid red; */
+  border-top: 1rpx solid #999999;
 }
 
 

@@ -94,9 +94,10 @@ select{
 
 .btn-area{
   position: fixed;
-  bottom: 40rpx;
+  bottom: 0;
+  padding: 20rpx 0 40rpx;
   width: 750rpx;
-  background-color: white;
+  background-color:white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -111,4 +112,37 @@ select{
   border-radius: 32rpx;
   background-color: var(--primary-color-);
   color: white;
+}
+
+.upload-area{
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 120rpx;
+}
+.img{
+  background-color: #46CC95;
+  margin: 20rpx 0;
+  width: 160rpx;
+  height: 160rpx;
+}
+.deleteImg{
+  position: relative;
+  left: -18rpx;
+  border-radius: 50%;
+  height: 36rpx;
+  width: 36rpx;
+  background-color: white;
+}
+
+.addImg{
+  background-color: #DDDDDD;
+  border: 1rpx solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.addImg view{
+  font-size: 100rpx ;
+  font-weight: 100;
+  color: #999999;
 }

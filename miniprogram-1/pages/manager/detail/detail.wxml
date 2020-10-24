@@ -32,10 +32,10 @@
   <view> 公众号下载关键字：{{materianInfo.zlKeyword}} </view>
 </detail-list>
 
-<detail-list listName="资料预览">
+<detail-list listName="资料预览" >
   <!-- <view class="img-container" >   </view> -->
-  <image class="img-container" src="{{materianInfo.zlAddress}}" mode="aspectFit|aspectFill|widthFix" />
-  <view class="img-cover"> 资料部分展示 </view>
+  <image class="img-container" src="{{materianInfo.zlAddress}}" mode="widthFix" />
+  <!-- <view class="img-cover"> 资料部分展示 </view> -->
 </detail-list>
 
 
@@ -43,6 +43,6 @@
        wx:if="{{showModal}}" title="删除警告" content="是否删除该资料，一旦删除不可恢复" />
 <toast  id="toast" />
 
-<view class="fixed-bar" style="position: relative;" /> 
+<view class="fixed-bar" style="position: absolute;bottom: 0;" /> 
 <btn-area class="fixed-bar" btnText="{{['删除资料', '修改资料']}}" 
           bind:firstBtn="isDetlete" bind:secBtn="changeMaterial" />

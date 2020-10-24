@@ -1,6 +1,5 @@
 /* pages/manager/detail/detail.wxss */
 .img-container{
-  height: 478rpx;
   width: 615rpx;
   border-radius: 10rpx;
   position: absolute;

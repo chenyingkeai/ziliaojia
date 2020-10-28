@@ -34,7 +34,13 @@ page {--primary-color-:#46CC95;}
   height: 40rpx;
   width: 57rpx;
 }
-
+.nothing{
+  color: #999999;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
 
 .input-xzq{
   color: #46CC95;

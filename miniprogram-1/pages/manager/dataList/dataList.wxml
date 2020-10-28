@@ -19,6 +19,9 @@
   <view wx:for="{{materialList}}" wx:key="index"  >
     <material-item itemData="{{item}}" bindtap="toDetail" data-id="{{item.zlId}}" showLoading="{{false}}" />
   </view>
+  <view wx:if="{{materialList.length == 0}}" class="nothing">
+    暂无相关资料
+  </view>
 
   <modal comfirmColor="#46CC95" bind:hideModel="hideModel" bind:sureClick="changeXzq" 
          wx:if="{{showModal}}" title="邀请好友设置" slotContent="{{true}}" >

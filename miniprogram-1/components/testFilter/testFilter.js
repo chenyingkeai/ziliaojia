@@ -158,6 +158,7 @@ Component({
           formData.zlArea += formData.zlCity
         }
       }
+      console.log(formData);
       this.triggerEvent('sureClick',formData)
     },
     cleanSelect() {

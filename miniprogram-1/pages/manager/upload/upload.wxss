@@ -120,7 +120,6 @@ select{
   padding-bottom: 120rpx;
 }
 .img{
-  background-color: #46CC95;
   margin: 20rpx 0;
   width: 160rpx;
   height: 160rpx;
@@ -135,8 +134,7 @@ select{
 }
 
 .addImg{
-  background-color: #DDDDDD;
-  border: 1rpx solid black;
+  border: 1rpx solid #46CC95;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -144,5 +142,5 @@ select{
 .addImg view{
   font-size: 100rpx ;
   font-weight: 100;
-  color: #999999;
+  color:  #46CC95;
 }

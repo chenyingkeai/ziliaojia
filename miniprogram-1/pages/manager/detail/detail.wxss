@@ -2,7 +2,6 @@
 .img-container{
   width: 615rpx;
   border-radius: 10rpx;
-  position: absolute;
 }
 .img-cover{
   color: white;

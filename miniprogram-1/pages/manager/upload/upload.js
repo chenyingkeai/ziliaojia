@@ -19,9 +19,7 @@ Page({
     version: ['人教版', '部编版', '北师大版', '湘教版', '浙教版', '沪教版', '译林牛津版', '粤教版', '粤沪版', '华师大版', '鲁教版', '沪科版', '济南版', '教科版', '冀教版', '青岛版', '仁爱版', '苏教版', '苏科版', '外研版', '中图版' ],
     province: [ "北京市", "天津市", "上海市", "重庆市", "河北省", "山西省", "台湾省", "辽宁省", "吉林省", "黑龙江省", "江苏省", "浙江省", "安徽省", "福建省", "江西省", "山东省", "河南省", "湖北省", "湖南省", "广东省", "甘肃省", "四川省", "贵州省", "海南省", "云南省", "青海省", "陕西省", "广西壮族自治区", "西藏自治区", "宁夏回族自治区", "新疆维吾尔自治区", "内蒙古自治区", "澳门特别行政区", "香港特别行政区" ],
     uploadImg: [
-      'https://ziliaojia-1259743100.cos.ap-shanghai.myqcloud.com/images/43041603375834555.jpg',
-      'https://ziliaojia-1259743100.cos.ap-shanghai.myqcloud.com/images/43041603375834555.jpg',
-      'https://ziliaojia-1259743100.cos.ap-shanghai.myqcloud.com/images/43041603375834555.jpg'
+      
     ],
     img: ''
   },
@@ -32,7 +30,6 @@ Page({
   onLoad: function (options) {
     console.log(options);
     options.formData && this.setDefaultData(options.formData)
-    
     let years = this.getYears()
     this.setData({
       years
@@ -43,7 +40,8 @@ Page({
     this.haveModule(formData.zlModule)
     this.setData({
       formData,
-      isUpdata: true
+      isUpdata: true,
+      uploadImg: formData.zlAddress
     })
   },
   getYears(starY = 2015) {
@@ -90,6 +88,7 @@ Page({
     if (formData.zlPros) {
       formData.zlArea = formData.zlPros + formData.zlCity
     }
+    formData.zlAddress = this.data.uploadImg.toString()
     request({
       url: 'Yunying/insertZl',
       method: 'POST',
@@ -128,6 +127,7 @@ Page({
     if (formData.zlProvince) {
       formData.zlArea = formData.zlProvince + formData.zlCity
     }
+    formData.zlAddress = this.data.uploadImg.toString()
     request({
       url: 'Yunying/updateMaterialByZlId',
       method: 'POST',
@@ -148,6 +148,11 @@ Page({
             delta: 1
           });
         }, 1500);
+        let pages = getCurrentPages();
+        let prepage = pages[pages.length-2];
+        prepage.setData({
+          refreshData: true
+        })
       } else {
         wx.showToast({
           title: '上传失败，请稍后重试',

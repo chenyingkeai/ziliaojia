@@ -17,7 +17,7 @@
       <view class="selectBlock">
         <block wx:for="{{selectList2}}" wx:key="index">
           <view class="selectItem {{selectNum2==index?'activeTag':''}}" bindtap="selectChange" 
-                data-num="{{index}}" data-value="{{item}}" data-preNum="{{selectNum2}}" data-name="zlSubjec" data-item="selectNum2">
+                data-num="{{index}}" data-value="{{item}}" data-preNum="{{selectNum2}}" data-name="zlSubject" data-item="selectNum2">
             {{item}}
           </view>
         </block>

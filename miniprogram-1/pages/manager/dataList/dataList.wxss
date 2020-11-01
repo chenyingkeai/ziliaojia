@@ -34,7 +34,13 @@ page {--primary-color-:#46CC95;}
   height: 40rpx;
   width: 57rpx;
 }
-
+.nothing{
+  color: #999999;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
 
 .input-xzq{
   color: #46CC95;
@@ -48,10 +54,10 @@ page {--primary-color-:#46CC95;}
 .movable-img{
   height: 165rpx; 
   width: 136rpx;
-  z-index: 10;
+  z-index: 2;
   position: fixed;
   bottom: 200rpx;
-  right: 100rpx;
+  right: 50rpx;
 }
 
 .publish_area{
@@ -60,4 +66,8 @@ page {--primary-color-:#46CC95;}
   position: fixed;
   bottom: 165rpx;
   right: 136rpx;
+}
+
+.hide{
+  z-index: -1;
 }

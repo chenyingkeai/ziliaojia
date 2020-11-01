@@ -5,6 +5,18 @@ Component({
    * 组件的属性列表
    */
   properties: {
+    zlType:String,
+    zlTypeList:{
+      type:Array,
+    },
+    zhongkao: {
+      type: Boolean,
+      value: false
+    },
+    others: {
+      type: Boolean,
+      value: false
+    },
     show: {
       type: Boolean,
       value: false
@@ -77,20 +89,6 @@ Component({
         })
       }
     },
-    'formData.zlType': function(newVal) {
-      console.log(newVal);
-      if (newVal && newVal.indexOf('中考') >= 0) {
-        this.setData({
-          zhongkao: true,
-          others: false,
-        })
-      } else if (newVal) {
-        this.setData({
-          zhongkao: false,
-          others: true
-        })
-      }
-    },
     'formData.zlPros': function(newVal) {
       console.log(newVal);
       request({
@@ -117,39 +115,42 @@ Component({
   methods: {
     changSelect(e) {
       console.log(e);
-      this.changeStatue(e)
+      // this.changeStatue(e)
 
       this.setData({
         [`formData.${e.currentTarget.id}`]: e.detail
       })
     },
-    changeStatue(e) {
-      if (e.currentTarget.id === 'zlType') {
-        if (e.detail.indexOf('中考') >= 0) {
-          this.setData({
-            zhongkao: true,
-            others: false
-          })
-        } else {
-          this.setData({
-            zhongkao: false,
-            others: true
-          })
-        }
-      } else if (e.currentTarget.id === 'zlProvince') {
-        this.setData({
-          ['formData.zlCity']: "",
-          ['formData.zlArea']: e.detail
-        })
-        this.getCity(e.detail)
-      } else if (e.currentTarget.id === 'zlSubject') {
-        console.log('zlSubject');
-      } else if (e.currentTarget.id === 'zlGrade') {
-        console.log('zlGrade');
-      }
-    },
+    // changeStatue(e) {
+    //   if (e.currentTarget.id === 'zlType') {
+    //     if (e.detail.indexOf('中考') >= 0) {
+    //       this.setData({
+    //         zhongkao: true,
+    //         others: false
+    //       })
+    //     } else {
+    //       this.setData({
+    //         zhongkao: false,
+    //         others: true
+    //       })
+    //     }
+    //   } else if (e.currentTarget.id === 'zlProvince') {
+    //     this.setData({
+    //       ['formData.zlCity']: "",
+    //       ['formData.zlArea']: e.detail
+    //     })
+    //     this.getCity(e.detail)
+    //   } else if (e.currentTarget.id === 'zlSubject') {
+    //     console.log('zlSubject');
+    //   } else if (e.currentTarget.id === 'zlGrade') {
+    //     console.log('zlGrade');
+    //   }
+    // },
 
     confirm() {
+      this.setData({
+          ['formData.zlType']: this.properties.zlType
+        })
       let formData = this.data.formData
       console.log(formData);
       if (formData.zlProvince) {

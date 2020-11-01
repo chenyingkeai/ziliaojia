@@ -52,17 +52,7 @@ Page({
       })
       if(e.detail.value==1){
         console.log("智能排序")
-        request({
-          url: 'material/selectByGood',
-          method: 'POST',
-        }).then( res => {
-          console.log('----')
-          if (res.data.code === 200) {
-            this.setData({
-              zlList: res.data.data
-            })
-          }
-        })
+        this.getzlList()
       }
       if(e.detail.value==2){
         request({
@@ -107,12 +97,16 @@ Page({
   // 获取资料列表
   getzlList(){
     console.log('---')
+    let data = { zlModule: '试卷' }
     request({
-      url: 'material/selectByGood',
+      url: 'material/selectMaterialByTag',
       method: 'POST',
+      data,
     }).then( res => {
       console.log('----')
       if (res.data.code === 200) {
+        console.log(res.data.data);
+        
         this.setData({
           zlList: res.data.data
         })

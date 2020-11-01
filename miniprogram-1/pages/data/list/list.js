@@ -1,6 +1,5 @@
 // pages/data/list/list.js
 import request from '../../../service/request.js'
-
 Page({
 
   /**
@@ -10,7 +9,9 @@ Page({
     flag1:false,//筛选
     flag2:false,//排序
     show1:false,//第一个下拉框
-    type:"",//传入的文字
+    zlType:"",//传入的文字
+    isZhongkao:false,
+    isOthers:false,
     testSelect: false,
     // selectData1:['中考真题','中考模拟','期中','期末','单元测试卷'],//下拉列表的数据
     // index1:0,//选择的下拉列表下标
@@ -39,8 +40,21 @@ Page({
     var that = this;
     console.log(options);
     that.setData({
-      type:options.id
+      zlType:options.id,
     })
+    if(that.data.zlType=="中考真题"||that.data.zlType=="中考模拟"){
+      this.setData({
+        isZhongkao:true,
+        isOthers:false,
+      })
+    }
+    if(that.data.zlType=='期中考试'||that.data.zlType=='期末考试'||that.data.zlType=='单元同步检测'){
+      this.setData({
+        isZhongkao:false,
+        isOthers:true,
+      })
+    }
+    console.log(that.data.isZhongkao,that.data.isOthers);
     request({
       url: 'material/selectMaterialByTag',
       method: 'POST',
@@ -61,6 +75,27 @@ Page({
     }).catch(err=>{
       console.log(err);          
     })
+  },
+
+  getMaterialList(e) {
+    let data = e.detail;
+    console.log(e.detail);
+    request({
+      url: 'material/selectMaterialByTag',
+      method: 'POST',
+      data,
+    }).then(res =>{
+      console.log(res);
+      if (res.data.code === 200) {
+        this.setData({
+          zlList: res.data.data,
+          materialSelect: false,
+          testSelect: false
+        })
+      }
+    }).catch(err=>{
+      console.log(err);          
+    });
   },
 
   // 智能排序
@@ -126,6 +161,36 @@ testSelect() {
     testSelect: !this.data.testSelect
   });
 },
+  // 跳转到详情页
+  toDetail(e){
+    let that =this;
+    let num =e.currentTarget.dataset.id;
+    console.log("num",num);
+    request({
+      url: 'material/setView',
+      method: 'POST',
+      data: {
+        "openId" : wx.getStorageSync('openid'),
+        "zlId" :num
+      }
+    }).then(res =>{
+      let that = this
+      console.log(res.data);
+      if (res.data.code === 200) {
+        console.log("浏览量增加");
+      } else {
+        console.log('浏览量增加失败');
+      }
+    }).catch(err=>{
+      console.log(err);          
+    })
+    wx.navigateTo({
+      url: "/pages/index/details/details?id="+num,
+      success: function(res){
+        console.log("跳转至详情页");
+      },
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

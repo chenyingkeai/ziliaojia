@@ -15,10 +15,20 @@ Component({
    */
   data: {
     selectList1:["七年级上册","七年级下册","八年级上册","八年级下册","九年级上册","九年级下册","中考","会考"],
-    selectList2:['语文','数学','英语','物理','化学','道德与法治'],
+    selectList2:['语文','数学','英语','物理','化学','生物','历史','地理','道德与法治'],
     selectList3:['知识点','教案','课件'],
     seleteCondition: {
       zlModule: '资料'
+    }
+  },
+  observers: {
+    'seleteCondition.zlSubject': function(newVal) {
+      console.log('改变科目');
+      console.log(newVal);
+    },
+    'seleteCondition.zlGrade': function(newVal) {
+      console.log('改变年级');
+      console.log(newVal);
     }
   },
 

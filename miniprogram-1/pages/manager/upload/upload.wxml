@@ -29,7 +29,7 @@
                 bind:changSelect="changSelect" nowText="{{formData.zlSubject}}" />
       </view>
     </view>
-    <view wx:elif="{{formData.zlModule === '试卷' && formData.zlType === '中考'}}">
+    <view wx:elif="{{formData.zlModule === '试卷' && (formData.zlType === '中考真题' || formData.zlType === '中考模拟') }}">
       <view class="material-info" >
         <view> 年份 </view>
         <select class="material-select" id="zlYears"  propArray="{{years}}" style="z-index: 8"
@@ -74,17 +74,15 @@
   </view>
   <view class="base-info">
     <view> 上传资料 </view>
-    <view class="base-input" bindtap="uploadFile">
-      <view class="upload-statue">
-        <block wx:if="{{formData.zlAddress}}" class="primary-color" >
-          <image src="../../../assest/icons/upload/success.png" />
-          上传成功
-        </block>
-        <block wx:else>
-          <image src="../../../assest/icons/upload/upload.png" />
-          从微信对话框选择文件
-        </block>
-          
+    <view class="upload-area"  >
+      <block class="img" wx:for="{{uploadImg}}" wx:key="index">
+       <image class="img" src="{{uploadImg[index]}}" mode="aspectFit" />
+        <image src="/assest/icons/common/delete.png" class="deleteImg" data-index="{{index}}" bindtap="deleteImg" />
+      </block> 
+      <view class="img addImg" wx:if="{{uploadImg.length < 9}}" bindtap="uploadFile" >
+        <view>
+          +
+        </view>
       </view>
     </view>
   </view>
@@ -92,11 +90,13 @@
 </view>
 
 <view class="btn-area">
-  <button>
+  <button bind:tap="cancel">
     取消
   </button>
   <button bind:tap="comfirmBtn" >
-    确认上传
+    确认
+    <text wx:if="{{isChange}}">修改</text>
+    <text wx:else>上传</text>
   </button>
 </view>
 

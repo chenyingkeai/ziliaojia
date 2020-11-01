@@ -1,0 +1,67 @@
+/* components/fixedfilter/fixedFilter.wxss */
+.mask{
+  width:100%;   
+  height:100%;   
+  top:0;   
+  background:rgba(51, 51, 51, 0.1);   
+  overflow: hidden;    
+  z-index: 1;   
+  position: absolute;  
+}
+
+.shade{   
+  width: 690rpx;   
+  min-height: 200rpx;   
+  background-color: white;   
+  position: fixed;   
+  top: 100rpx;
+  padding: 40rpx 30rpx;
+  border-radius:0 0 48rpx 0;
+  margin-left:auto;
+  z-index: 2;
+  display: flex;
+  flex-direction: column-reverse;
+} 
+.material-info{
+  height: 58rpx;
+  width: 100%;
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  transform: scale(0.85,0.85);
+  margin: 10rpx 0;
+}
+.material-info > view{
+  flex: 1;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.material-select{
+  flex: 6;
+  border-radius: 6rpx;
+  font-size: 28rpx;
+  height: 60rpx;
+  background-color: #FAFAFA;
+}
+
+.closeSelect{
+  margin-left: 340rpx;
+}
+.closeSelectBtn{
+  font-size: 25rpx;
+  display: inline-block;
+  width: 128rpx;
+  height: 46rpx;
+  line-height: 46rpx;
+  border-radius: 23rpx;
+  margin: 40rpx 15rpx 0;
+}
+.clear{
+  border: 1rpx solid #EE5F5F;
+  color: #EE5F5F;
+}
+.confirm{
+  background-color: #45cb97;
+  color: white;
+}

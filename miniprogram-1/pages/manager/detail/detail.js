@@ -19,6 +19,22 @@ Page({
     })
     this.getMaterianInfo(id)
   },
+  onShow() {
+    // 是否需要更新页面
+    if (this.data.refreshData === true) {
+      const id = this.data.id
+      this.getMaterianInfo(id)
+      this.setData({
+        refreshData: false
+      })
+
+      const pages = getCurrentPages();
+      const prepage = pages[pages.length-2];
+      prepage.setData({
+        refreshData: true
+      })
+    }
+  },
 
   getMaterianInfo(id){
     request({
@@ -28,9 +44,10 @@ Page({
         zlId: id
       }
     }).then(res =>{
-      let that = this
+      console.log(res);
       const { code, data } = res.data;
       if (code === 200) {
+        data.zlAddress = data.zlAddress.split(",");
         this.setData({
           materianInfo: data
         })
@@ -88,7 +105,7 @@ Page({
   changeMaterial() {
     let formData = JSON.stringify(this.data.materianInfo)
     wx.navigateTo({
-      url: `../upload/upload?formData=${formData}`,
+      url: `../upload/upload?formData=${formData}&isChange=1`,
     });
       
   },

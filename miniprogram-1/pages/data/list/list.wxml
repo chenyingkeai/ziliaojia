@@ -1,5 +1,5 @@
 <!--pages/data/list/list.wxml-->
-<testFilter bind:sureClick="getMaterialList" bind:hide="testSelect" show="{{testSelect}}" style="z-index:100;"/>
+<fixedFilter zlType="{{zlType}}" zhongkao="{{isZhongkao}}" others="{{isOthers}}"  bind:sureClick="getMaterialList" bind:hide="testSelect" show="{{testSelect}}" style="z-index:100;"/>
 <view class="whole">
   <view class="top">
     <view bind:tap="testSelect" class="select active">

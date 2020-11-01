@@ -1,3 +1,4 @@
+<!--components/fixedfilter/fixedFilter.wxml-->
 <!--components/testFliter/testFliter.wxml-->
 <view class='mask' wx:if="{{show}}" bind:tap="close"/>
 <view class="shade" wx:if="{{show}}">
@@ -41,7 +42,6 @@
   </view>
   <view class="material-info" >
     <view> 类型 </view>
-    <select class="material-select" id="zlType" nowText="{{formData.zlType}}"  propArray="{{type}}" 
-            bind:changSelect="changSelect" />
+    <select class="material-select" id="zlType" nowText="{{zlType}}"        bind:changSelect="changSelect" />
   </view>
 </view>

@@ -5,6 +5,6 @@
     "mp-actionSheet": "weui-miniprogram/actionsheet/actionsheet",
     "material-item": "../../../components/material-item/material-item",
     "filter": "../../../components/filter/filter",
-    "testFilter": "../../../components/testFilter/testFilter"
+    "fixedFilter": "../../../components/fixedFilter/fixedFilter"
   }
 }

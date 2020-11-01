@@ -192,7 +192,6 @@ page{
  }
  .select{
   display: inline-block;
-  margin: ;
  }
  .selectOption{
   font-size: 28rpx;

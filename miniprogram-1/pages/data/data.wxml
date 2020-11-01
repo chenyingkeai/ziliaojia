@@ -22,7 +22,7 @@
       </view>
       <view class="content">
         <view bindtap="toList" data-name="期中考试" class="contentRight" style="margin-bottom:10rpx">期中考试</view>
-        <view bindtap="toList" data-name="期中考试" class="contentRight">期末考试</view>
+        <view bindtap="toList" data-name="期末考试" class="contentRight">期末考试</view>
       </view>
     </view>
   </view>

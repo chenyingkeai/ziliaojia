@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/manager/dataList/dataList",
+    "pages/manager/upload/upload",
     "pages/index/index",
     "pages/manager/dataList/dataList",
     "pages/manager/upload/upload",

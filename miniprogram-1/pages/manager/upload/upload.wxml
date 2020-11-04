@@ -95,7 +95,7 @@
   </button>
   <button bind:tap="comfirmBtn" >
     确认
-    <text wx:if="{{isChange}}">修改</text>
+    <text wx:if="{{isUpdata}}">修改</text>
     <text wx:else>上传</text>
   </button>
 </view>

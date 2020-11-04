@@ -203,6 +203,11 @@ Page({
           that.setData({
             isCollect:!this.data.isCollect,
           })
+          let pages = getCurrentPages();
+          let prepage = pages[pages.length-2];
+          prepage.setData({
+            refreshData: true
+          })
         } else {
         }
       }).catch(err=>{

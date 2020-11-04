@@ -1,7 +1,5 @@
 {
   "pages": [
-    "pages/manager/dataList/dataList",
-    "pages/manager/upload/upload",
     "pages/index/index",
     "pages/turn/turn",
     "pages/mine/mine",
@@ -10,6 +8,8 @@
     "pages/data/data",
     "pages/index/details/details",
     "pages/index/search/search",
+    "pages/manager/dataList/dataList",
+    "pages/manager/upload/upload",
     "pages/manager/login/login",
     "pages/manager/detail/detail",
     "pages/integral/integral",

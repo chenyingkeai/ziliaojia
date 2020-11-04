@@ -6,14 +6,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    refreshData: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.data.openid = options.openid
     this.getMyCollect(options.openid || 'oz1uB4lw87FZsFeCBjo4xHLsBma8')
+  },
+  onShow() {
+    let refreshData = this.data.refreshData
+    if (refreshData) {
+      console.log('刷新数据');
+      this.getMyCollect(this.data.openid)
+      this.data.refreshData = false
+    }
   },
 
   getMyCollect(openId) {

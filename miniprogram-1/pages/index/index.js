@@ -93,15 +93,19 @@ Page({
         url: '/pages/turn/turn?id='+1
       })   
     }
+    
+    if(app.globalData.renewIndex  = true){
+      this.getzlList()
+    }
   },
   // 获取资料列表
   getzlList(){
     console.log('---')
-    let data = { zlModule: '试卷' }
+    // let data = { zlModule: '试卷' }
     request({
       url: 'material/selectMaterialByTag',
       method: 'POST',
-      data,
+      // data,
     }).then( res => {
       console.log('----')
       if (res.data.code === 200) {
@@ -131,32 +135,35 @@ Page({
   },
   getMaterialList(e) {
     let data = { zlModule: '资料' }
-    // if (e) {
-    //   data = e.detail;
-    //   if (e.detail.zlModule === '试卷') {
-    //     this.setData({
-    //       activetab: 1
-    //     })
-    //   } else {
-    //     this.setData({
-    //       activetab: 0
-    //     })
-    //   }
-    // }
+    let openid =wx.getStorageSync('openid');
+    let that=this; 
+    console.log(e);
+    let item = e.detail
     request({
-      url: 'Yunying/getAllMaterialList',
+      url: 'material/selectMaterialByTag',
       method: 'POST',
-      data,
+      data: {
+        "openId" : openid,
+        "zlGrade":item.zlGrade,
+        "zlSubject":item.zlSubject,
+        "zlType":item.zlType
+
+      }
     }).then(res =>{
+      let that = this
+      console.log(res.data);
       if (res.data.code === 200) {
-        this.setData({
-          zlList: res.data.data,
-          materialSelect: false
+        console.log("筛选成功");
+        that.setData({
+          zlList:res.data.data,
+          materialSelect: false,
         })
+      } else {
+        console.log('筛选失败');
       }
     }).catch(err=>{
       console.log(err);          
-    });
+    })      
   },
   // closeMask(e){
   //   let that =this
@@ -252,33 +259,5 @@ Page({
       selectNum2:-1,
       selectNum3:-1
     })
-  },
-  tapConfirm(){ 
-    let that=this; 
-    let openid =wx.getStorageSync('openid');
-    let key1=this.selectList1[this.selectNum1];
-    let key2=this.selectList2[this.selectNum2];
-    let key3=this.selectList3[this.selectNum3];
-    request({
-      url: 'material/selectMaterialByTag',
-      method: 'POST',
-      data: {
-        "openId" : openid,
-        "zlId" :index
-      }
-    }).then(res =>{
-      let that = this
-      console.log(res.data);
-      if (res.data.code === 200) {
-        console.log("筛选成功");
-        that.setData({
-          zlList:res.data.data
-        })
-      } else {
-        console.log('筛选失败');
-      }
-    }).catch(err=>{
-      console.log(err);          
-    })          
   },
 })

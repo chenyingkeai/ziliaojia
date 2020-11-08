@@ -19,6 +19,9 @@
     <block wx:for="{{zlList}}" >
       <material-item itemData="{{item}}" bindtap="toDetail" data-id="{{item.zlId}}" />
     </block>    
+      <view wx:if="{{zlList.length == 0}}" class="nothing">
+    暂无相关资料
+  </view>
   </view>
   <view>
 

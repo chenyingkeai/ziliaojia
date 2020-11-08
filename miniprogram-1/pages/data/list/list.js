@@ -110,6 +110,7 @@ Page({
   })
   },
   btnClick(e) {
+    let that =this
     console.log(e.detail.value)
     this.close()
     this.setData({
@@ -118,8 +119,9 @@ Page({
     if(e.detail.value==1){
       console.log("智能排序")
       request({
-        url: 'material/selectByGood',
+        url: 'material/selectMaterialByTag',
         method: 'POST',
+        data:that.data.zlType,
       }).then( res => {
         console.log('----')
         if (res.data.code === 200) {
@@ -133,6 +135,9 @@ Page({
       request({
         url: 'material/selectByGood',
         method: 'POST',
+        data:{
+          "zlType": that.data.zlType
+        }
       }).then( res => {
         console.log('----')
         if (res.data.code === 200) {
@@ -143,8 +148,11 @@ Page({
       })
     }else{
       request({
-        url: 'material/getMaterialByTime',
+        url: 'material/selectByTime',
         method: 'POST',
+        data:{
+          "zlType": that.data.zlType
+        }
       }).then( res => {
         console.log('----')
         if (res.data.code === 200) {

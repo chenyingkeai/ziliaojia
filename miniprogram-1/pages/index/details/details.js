@@ -9,7 +9,6 @@ Page({
    */
   data: {
     detailsId:"",//index页传来的数据
-    item:{},
     isGood:'',
     zlGood:'',
     isDownLoad:"",
@@ -17,7 +16,8 @@ Page({
     materianInfo:"",
     SecTap:'',//二号按键
     haveShare: 0,
-    points: 0
+    points: 0,
+    showType:Boolean
   },
 
   /**
@@ -47,55 +47,8 @@ Page({
         }
       })
     }
-    let openId =wx.getStorageSync('openid');
-    let userId =wx.getStorageSync('userid');
-    console.log(openId)
-    console.log(userId)
-    console.log(that.data.detailsId)
-    request({
-      url: 'material/getMaterialInfo',
-      method: 'POST',
-      data: {
-        "zlId" :that.data.detailsId
-      }
-    }).then(res =>{
-      console.log(res.data);
-      if (res.data.code === 200) {
-        console.log("成功获得对应文件信息");
-        that.setData({
-          item:res.data.data,
-          zlGood:res.data.data.zlGood
-        })
-        request({
-          url: 'material/getGoodAndFavorite',
-          method: 'POST',
-          data: {
-            "openId":openId ,
-            "userId":userId ,
-            "zlId" :that.data.detailsId
-          }
-        }).then(res =>{
-          console.log(res.data);
-          if (res.data.code === 200) {
-            console.log("成功获得点赞收藏信息");
-            that.setData({
-              isGood:res.data.data.isGood,
-              isCollect:res.data.data.isCollect,
-              isDownLoad:res.data.data.isDownLoad
-            })
-          } else {
-            console.log('获得对应点赞收信息失败');
-          }
-        }).catch(err=>{
-          console.log(err);          
-        })
-      } else {
-        console.log('获得对应文件信息失败');
-      }
-    }).catch(err=>{
-      console.log(err);          
-    })
     this.getMaterianInfo()
+    this.getGoodAndFavor()
     // wx.downloadFile({
     //   // 示例 url，并非真实存在
     //   url: 'http://example.com/somefile.pdf',
@@ -119,6 +72,7 @@ Page({
   },
   // 请求资料数据
   getMaterianInfo(){
+    let that =this
     request({
       url: 'Yunying/getMaterialInfo',
       method: 'POST',
@@ -130,10 +84,49 @@ Page({
       const { code, data } = res.data;
       if (code === 200) {
         this.setData({
-          materianInfo: data
+          materianInfo: data,
+          zlGood:res.data.data.zlGood
         })
+        console.log(data);
+        if(that.data.materianInfo=="课件"||that.data.materianInfo=="知识点"){
+          that.setData({
+            showType:false,
+          })  
+        }else{
+          that.setData({
+            showType:true,
+          })  
+        }
       } else {
         console.log('获取失败');
+      }
+    }).catch(err=>{
+      console.log(err);          
+    })
+  },
+  getGoodAndFavor(){
+    let that = this
+    let openId =wx.getStorageSync('openid');
+    let userId =wx.getStorageSync('userid');
+    request({
+      url: 'material/getGoodAndFavorite',
+      method: 'POST',
+      data: {
+        "openId":openId ,
+        "userId":userId ,
+        "zlId" :that.data.detailsId
+      }
+    }).then(res =>{
+      console.log(res.data);
+      if (res.data.code === 200) {
+        console.log("成功获得点赞收藏信息");
+        that.setData({
+          isGood:res.data.data.isGood,
+          isCollect:res.data.data.isCollect,
+          isDownLoad:res.data.data.isDownLoad
+        })
+      } else {
+        console.log('获得对应点赞收信息失败');
       }
     }).catch(err=>{
       console.log(err);          
@@ -154,26 +147,18 @@ Page({
           "zlId" :index
         }
       }).then(res =>{
-        let that = this
         console.log(res.data);
         if (res.data.code === 200) {
           console.log("点赞成功");
-          that.setData({
-            isGood:res.data.data,
-          })
+          console.log(res.data);
+          that.getGoodAndFavor()
           console.log(res.data.data)
           if(res.data.data){
             let zlGood=+that.data.item.zlGood+1
             console.log(zlGood)
-            that.setData({
-              'item.zlGood':zlGood
-            })
           }else{
             let zlGood=+that.data.item.zlGood-1
             console.log(zlGood)
-            that.setData({
-                'item.zlGood':zlGood
-            })
           }
         } else {
           console.log('点赞失败');

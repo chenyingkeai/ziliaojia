@@ -1,5 +1,4 @@
 <!--components/fixedfilter/fixedFilter.wxml-->
-<!--components/testFliter/testFliter.wxml-->
 <view class='mask' wx:if="{{show}}" bind:tap="close"/>
 <view class="shade" wx:if="{{show}}">
 

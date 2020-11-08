@@ -1,16 +1,17 @@
 <!--pages/index/details/details.wxml-->
 <view>
   <view class="top">
-    <view class="type">【{{item.zlType}}】</view>
-    <view class="itemName">{{item.zlName}}</view>
-    <view class="select">{{item.zlVersion}}·{{item.zlGrade}}·{{item.zlSubject}}</view>
+    <view class="type">【{{materianInfo.zlType}}】</view>
+    <view class="itemName">{{materianInfo.zlName}}</view>
+    <view class="select" wx:if="{{showType}}" >{{materianInfo.zlGrade}}·{{materianInfo.zlArea}}·{{materianInfo.zlSubject}}</view>
+    <view class="select" wx:else>{{materianInfo.zlVersion}}·{{materianInfo.zlYears}}·{{materianInfo.zlSubject}}·{{materianInfo.zlPros}}·{{materianInfo.zlCity}}</view>
     <view class="num">
-      <view class="itemNum"  bindtap="tapGood" data-index="{{item.zlId}}">
+      <view class="itemNum"  bindtap="tapGood" data-index="{{materianInfo.zlId}}">
         <image wx:if="{{!isGood}}" class="numImg1" src="../../image/follow.png"></image>
         <image wx:if="{{isGood}}" class="numImg1" src="../../image/followLight.png"></image>
-        <view class="itemNum itemLook {{isGood?'active':''}}">{{item.zlGood}}</view>
+        <view class="itemNum itemLook {{isGood?'active':''}}">{{materianInfo.zlGood}}</view>
       </view>
-      <view class="itemNum" bindtap="tapCollect" data-index="{{item.zlId}}">
+      <view class="itemNum" bindtap="tapCollect" data-index="{{materianInfo.zlId}}">
         <image wx:if="{{!isCollect}}" class="numImg2" src="../../image/collect.png"></image>
         <image wx:if="{{isCollect}}" class="numImg2" src="../../image/collectLight.png"></image>
         <view wx:if="{{!isCollect}}" class="itemNum itemFollow">收藏</view>

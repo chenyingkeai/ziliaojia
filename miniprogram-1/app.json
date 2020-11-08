@@ -10,8 +10,6 @@
     "pages/data/data",
     "pages/index/details/details",
     "pages/index/search/search",
-    "pages/manager/dataList/dataList",
-    "pages/manager/upload/upload",
     "pages/manager/login/login",
     "pages/manager/detail/detail",
     "pages/integral/integral",
@@ -34,7 +32,7 @@
       },
       {
         "pagePath": "pages/data/data",
-        "text": "资料库",
+        "text": "试卷库",
         "selectedIconPath": "pages/image/data.png",
         "iconPath": "pages/image/undata.png"
       },

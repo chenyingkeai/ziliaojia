@@ -37,7 +37,7 @@
       </view>
       <view class="material-info" >
         <view style="flex: 2;margin-right: 5rpx;" > 地区</view>
-        <select class="material-select" id="zlPros"  propArray="{{province}}" style="z-index: 7"
+        <select class="material-select" id="zlPros"  propArray="{{province}}" style="z-index: 7" nowText="{{formData.zlPros}}"
                 bind:changSelect="changSelect" style="margin-right: 10rpx;"  />
         <select class="material-select" id="zlCity"  propArray="{{city}}" style="z-index: 7" nowText="{{formData.zlCity}}"
                 bind:changSelect="changSelect" style="margin-left: 10rpx;" />
@@ -70,7 +70,7 @@
   </view>
   <view class="base-info">
     <view> 回复关键字 </view>
-    <input class="base-input" placeholder="请输入回复关键字"  bindinput="baseInput" id="zlKeyword" value="{{formData.zlKeyword}}" />
+    <input class="base-input" placeholder="请输入回复关键字"  bindinput="baseInput" id="zlKeyword" value="{{formData.zlKeyword}}" bindblur="checkKeyWord"/>
   </view>
   <view class="base-info">
     <view> 上传资料 </view>

@@ -70,6 +70,27 @@ Page({
       console.log(err);          
     })
   },
+  checkKeyWord() {
+    request({
+      url: 'Yunying/checkKeyWord',
+      method: 'POST',
+      data: {
+        zlKeyword: this.data.formData.zlKeyword
+      }
+    }).then(res =>{
+      console.log(res.data);
+      if (!res.data) {
+        this.selectComponent('#toast').showToast('下载关键字重复', 'none', 1000)
+        this.setData({
+          repeatKeyword: true
+        })
+      } else {
+        this.setData({
+          repeatKeyword: false
+        })
+      }
+    })
+  },
 
   cancel() {
     wx.navigateBack({
@@ -77,10 +98,14 @@ Page({
     })
   },
   comfirmBtn() {
-    if (this.data.isUpdata) {
-      this.updata()
+    if (!this.data.repeatKeyword) {
+      if (this.data.isUpdata) {
+        this.updata()
+      } else {
+        this.upload()
+      }
     } else {
-      this.upload()
+      this.selectComponent('#toast').showToast('下载关键字重复', 'none', 1000)
     }
   },
   upload() {
@@ -110,6 +135,7 @@ Page({
         prepage.setData({
           refreshData: true
         })
+        app.globalData.renewIndex = true
       } else {
         wx.showToast({
           title: '上传失败，请稍后重试',
@@ -153,6 +179,7 @@ Page({
         prepage.setData({
           refreshData: true
         })
+        app.globalData.renewIndex = true
       } else {
         wx.showToast({
           title: '上传失败，请稍后重试',

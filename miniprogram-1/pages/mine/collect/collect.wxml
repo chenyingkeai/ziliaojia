@@ -2,15 +2,4 @@
 <block wx:for="{{myCollect}}" wx:key="index" >
   <material-item itemData="{{item}}" bindtap="toDetail" data-id="{{item.zlId}}" />
 </block>
-
-
-<view wx:if="{{myCollect.length == 0}}" >
-  <image src="../../../assest/icons/manager/loginBac.png" class="beCenter imgBac"/>
-  <view class="beCenter" >
-    <text class="tips">
-      这里空空如也~ 
-      快去看看其他资料吧
-    </text>
-  </view>
-</view>
   

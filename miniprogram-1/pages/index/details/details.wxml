@@ -3,8 +3,11 @@
   <view class="top">
     <view class="type">【{{materianInfo.zlType}}】</view>
     <view class="itemName">{{materianInfo.zlName}}</view>
-    <view class="select" wx:if="{{showType}}" >{{materianInfo.zlGrade}}·{{materianInfo.zlArea}}·{{materianInfo.zlSubject}}</view>
-    <view class="select" wx:else>{{materianInfo.zlVersion}}·{{materianInfo.zlYears}}·{{materianInfo.zlSubject}}·{{materianInfo.zlPros}}·{{materianInfo.zlCity}}</view>
+    <view class="select" wx:if="{{showType1}}" >{{materianInfo.zlYears}}·{{materianInfo.zlArea}}</view>
+    <view class="select" wx:if="{{showType2}}" >{{materianInfo.zlYears}}·{{materianInfo.zlArea}}</view>
+    <view class="select" wx:if="{{showType3}}">
+    {{materianInfo.zlGrade}}
+    </view>
     <view class="num">
       <view class="itemNum"  bindtap="tapGood" data-index="{{materianInfo.zlId}}">
         <image wx:if="{{!isGood}}" class="numImg1" src="../../image/follow.png"></image>

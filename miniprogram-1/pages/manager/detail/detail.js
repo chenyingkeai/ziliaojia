@@ -90,7 +90,6 @@ Page({
         prepage.setData({
           refreshData: true
         })
-        app.globalData.renewIndex = true
       }
     }).catch(err=>{
       console.log(err);          

@@ -17,7 +17,9 @@ Page({
     SecTap:'',//二号按键
     haveShare: 0,
     points: 0,
-    showType:Boolean
+    showType1:Boolean,
+    showType2:Boolean,
+    showType3:Boolean
   },
 
   /**
@@ -88,14 +90,31 @@ Page({
           zlGood:res.data.data.zlGood
         })
         console.log(data);
-        if(that.data.materianInfo=="课件"||that.data.materianInfo=="知识点"){
+        if(that.data.materianInfo.zlType=="课件"||that.data.materianInfo.zlType=="知识点"){
           that.setData({
-            showType:false,
+            showType1:true,
+            showType2:false,
+            showType3:false,
           })  
+          console.log("知识点");
+          
+        }
+        if(that.data.materianInfo.zlType=="中考真题"||that.data.materianInfo.zlType=="中考模拟"||that.data.materianInfo.zlType=="中考"){
+          that.setData({
+            showType1:false,
+            showType2:true,
+            showType3:false,
+          })  
+          console.log("真题");
+          
         }else{
           that.setData({
-            showType:true,
-          })  
+            showType1:false,
+            showType2:false,
+            showType3:true,
+          })          
+          console.log("试卷");
+          
         }
       } else {
         console.log('获取失败');
@@ -149,15 +168,21 @@ Page({
       }).then(res =>{
         console.log(res.data);
         if (res.data.code === 200) {
-          console.log("点赞成功");
+          console.log("点赞/取消点赞成功");
           console.log(res.data);
           that.getGoodAndFavor()
           console.log(res.data.data)
-          if(res.data.data){
-            let zlGood=+that.data.item.zlGood+1
+          if(!this.data.isGood){
+            let zlGood=+that.data.materianInfo.zlGood+1
+            this.setData({
+                ['materianInfo.zlGood']:zlGood
+            })
             console.log(zlGood)
           }else{
-            let zlGood=+that.data.item.zlGood-1
+            let zlGood=+that.data.materianInfo.zlGood-1
+            this.setData({
+                ['materianInfo.zlGood']:zlGood
+            })
             console.log(zlGood)
           }
         } else {
@@ -204,7 +229,6 @@ Page({
       let userId =wx.getStorageSync('userid');
       let zlDownload=this.data.materianInfo.zlDownload
       let index =this.data.detailsId;
-      console.log(index);
       request({
         url: 'material/updateXzqByUserId',
         method: 'POST',
@@ -215,7 +239,9 @@ Page({
         }
       }).then(res =>{
         let that = this
-        let Keyword =this.data.item.zlKeyword
+        console.log(res);
+        
+        let Keyword =this.data.materianInfo.zlKeyword
         console.log(res.data);
         if (res.data.code === 200) {
           console.log("兑换成功");
@@ -232,7 +258,7 @@ Page({
       }) 
     },
     checkKeyword(){
-      let Keyword =this.data.item.zlKeyword
+      let Keyword =this.data.materianInfo.zlKeyword
       wx.navigateTo({
         url: '/pages/index/details/haszl/haszl?id='+Keyword
         })

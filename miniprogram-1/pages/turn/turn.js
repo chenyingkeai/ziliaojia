@@ -34,6 +34,7 @@ Page({
             success: (res) => {
               console.log("登陆");
               console.log(res);
+              console.log(app.globalData.userInfo.avatarUrl);
               wx.request({
                 url: 'http://134.175.246.52:8080/wxLogin',
                 method:"POST",

@@ -49,8 +49,9 @@ Page({
         }
       })
     }
-    this.getMaterianInfo()
     this.getGoodAndFavor()
+
+    this.getMaterianInfo()
     // wx.downloadFile({
     //   // 示例 url，并非真实存在
     //   url: 'http://example.com/somefile.pdf',
@@ -127,6 +128,7 @@ Page({
     let that = this
     let openId =wx.getStorageSync('openid');
     let userId =wx.getStorageSync('userid');
+    console.log(openId,userId,that.data.detailsId);
     request({
       url: 'material/getGoodAndFavorite',
       method: 'POST',
@@ -144,6 +146,7 @@ Page({
           isCollect:res.data.data.isCollect,
           isDownLoad:res.data.data.isDownLoad
         })
+        console.log(res.data.data.isDownLoad);
       } else {
         console.log('获得对应点赞收信息失败');
       }
@@ -229,6 +232,7 @@ Page({
       let userId =wx.getStorageSync('userid');
       let zlDownload=this.data.materianInfo.zlDownload
       let index =this.data.detailsId;
+      console.log(userId,zlDownload,index);
       request({
         url: 'material/updateXzqByUserId',
         method: 'POST',
@@ -240,7 +244,6 @@ Page({
       }).then(res =>{
         let that = this
         console.log(res);
-        
         let Keyword =this.data.materianInfo.zlKeyword
         console.log(res.data);
         if (res.data.code === 200) {

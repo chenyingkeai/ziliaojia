@@ -193,12 +193,13 @@ Page({
   toDetail(e){
     let that =this;
     let num =e.currentTarget.dataset.id;
+    let openId =wx.getStorageSync('openid');
     console.log("num",num);
     request({
       url: 'material/setView',
       method: 'POST',
       data: {
-        "openId" : wx.getStorageSync('openid'),
+        "openId" :openId ,
         "zlId" :num
       }
     }).then(res =>{

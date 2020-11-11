@@ -99,7 +99,7 @@ Page({
             openId: result.data
           }
         }).then( res => {
-          console.log(res);
+          console.log(`增加下载券的调用返回：${res}`);
           if (res.data.code === 200) {
             wx.removeStorage({
               key: 'hisOpenid',

@@ -26,66 +26,68 @@ Page({
                 console.log(res)
                 // 可以将 res 发送给后台解码出 unionId
                 app.globalData.userInfo = res.userInfo
+                app.globalData.openid= wx.getStorageSync('openid')
+                app.globalData.userid= wx.getStorageSync('userid')
+                wx.login({
+                  success: (res) => {
+                    console.log("登陆");
+                    console.log(res);
+                    wx.request({
+                      url: 'http://134.175.246.52:8080/wxLogin',
+                      method:"POST",
+                      data:{
+                        "code": res.code,
+                        "userImage": app.globalData.userInfo.avatarUrl,
+                        "userName": app.globalData.userInfo.nickName
+                      },
+                      header: {
+                        'content-type': 'application/json' // 默认值
+                      },
+                      success (res) {
+                        console.log("登陆成功")
+                        console.log(res);
+                        console.log("openid",res.data.data);
+                        if (res.data.data.isNew) {
+                          that.addXzq()
+                        }
+                        app.globalData.openid=res.data.data.user.openId;
+                        app.globalData.userid=res.data.data.user.userId;
+                        try {
+                          wx.setStorageSync('openid', res.data.data.user.openId)
+                          wx.setStorageSync('userid', res.data.data.user.userId)
+                          console.log("成功存入setStorageSync");
+                          if(that.data.turnNum==1){
+                            wx.switchTab({
+                              url: '/pages/index/index'
+                            }) 
+                          }
+                          if(that.data.turnNum==2){
+                            wx.switchTab({
+                              url: '/pages/index/details/details?id'+this.data.pageNum
+                            }) 
+                          }
+                        } catch (e) {
+                          console.log("存入setStorageSync出错");
+                          console.log(e);
+                        }
+                      }
+                    })    
+                  },
+                })
               }
             })
           }
           console.log(app.globalData.userInfo)
-          wx.login({
-            success: (res) => {
-              console.log("登陆");
-              console.log(res);
-              console.log(app.globalData.userInfo.avatarUrl);
-              wx.request({
-                url: 'http://134.175.246.52:8080/wxLogin',
-                method:"POST",
-                data:{
-                  "code": res.code,
-                  "userImage": app.globalData.userInfo.avatarUrl,
-                  "userName": app.globalData.userInfo.nickName
-                },
-                header: {
-                  'content-type': 'application/json' // 默认值
-                },
-                success (res) {
-                  console.log("登陆成功")
-                  console.log(res);
-                  console.log("openid",res.data.data);
-                  if (res.data.data.isNew) {
-                    that.addXzq()
-                  }
-                  app.globalData.openid=res.data.data.user.openId;
-                  app.globalData.userId=res.data.data.user.userId;
-                  try {
-                    wx.setStorageSync('openid', res.data.data.user.openId)
-                    wx.setStorageSync('userid', res.data.data.user.userId)
-                    console.log("成功存入setStorageSync");
-                    if(that.data.turnNum==1){
-                      wx.switchTab({
-                        url: '/pages/index/index'
-                      }) 
-                    }
-                    if(that.data.turnNum==2){
-                      wx.switchTab({
-                        url: '/pages/index/details/details?id'+this.data.pageNum
-                      }) 
-                    }
-                  } catch (e) {
-                    console.log("存入setStorageSync出错");
-                    console.log(e);
-                  }
-                }
-              })    
-            },
-          })
         }
       })
       if (this.userInfoReadyCallback) {
         this.userInfoReadyCallback(res)
       }
   },
-
   // 给邀请者增加下载券
   addXzq() {
+    console.log('增加下载券');
+    
     wx.getStorage({
       key: 'hisOpenid',
       success: (result) => {

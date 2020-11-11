@@ -25,7 +25,7 @@
   <view class="preview">
     <detail-list listName="资料预览">
       <!-- <view class="img-container" >   </view> -->
-      <image class="img-container" src="{{materianInfo.zlAddress}}" mode="aspectFit|aspectFill|widthFix" />
+      <image class="img-container" src="{{materianInfo.zlAddress}}" mode="|widthFix" />
       <view class="img-cover"> 资料部分展示 </view>
     </detail-list>
     <detail-list listName="怎么兑换">

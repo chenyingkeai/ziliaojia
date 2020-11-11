@@ -16,6 +16,10 @@ App({
                 let that =this
                 // 可以将 res 发送给后台解码出 unionId
                 that.globalData.userInfo = res.userInfo
+                that.globalData.openid = wx.getStorageSync('openid')
+                that.globalData.userid = wx.getStorageSync('userid')
+                console.log(that.globalData);
+                
               }
             })
           }
@@ -26,7 +30,7 @@ App({
     userInfo: null,
     code:null,
     openid:null,
-    userId:null,
+    userid:null,
   },
   // 设置监听器
   watch: function (ctx, obj) {

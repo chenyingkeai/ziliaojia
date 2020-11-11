@@ -229,7 +229,7 @@ Page({
     },
     // 兑换
     buyKeyword(){
-      let userId =wx.getStorageSync('userid');
+      let userId =app.globalData.userid;
       let zlDownload=this.data.materianInfo.zlDownload
       let index =this.data.detailsId;
       console.log(userId,zlDownload,index);

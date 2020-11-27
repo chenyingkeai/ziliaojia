@@ -107,7 +107,6 @@ Page({
                 console.log(result);
               },
             });
-              
           }
         })
       },

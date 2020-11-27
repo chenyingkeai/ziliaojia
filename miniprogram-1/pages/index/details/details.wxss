@@ -6,12 +6,12 @@
 .type{
   /* border: 1rpx solid black; */
   display: inline-block;
-  font-size: 28rpx;
+  font-size: 32rpx;
   font-weight: 550;
 }
 .itemName{
   display: inline-block;
-  font-size: 28rpx;
+  font-size: 32rpx;
   font-weight: 500;
   /* width: 420rpx; */
   /* min-height: 120rpx; */
@@ -19,7 +19,7 @@
 }
 .select{
   color: #46CC95;
-  font-size: 28rpx;
+  font-size: 26rpx;
   margin-left: 10rpx;
 }
 .num{
@@ -28,26 +28,26 @@
 }
 .itemNum{
   display: inline-block;
-  font-size: 25rpx;
+  font-size: 30rpx;
   color: #888888;
 }
 .active{
   color: #46cc95;
 }
 .numImg1{
-  width: 22rpx;
-  height: 22rpx;
+  width: 28rpx;
+  height: 28rpx;
   margin-right: 3rpx;
   position: relative;
   top:2rpx
 }
 .numImg2{
-  width: 22rpx;
-  height: 22rpx;
+  width: 28rpx;
+  height: 28rpx;
   margin-left: 20rpx;
   margin-right: 3rpx;
   position: relative;
-  top:2rpx
+  top:4rpx
 }
 /* 按键 */
 

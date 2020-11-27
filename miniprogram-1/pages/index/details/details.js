@@ -232,34 +232,68 @@ Page({
       let userId =app.globalData.userid;
       let zlDownload=this.data.materianInfo.zlDownload
       let index =this.data.detailsId;
+      let Keyword =this.data.materianInfo.zlKeyword
       console.log(userId,zlDownload,index);
-      request({
-        url: 'material/updateXzqByUserId',
-        method: 'POST',
-        data: {
-          "userId" : userId,
-          "xzq":zlDownload,
-          "zlId" :index
+      wx.showModal({
+        title: '提示',
+        content: '确定要兑换该资料吗',
+        success : (res) => {
+          if (res.confirm) {
+            request({
+              url: 'material/updateXzqByUserId',
+              method: 'POST',
+              data: {
+                "userId" : userId,
+                "xzq":zlDownload,
+                "zlId" :index
+              }
+            }).then(res =>{
+              let that = this
+              console.log(res);
+              console.log(res.data);
+              console.log(Keyword);
+              if (res.data.code === 200) {
+                wx.navigateTo({
+                    url: '/pages/index/details/haszl/haszl?id='+Keyword
+                  })
+                that.setData({
+                  isDownLoad:true
+                })
+              } else {
+                console.log(res);
+                wx.showToast({
+                  title: "sha?",
+                  icon: 'none',
+                  duration: 2000
+                })
+              }
+            }).catch(err=>{
+              console.log(err);          
+            }) 
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
         }
-      }).then(res =>{
-        let that = this
-        console.log(res);
-        let Keyword =this.data.materianInfo.zlKeyword
-        console.log(res.data);
-        if (res.data.code === 200) {
-          console.log("兑换成功");
-          that.setData({
-            isDownLoad:true
-          })
-          wx.navigateTo({
-            url: '/pages/index/details/haszl/haszl?id='+Keyword
-            })
-        } else {
-        }
-      }).catch(err=>{
-        console.log(err);          
-      }) 
+      })
     },
+      //取消事件
+    // _error() {
+    //   console.log('你点击了取消');
+    //   this.popup.hidePopup();
+    // },
+    //确认事件
+//     _success() {
+//       let that =this
+//       console.log("兑换成功");
+//       let Keyword =this.data.Keyword
+//         that.setData({
+//           isDownLoad:true
+//         })
+//         wx.navigateTo({
+//           url: '/pages/index/details/haszl/haszl?id='+Keyword
+//         })
+//       this.popup.hidePopup();
+    // },
     checkKeyword(){
       let Keyword =this.data.materianInfo.zlKeyword
       wx.navigateTo({
@@ -271,7 +305,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.popup = this.selectComponent("#popup");
   },
 
   /**

@@ -81,14 +81,16 @@ Page({
       }
   },
   onLoad: function (options) {
-    console.log(`邀请者的openid：${options.hisOpenid}`);
-    wx.setStorage({
-      key: 'hisOpenid',
-      data: options.hisOpenid,
-      success: (res) => {
-        console.log('存入邀请者openid成功');
-      },
-    });
+    if (options.hisOpenid) {
+      console.log(`邀请者的openid：${options.hisOpenid}`);
+      wx.setStorage({
+        key: 'hisOpenid',
+        data: options.hisOpenid,
+        success: (res) => {
+          console.log('存入邀请者openid成功');
+        },
+      });
+    }
       
     this.getzlList();
   },

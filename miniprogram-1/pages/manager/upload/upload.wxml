@@ -66,7 +66,7 @@
   
   <view class="base-info">
     <view> 下载券数 </view>
-    <input class="base-input" placeholder="请输入下载分数" value="{{formData.zlDownload}}"  bindinput="baseInput" id="zlDownload" />
+    <input class="base-input" placeholder="请输入下载分数" type="number" value="{{formData.zlDownload}}"  bindinput="baseInput" id="zlDownload" />
   </view>
   <view class="base-info">
     <view> 回复关键字 </view>

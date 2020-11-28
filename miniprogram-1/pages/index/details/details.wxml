@@ -25,7 +25,7 @@
   <view class="preview">
     <detail-list listName="资料预览">
       <!-- <view class="img-container" >   </view> -->
-      <image class="img-container" src="{{materianInfo.zlAddress}}" mode="|widthFix" />
+      <image class="img-container" src="{{materianInfo.zlAddress}}" mode="widthFix" />
       <view class="img-cover"> 资料部分展示 </view>
     </detail-list>
     <detail-list listName="怎么兑换">
@@ -38,4 +38,12 @@
   <button wx:if="{{!isDownLoad}}" bindtap="buyKeyword">{{materianInfo.zlDownload}}下载券兑换</button>
   <button wx:else bindtap="checkKeyword">查看关键字</button>
   </view>
+   <popup id='popup' 
+      title='' 
+      content='确定是否要兑换' 
+      btn_no='取消' 
+      btn_ok='确定'
+      bind:error="_error"  
+      bind:success="_success">
+  </popup>
 </view>

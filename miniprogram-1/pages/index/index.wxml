@@ -23,8 +23,8 @@
       <input placeholder-class="place-holder" class="searchText" type="text" disabled="disabled" placeholder="搜索你需要的学习资料" />
     </view>
     </view>
-    <view class="banner">
-      <image ></image>
+    <view >
+      <image src="../../../../../assest/icons/common/index.png" class="banner" mode="widthFix"></image>
     </view>
     <!-- 资料列表 -->
     <view class="change" bindtap="upClick">

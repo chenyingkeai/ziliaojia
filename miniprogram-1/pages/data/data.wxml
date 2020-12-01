@@ -16,13 +16,13 @@
     <view class="box1">
     <view class="boxTittle" style="padding-top:80rpx">同步练习</view>
     <view class="boxCon">
-      <view class="content content2" bindtap="toList" data-name="单元同步检测">
+      <view class="content content2" bindtap="toList" data-name="单元测试卷">
         <image class="bgr bgrImg2" src="/pages/image/sync.png"></image>
         <view class="contentLeft">单元同步检测</view>
       </view>
       <view class="content">
-        <view bindtap="toList" data-name="期中考试" class="contentRight" style="margin-bottom:10rpx">期中考试</view>
-        <view bindtap="toList" data-name="期末考试" class="contentRight">期末考试</view>
+        <view bindtap="toList" data-name="期中" class="contentRight" style="margin-bottom:10rpx">期中考试</view>
+        <view bindtap="toList" data-name="期末" class="contentRight">期末考试</view>
       </view>
     </view>
   </view>

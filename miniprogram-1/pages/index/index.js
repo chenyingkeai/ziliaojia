@@ -112,9 +112,10 @@ Page({
   // 获取资料列表
   getzlList(){
     console.log('---')
-    // let data = { zlModule: '试卷' }
+    let data = { zlModule: '资料' }
     request({
       url: 'material/selectMaterialByTag',
+      data,
       method: 'POST',
       // data,
     }).then( res => {

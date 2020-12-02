@@ -201,7 +201,8 @@ Page({
     },
     // 兑换
     buyKeyword(){
-      let userId =app.globalData.userId;
+      console.log(app.globalData);
+      let userId = wx.getStorageSync('userId');
       let zlDownload=this.data.materianInfo.zlDownload
       let index =this.data.detailsId;
       let Keyword =this.data.materianInfo.zlKeyword

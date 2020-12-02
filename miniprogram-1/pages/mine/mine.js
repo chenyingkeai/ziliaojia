@@ -19,7 +19,7 @@ Page({
    */
   onLoad: function (options) {
     wx.getStorage({
-      key: 'openid',
+      key: 'openId',
       success: (result) => {
         this.setData({
           openid: result.data

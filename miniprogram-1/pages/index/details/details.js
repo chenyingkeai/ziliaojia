@@ -262,7 +262,7 @@ Page({
               } else {
                 console.log(res);
                 wx.showToast({
-                  title: "sha?",
+                  title: "兑换失败",
                   icon: 'none',
                   duration: 2000
                 })

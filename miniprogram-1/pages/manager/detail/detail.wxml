@@ -38,7 +38,6 @@
     <block wx:for="{{materianInfo.zlAddress}}">
       <image class="img-container" src="{{item}}" mode="widthFix" />
     </block>
-      
   </view>
   <!-- <view class="img-cover"> 资料部分展示 </view> -->
 </detail-list>

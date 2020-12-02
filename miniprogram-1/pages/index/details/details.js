@@ -75,54 +75,26 @@ Page({
   },
   // 请求资料数据
   getMaterianInfo(){
-    let that =this
-    request({
-      url: 'Yunying/getMaterialInfo',
-      method: 'POST',
-      data: {
-        zlId: this.data.detailsId
-      }
-    }).then(res =>{
-      let that = this
-      const { code, data } = res.data;
-      if (code === 200) {
-        this.setData({
-          materianInfo: data,
-          zlGood:res.data.data.zlGood
-        })
-        console.log(data);
-        if(that.data.materianInfo.zlType=="课件"||that.data.materianInfo.zlType=="知识点"){
-          that.setData({
-            showType1:true,
-            showType2:false,
-            showType3:false,
-          })  
-          console.log("知识点");
-          
+      request({
+        url: 'Yunying/getMaterialInfo',
+        method: 'POST',
+        data: {
+          zlId: this.data.detailsId
         }
-        if(that.data.materianInfo.zlType=="中考真题"||that.data.materianInfo.zlType=="中考模拟"||that.data.materianInfo.zlType=="中考"){
-          that.setData({
-            showType1:false,
-            showType2:true,
-            showType3:false,
-          })  
-          console.log("真题");
-          
-        }else{
-          that.setData({
-            showType1:false,
-            showType2:false,
-            showType3:true,
-          })          
-          console.log("试卷");
-          
+      }).then(res =>{
+        console.log(res);
+        const { code, data } = res.data;
+        if (code === 200) {
+          data.zlAddress = data.zlAddress.split(",");
+          this.setData({
+            materianInfo: data
+          })
+        } else {
+          console.log('获取失败');
         }
-      } else {
-        console.log('获取失败');
-      }
-    }).catch(err=>{
-      console.log(err);          
-    })
+      }).catch(err=>{
+        console.log(err);          
+      })
   },
   getGoodAndFavor(){
     let that = this
@@ -262,7 +234,7 @@ Page({
               } else {
                 console.log(res);
                 wx.showToast({
-                  title: "兑换失败",
+                  title: "sha?",
                   icon: 'none',
                   duration: 2000
                 })

@@ -122,7 +122,6 @@ Page({
       console.log('----')
       if (res.data.code === 200) {
         console.log(res.data.data);
-        
         this.setData({
           zlList: res.data.data
         })

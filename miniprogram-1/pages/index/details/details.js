@@ -98,8 +98,8 @@ Page({
   },
   getGoodAndFavor(){
     let that = this
-    let openId =wx.getStorageSync('openid');
-    let userId =wx.getStorageSync('userid');
+    let openId =wx.getStorageSync('openId');
+    let userId =wx.getStorageSync('userId');
     console.log(openId,userId,that.data.detailsId);
     request({
       url: 'material/getGoodAndFavorite',
@@ -129,15 +129,15 @@ Page({
     // 点赞资料
     tapGood(e){
       let that =this
-      let openid =wx.getStorageSync('openid');
-      console.log(openid);
+      let openId =wx.getStorageSync('openId');
+      console.log(openId);
       let index =this.data.detailsId;
       console.log(index);
       request({
-        url: 'material/setGood/{openId}/{zlId}?openId='+openid+'&zlId='+index,
+        url: 'material/setGood/{openId}/{zlId}?openId='+openId+'&zlId='+index,
         method: 'POST',
         data: {
-          "openId" : openid,
+          "openId" : openId,
           "zlId" :index
         }
       }).then(res =>{
@@ -169,15 +169,15 @@ Page({
     },
     // 收藏
     tapCollect(e){
-      let openid =wx.getStorageSync('openid');
-      console.log(openid);
+      let openId =wx.getStorageSync('openId');
+      console.log(openId);
       let index =e.currentTarget.dataset.index;
       console.log(index);
       request({
-        url: 'material/setFavorite/{openId}/{zlId}?openId='+openid+'&zlId='+index,
+        url: 'material/setFavorite/{openId}/{zlId}?openId='+openId+'&zlId='+index,
         method: 'POST',
         data: {
-          "openId" : openid,
+          "openId" : openId,
           "zlId" :index
         }
       }).then(res =>{
@@ -201,7 +201,7 @@ Page({
     },
     // 兑换
     buyKeyword(){
-      let userId =app.globalData.userid;
+      let userId =app.globalData.userId;
       let zlDownload=this.data.materianInfo.zlDownload
       let index =this.data.detailsId;
       let Keyword =this.data.materianInfo.zlKeyword
@@ -234,7 +234,7 @@ Page({
               } else {
                 console.log(res);
                 wx.showToast({
-                  title: "sha?",
+                  title: res.data.msg,
                   icon: 'none',
                   duration: 2000
                 })
@@ -284,9 +284,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    let openid =wx.getStorageSync('openid');
-    console.log(openid);
-    if(openid){
+    let openId =wx.getStorageSync('openId');
+    console.log(openId);
+    if(openId){
       console.log("登陆成功");
     }else{
       wx.redirectTo({

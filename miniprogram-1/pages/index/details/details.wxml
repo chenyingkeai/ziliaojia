@@ -3,7 +3,7 @@
   <view class="top">
     <view class="type">【{{materianInfo.zlType}}】</view>
     <view class="itemName">{{materianInfo.zlName}}</view>
-    <view class="select" wx:if="{{materianInfo.zlModule == '资料'}}" >{{materianInfo.zlPros}}·{{materianInfo.zlCity}}</view>
+    <view class="select" wx:if="{{materianInfo.zlModule == '资料'}}" >{{materianInfo.zlSubject}}·{{materianInfo.zlGrade}}</view>
     <view class="select" wx:elif="{{materianInfo.zlType == '中考模拟' || materianInfo.zlType == '中考真题'}}" >{{materianInfo.zlYears}}·{{materianInfo.zlArea}}</view>
     <view class="select" wx:else>
     {{materianInfo.zlGrade}}·{{materianInfo.zlSubject}}·{{materianInfo.zlVersion}}

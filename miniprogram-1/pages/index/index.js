@@ -95,9 +95,9 @@ Page({
     this.getzlList();
   },
   onShow() {
-    let openid =wx.getStorageSync('openid');
-    console.log(openid);
-    if(openid){
+    let openId =wx.getStorageSync('openId');
+    console.log(openId);
+    if(openId){
       console.log("登陆成功");
     }else{
       wx.redirectTo({
@@ -154,7 +154,7 @@ Page({
       url: 'material/selectMaterialByTag',
       method: 'POST',
       data: {
-        "openId" : openid,
+        "openId" : openId,
         "zlGrade":item.zlGrade,
         "zlSubject":item.zlSubject,
         "zlType":item.zlType
@@ -204,7 +204,7 @@ Page({
   toDetail(e){
     let that =this;
     let num =e.currentTarget.dataset.id;
-    let openId =wx.getStorageSync('openid');
+    let openId =wx.getStorageSync('openId');
     console.log("num",num);
     request({
       url: 'material/setView',

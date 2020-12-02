@@ -26,8 +26,8 @@ Page({
                 console.log(res)
                 // 可以将 res 发送给后台解码出 unionId
                 app.globalData.userInfo = res.userInfo
-                app.globalData.openid= wx.getStorageSync('openid')
-                app.globalData.userid= wx.getStorageSync('userid')
+                app.globalData.openId= wx.getStorageSync('openId')
+                app.globalData.userId= wx.getStorageSync('userId')
                 wx.login({
                   success: (res) => {
                     console.log("登陆");
@@ -46,15 +46,15 @@ Page({
                       success (res) {
                         console.log("登陆成功")
                         console.log(res);
-                        console.log("openid",res.data.data);
+                        console.log("openId",res.data.data);
                         if (res.data.data.isNew) {
                           that.addXzq()
                         }
-                        app.globalData.openid=res.data.data.user.openId;
-                        app.globalData.userid=res.data.data.user.userId;
+                        app.globalData.openId=res.data.data.user.openId;
+                        app.globalData.userId=res.data.data.user.userId;
                         try {
-                          wx.setStorageSync('openid', res.data.data.user.openId)
-                          wx.setStorageSync('userid', res.data.data.user.userId)
+                          wx.setStorageSync('openId', res.data.data.user.openId)
+                          wx.setStorageSync('userId', res.data.data.user.userId)
                           console.log("成功存入setStorageSync");
                           if(that.data.turnNum==1){
                             wx.switchTab({

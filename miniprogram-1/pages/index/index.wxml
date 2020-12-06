@@ -24,7 +24,7 @@
     </view>
     </view>
     <view >
-      <image src="../../../../../assest/icons/common/index.png" class="banner" mode="widthFix"></image>
+      <image src="../../../../../assest/icons/common/index.png" class="banner" mode="widthFix" bind:tap="toInvite"></image>
     </view>
     <!-- 资料列表 -->
     <view class="change" bindtap="upClick">

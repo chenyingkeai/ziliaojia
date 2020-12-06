@@ -26,6 +26,10 @@
   width: 284rpx;
   height: 226rpx;
 }
+.text{
+  color: #67d5a7;
+  font-size: 32rpx;
+}
 .list{
   padding: 0 35rpx;
 }

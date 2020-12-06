@@ -93,20 +93,22 @@ Component({
     },
     'formData.zlPros': function(newVal) {
       console.log(newVal);
-      request({
-        url: 'Yunying/getCity',
-        method: 'POST',
-        data: {
-          pname: newVal
-        },
-      }).then(res =>{
-        console.log(res);
-        this.setData({
-          city: res.data.data
+      if (newVal) {
+        request({
+          url: 'Yunying/getCity',
+          method: 'POST',
+          data: {
+            pname: newVal
+          },
+        }).then(res =>{
+          console.log(res);
+          this.setData({
+            city: res.data.data
+          })
+        }).catch(err=>{
+          console.log(err);          
         })
-      }).catch(err=>{
-        console.log(err);          
-      })
+      }
     }
 
   },

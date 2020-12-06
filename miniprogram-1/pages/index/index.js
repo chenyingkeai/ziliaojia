@@ -27,6 +27,9 @@ Page({
       { text: '时间', value: 3 },
     ],
     groupsChoose:1,
+    lastChose: {
+      zlModule: '资料'
+    }
   },
   //事件处理函数
   // bindViewTap: function() {
@@ -95,11 +98,10 @@ Page({
       });
     }
       
-    this.getzlList();
+    // this.getzlList();
   },
   onShow() {
     let openId =wx.getStorageSync('openId');
-    console.log(openId);
     if(openId){
       console.log("登陆成功");
     }else{
@@ -108,9 +110,14 @@ Page({
       })   
     }
     
-    if(app.globalData.renewIndex  = true){
+    if(app.globalData.renewIndex = true){
       this.getzlList()
+      app.globalData.renewIndex = false
     }
+
+    let data = {}
+    data.detail = this.data.lastChose
+    this.getMaterialList(data)
   },
   // 获取资料列表
   getzlList(){
@@ -148,21 +155,12 @@ Page({
     });
   },
   getMaterialList(e) {
-    let data = { zlModule: '资料' }
-    let openId =wx.getStorageSync('openid');
-    let that=this; 
     console.log(e);
-    let item = e.detail
+    this.data.lastChose = e.detail
     request({
       url: 'material/selectMaterialByTag',
       method: 'POST',
-      data: {
-        "openId" : openId,
-        "zlGrade":item.zlGrade,
-        "zlSubject":item.zlSubject,
-        "zlType":item.zlType
-
-      }
+      data: e.detail
     }).then(res =>{
       let that = this
       console.log(res.data);
@@ -202,6 +200,12 @@ Page({
         console.log("跳转至搜索页");
       },
     })
+  },
+  toInvite() {
+    wx.switchTab({
+      url: '../integral/integral',
+    });
+      
   },
   // 跳转到详情页
   toDetail(e){

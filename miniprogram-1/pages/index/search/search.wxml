@@ -1,11 +1,12 @@
 <!--pages/index/search/search.wxml-->
 <view class="searchSth">
-  <input bindblur='handleInputChange' bindconfirm='handleInputChange' bindinput='handleInputChange' class="searchText" value="{{searchText}}" type="text" placeholder="搜索你需要的学习资料" />
+  <input bindblur='handleInputChange' bindconfirm='tosearchSth' bindinput='handleInputChange' class="searchText" value="{{searchText}}" type="text" placeholder="搜索你需要的学习资料" />
   <image bindtap="tosearchSth" class="searchImg" src="../../image/search.png"></image>
 </view>
 <view wx:if="{{!hasSearch}}">
     <view class="noSearch">
       <image mode="widthFix  " src="../../image/nosearch.png" class="noSearchImg"></image>
+      <view class="text"> 赶紧搜个资料试试 </view>
     </view>
 </view>
 <view wx:else>
@@ -31,6 +32,11 @@
             </view>
           </view>
         </block>
+    </view>
+    <view class="noSearch" wx:if="{{!nameList.length}}">
+      <image mode="widthFix  " src="../../image/nosearch.png" class="noSearchImg"></image>
+      <view class="text"> 抱歉，没有找到你要的资料~ </view>
+      <view class="text"> 换个关键字试试 </view>
     </view>
   </view>
 </view>

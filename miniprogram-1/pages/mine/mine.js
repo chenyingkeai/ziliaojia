@@ -50,6 +50,7 @@ Page({
         })
       }
     })
+    return true
   },
 
   toCollect() {
@@ -64,5 +65,18 @@ Page({
     });
       
   },
-  
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    console.log('---');
+    wx.showNavigationBarLoading() //在标题栏中显示加载
+    this.getUserInfo(this.data.openid)
+    setTimeout(() => {
+      wx.hideNavigationBarLoading()
+      wx.stopPullDownRefresh();
+    }, 1000);
+    console.log("刷新了")
+    
+  },
 })

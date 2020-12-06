@@ -284,9 +284,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    let openid =wx.getStorageSync('openid');
-    console.log(openid);
-    if(openid){
+    let that = this
+    let openId =wx.getStorageSync('openId');
+    console.log(openId);
+    if(openId){
       console.log("登陆成功");
     }else{
       wx.redirectTo({

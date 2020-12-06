@@ -50,13 +50,15 @@ Page({
       this.setData({
         groupsChoose:e.detail.value
       })
+    let data = { zlModule: '资料' }
       if(e.detail.value==1){
         console.log("智能排序")
         this.getzlList()
       }
       if(e.detail.value==2){
         request({
-          url: 'material/selectByGood',
+          url: 'material/selectByGoodIndex',
+          data,
           method: 'POST',
         }).then( res => {
           console.log('----')
@@ -68,7 +70,8 @@ Page({
         })
       }else{
         request({
-          url: 'material/getMaterialByTime',
+          url: 'material/selectByTimeIndex',
+          data,
           method: 'POST',
         }).then( res => {
           console.log('----')
@@ -114,7 +117,7 @@ Page({
     console.log('---')
     let data = { zlModule: '资料' }
     request({
-      url: 'material/selectMaterialByTag',
+      url: 'material/selectByGoodAndTimeIndex',
       data,
       method: 'POST',
       // data,
@@ -146,7 +149,7 @@ Page({
   },
   getMaterialList(e) {
     let data = { zlModule: '资料' }
-    let openid =wx.getStorageSync('openid');
+    let openId =wx.getStorageSync('openid');
     let that=this; 
     console.log(e);
     let item = e.detail

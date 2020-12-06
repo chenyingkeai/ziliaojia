@@ -119,7 +119,7 @@ Page({
     if(e.detail.value==1){
       console.log("智能排序")
       request({
-        url: 'material/selectMaterialByTag',
+        url: 'material/selectByGoodAndTime',
         method: 'POST',
         data:that.data.zlType,
       }).then( res => {

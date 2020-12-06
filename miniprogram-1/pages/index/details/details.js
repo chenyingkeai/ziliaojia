@@ -17,9 +17,9 @@ Page({
     SecTap:'',//二号按键
     haveShare: 0,
     points: 0,
-    showType1: Boolean,
-    showType2: Boolean,
-    showType3: Boolean
+    showType1:Boolean,
+    showType2:Boolean,
+    showType3:Boolean
   },
 
   /**
@@ -98,8 +98,8 @@ Page({
   },
   getGoodAndFavor(){
     let that = this
-    let openId =wx.getStorageSync('openId');
-    let userId =wx.getStorageSync('userId');
+    let openId =wx.getStorageSync('openid');
+    let userId =wx.getStorageSync('userid');
     console.log(openId,userId,that.data.detailsId);
     request({
       url: 'material/getGoodAndFavorite',
@@ -129,15 +129,15 @@ Page({
     // 点赞资料
     tapGood(e){
       let that =this
-      let openId =wx.getStorageSync('openId');
-      console.log(openId);
+      let openid =wx.getStorageSync('openid');
+      console.log(openid);
       let index =this.data.detailsId;
       console.log(index);
       request({
-        url: 'material/setGood/{openId}/{zlId}?openId='+openId+'&zlId='+index,
+        url: 'material/setGood/{openId}/{zlId}?openId='+openid+'&zlId='+index,
         method: 'POST',
         data: {
-          "openId" : openId,
+          "openId" : openid,
           "zlId" :index
         }
       }).then(res =>{
@@ -169,15 +169,15 @@ Page({
     },
     // 收藏
     tapCollect(e){
-      let openId =wx.getStorageSync('openId');
-      console.log(openId);
+      let openid =wx.getStorageSync('openid');
+      console.log(openid);
       let index =e.currentTarget.dataset.index;
       console.log(index);
       request({
-        url: 'material/setFavorite/{openId}/{zlId}?openId='+openId+'&zlId='+index,
+        url: 'material/setFavorite/{openId}/{zlId}?openId='+openid+'&zlId='+index,
         method: 'POST',
         data: {
-          "openId" : openId,
+          "openId" : openid,
           "zlId" :index
         }
       }).then(res =>{
@@ -201,8 +201,7 @@ Page({
     },
     // 兑换
     buyKeyword(){
-      console.log(app.globalData);
-      let userId = wx.getStorageSync('userId');
+      let userId =app.globalData.userid;
       let zlDownload=this.data.materianInfo.zlDownload
       let index =this.data.detailsId;
       let Keyword =this.data.materianInfo.zlKeyword
@@ -226,31 +225,22 @@ Page({
               console.log(res.data);
               console.log(Keyword);
               if (res.data.code === 200) {
-                wx.navigateTo({
-                  url: '/pages/index/details/haszl/haszl?id='+Keyword
-                })
-                that.setData({
-                  isDownLoad: true
-                })
-                app.globalData.refreshMine = true
-              } else if (res.data.code === 404) {
+                wx.navigateTo({
+                    url: '/pages/index/details/haszl/haszl?id='+Keyword
+                  })
+                that.setData({
+                  isDownLoad:true
+                })
+              } else {
                 console.log(res);
-                wx.showModal({
-                  title: '兑换失败',
-                  content: '下载券不够兑换失败~快去邀请好友赚下载券吧',
-                  showCancel: false,
-                  confirmText: '邀请好友',
-                  confirmColor: '#3CC51F',
-                });
-                  
+                wx.showToast({
+                  title: "兑换失败",
+                  icon: 'none',
+                  duration: 2000
+                })
               }
             }).catch(err=>{
-              console.log(err);  
-              wx.showToast({
-                title: res.data.msg,
-                icon: 'none',
-                duration: 2000
-              })        
+              console.log(err);          
             }) 
           } else if (res.cancel) {
             console.log('用户点击取消')
@@ -294,9 +284,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    let openId =wx.getStorageSync('openId');
-    console.log(openId);
-    if(openId){
+    let openid =wx.getStorageSync('openid');
+    console.log(openid);
+    if(openid){
       console.log("登陆成功");
     }else{
       wx.redirectTo({

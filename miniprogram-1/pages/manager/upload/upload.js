@@ -112,6 +112,7 @@ Page({
       formData.zlArea = formData.zlPros + formData.zlCity
     }
     formData.zlAddress = this.data.uploadImg.toString()
+    console.log();
     request({
       url: 'Yunying/insertZl',
       method: 'POST',
@@ -145,11 +146,12 @@ Page({
     }).catch(err=>{
       console.log(err);          
     })
+    console.log(JSON.stringify(formData));
   },
   updata() {
     let formData = this.data.formData
-    if (formData.zlProvince) {
-      formData.zlArea = formData.zlProvince + formData.zlCity
+    if (formData.zlPros) {
+      formData.zlArea = formData.zlPros + formData.zlCity
     }
     formData.zlAddress = this.data.uploadImg.toString()
     request({
@@ -189,6 +191,7 @@ Page({
     }).catch(err=>{
       console.log(err);          
     })
+    console.log(JSON.stringify(formData));
   },
 
   baseInput(e) {

@@ -16,8 +16,8 @@ App({
                 let that =this
                 // 可以将 res 发送给后台解码出 unionId
                 that.globalData.userInfo = res.userInfo
-                that.globalData.openid = wx.getStorageSync('openid')
-                that.globalData.userid = wx.getStorageSync('userid')
+                that.globalData.openid = wx.getStorageSync('openId')
+                that.globalData.userid = wx.getStorageSync('userId')
                 console.log(that.globalData);
                 
               }

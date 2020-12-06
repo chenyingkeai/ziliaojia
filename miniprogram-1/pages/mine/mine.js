@@ -29,6 +29,12 @@ Page({
     });
     
   },
+  onShow() {
+    if (app.globalData.refreshMine) {
+      this.getUserInfo(this.data.openid)
+      app.globalData.refreshMine = false
+    }
+  },
   getUserInfo(openid) {
     request({
       url: 'myInfo/getUserInfo',

@@ -5,7 +5,8 @@
   <view class="share">
     <view class="shareText">分享小程序给好友获得下载券</view>
     <view class="shareNum">
-      已成功分享<text class="font-color">{{haveShare}}</text>人，累计获得<text class="font-color">{{points}}</text>下载券</view>
+      已成功分享<text class="font-color">{{myInfo.userInviteNum}}</text>人，
+      累计获得<text class="font-color">{{myInfo.userAllxzj}}</text>下载券</view>
     <button open-type="share" class="share-btn">分享给好友</button>
   </view>
 </view>

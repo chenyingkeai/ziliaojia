@@ -1,4 +1,5 @@
 // pages/integral/integral.js
+import request from '../../service/request.js'
 Page({
 
   /**
@@ -26,8 +27,33 @@ Page({
         }
       })
     }
+    wx.getStorage({
+      key: 'openId',
+      success: (result) => {
+        this.setData({
+          openid: result.data
+        })
+        this.getUserInfo(result.data)
+      },
+    });
+    
   },
-
+  getUserInfo(openid) {
+    request({
+      url: 'myInfo/getUserInfo',
+      method: 'POST',
+      data: {
+        openId: openid 
+      }
+    }).then( res => {
+      console.log(res);
+      if (res.data.code === 200) {
+        this.setData({
+          myInfo: res.data.data
+        })
+      }
+    })
+  },
 
   /**
    * 用户点击右上角分享

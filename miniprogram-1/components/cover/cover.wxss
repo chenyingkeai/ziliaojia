@@ -1,0 +1,10 @@
+/* components/cover/cover.wxss */
+.cover{ 
+  width:100%;   
+  height:100%;   
+  top:0;   
+  overflow: hidden;   
+  /*要显示在wrap的上面 */   
+  z-index: 1000;   
+  position: absolute;  
+}

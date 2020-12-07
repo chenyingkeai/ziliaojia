@@ -10,6 +10,7 @@ Page({
     hasUserInfo: true,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     materialSelect:false,//遮罩层是否
+    ifLogin:true,
     activetab: 0,
     shadeLeng:"",
     // selectNum1:-1,//年级选择
@@ -53,10 +54,21 @@ Page({
       this.setData({
         groupsChoose:e.detail.value
       })
-    let data = { zlModule: '资料' }
+    let data = this.data.lastChose
       if(e.detail.value==1){
         console.log("智能排序")
-        this.getzlList()
+        request({
+          url: 'material/selectByGoodAndTimeIndex',
+          data,
+          method: 'POST',
+        }).then( res => {
+          console.log('----')
+          if (res.data.code === 200) {
+            this.setData({
+              zlList: res.data.data
+            })
+          }
+        })
       }
       if(e.detail.value==2){
         request({
@@ -104,10 +116,18 @@ Page({
     let openId =wx.getStorageSync('openId');
     if(openId){
       console.log("登陆成功");
+      this.setData({
+        ifLogin:false
+      })
+      wx.showTabBar()
     }else{
-      wx.redirectTo({
-        url: '/pages/turn/turn?id='+1
-      })   
+      this.setData({
+        ifLogin:true
+      })
+      wx.hideTabBar()
+      // wx.redirectTo({
+      //   url: '/pages/turn/turn?id='+1
+      // })   
     }
     
     if(app.globalData.renewIndex = true){
@@ -137,16 +157,12 @@ Page({
         })
       }
     })
-    // let that=this;
-    // wx.request({
-    //   url: "http://134.175.246.52:8080/material/selectByGood",
-    //   method:"POST",
-    //   success(res) {
-    //     that.setData({
-    //       zlList:res.data.data
-    //     })
-    //   },
-    // })
+  },
+  // 登陆覆盖
+  toLoginPage(){
+    wx.redirectTo({
+        url: '/pages/turn/turn?id='+1
+      })   
   },
   // 遮罩层
   materialSelect() {
@@ -155,8 +171,9 @@ Page({
     });
   },
   getMaterialList(e) {
-    console.log(e);
+    console.log(e.detail);
     this.data.lastChose = e.detail
+    // this.data.lastChose.zlList="智能排序"
     request({
       url: 'material/selectMaterialByTag',
       method: 'POST',
@@ -169,6 +186,7 @@ Page({
         that.setData({
           zlList:res.data.data,
           materialSelect: false,
+          groupsChoose:1
         })
       } else {
         console.log('筛选失败');

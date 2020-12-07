@@ -1,4 +1,5 @@
 <filter bind:sureClick="getMaterialList" bind:hide="materialSelect" show="{{materialSelect}}" style="z-index:100;" />
+<cover show="{{ifLogin}}" bind:toLoginPage="toLoginPage" ></cover>
 <view wx:if="{{canIUse}}">
 <!--   <view wx:if="{{!hasUserInfo}}" class='headView'>
     <view>
@@ -12,15 +13,15 @@
     <button class='authBtn'   open-type='getUserInfo'     
     bindgetuserinfo='getUserInfo'>允许</button>
   </view>  -->
-  <view  >
+  <view>
     <view class="top">
       <view bind:tap="materialSelect" class="select active">
         <image class="selectImg" src="../../pages/image/select.png"></image>
         <view class="selectText">筛选</view>
-    </view>
-    <view class="search" bindtap="toSearch">
-      <image class="searchImg" src="../image/greySearch.png"></image>
-      <input placeholder-class="place-holder" class="searchText" type="text" disabled="disabled" placeholder="搜索你需要的学习资料" />
+        <view class="search" bindtap="toSearch">
+          <image class="searchImg" src="../image/greySearch.png"></image>
+          <input placeholder-class="place-holder" class="searchText" type="text" disabled="disabled" placeholder="搜索你需要的学习资料" />
+      </view>
     </view>
     </view>
     <view >

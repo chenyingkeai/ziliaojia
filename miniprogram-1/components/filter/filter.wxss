@@ -16,7 +16,7 @@
   min-height: 428rpx;   
   background-color: white;   
   position: fixed;   
-  top: 100rpx;   
+  top: 95rpx;   
   padding-bottom: 20rpx;
   border-radius:0 0 48rpx 0;
   margin-left:auto;
@@ -24,7 +24,7 @@
 }  
 .selectBlock{
   margin-left: 30rpx;
-  margin-bottom: 60rpx;
+  margin-bottom: 45rpx;
 }
 .selectTitle{
   color: #85e4ba;
@@ -41,7 +41,7 @@
   line-height: 45rpx;
   display: inline-flex;
   flex-wrap: wrap;
-  width: 120rpx;
+  width: 125rpx;
   padding: 0 10rpx;
   border: 3rpx solid #cdcdcd;
   margin:0 8rpx;

@@ -17,9 +17,7 @@ Page({
     SecTap:'',//二号按键
     haveShare: 0,
     points: 0,
-    showType1:Boolean,
-    showType2:Boolean,
-    showType3:Boolean
+    ifLogin:true,
   },
 
   /**
@@ -272,6 +270,12 @@ Page({
         url: '/pages/index/details/haszl/haszl?id='+Keyword
         })
     },
+      // 登陆覆盖
+  toLoginPage(){
+    wx.redirectTo({
+        url: '/pages/turn/turn?id='+2+'?page'+this.data.detailsId
+      })   
+  },
     
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -286,14 +290,25 @@ Page({
   onShow() {
     let that = this
     let openId =wx.getStorageSync('openId');
-    console.log(openId);
     if(openId){
       console.log("登陆成功");
+      this.setData({
+        ifLogin:false
+      })
+      wx.showTabBar()
     }else{
-      wx.redirectTo({
-        url: '/pages/turn/turn?id='+2+'?page'+that.data.detailsId
-      })   
+      this.setData({
+        ifLogin:true
+      })
+      wx.hideTabBar()
     }
+    // if(openId){
+    //   console.log("登陆成功");
+    // }else{
+    //   wx.redirectTo({
+    //     url: '/pages/turn/turn?id='+2+'?page'+that.data.detailsId
+    //   })   
+    // }
   },
 
   /**

@@ -1,4 +1,5 @@
 <!--pages/index/details/details.wxml-->
+<cover show="{{ifLogin}}" bind:toLoginPage="toLoginPage" ></cover>
 <view>
   <view class="top">
     <view class="type">【{{materianInfo.zlType}}】</view>

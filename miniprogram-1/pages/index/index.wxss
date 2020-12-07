@@ -5,7 +5,7 @@ button::after{
 .banner{
   width: 710rpx;
   border-radius: 20rpx;
-  background-color: black;
+  /* background-color: black; */
   text-align: center;
   margin: 10rpx 20rpx;
 }
@@ -15,6 +15,8 @@ button::after{
 }
 .select{
   display: inline-block;
+  margin-top: 30rpx;
+
 }
 .search{
   display: inline-block;
@@ -30,21 +32,22 @@ button::after{
 }
 .selectImg{
   display: inline-block;
-  width: 28rpx;
-  height: 28rpx;
-  margin-right: 5rpx;
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 3rpx;
   position: relative;
-  bottom: 2rpx;
+  /* bottom: 2rpx; */
 }
 .selectText{
   display:inline-block;
   position: relative;
-  top: -8rpx;
+  top: -6rpx;
+  font-size: 32rpx;
   color: #69d5a8;
 }
 .searchText{
   display: inline-block;
-  width: 500rpx;
+  width: 480rpx;
   height: 50rpx;
   text-align: left;
 }
@@ -153,9 +156,10 @@ button::after{
   margin-left: 10rpx;
 }
 .searchImg{
-  width: 36rpx;
-  height: 36rpx;
-  margin-left: 25rpx;
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 20rpx;
+  margin-top: 3rpx;
 }
 .select-btn{
   width: 154rpx;

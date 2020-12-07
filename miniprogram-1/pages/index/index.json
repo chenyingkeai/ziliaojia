@@ -4,6 +4,7 @@
     "selects": "../../components/selects/selects",
     "mp-actionSheet": "weui-miniprogram/actionsheet/actionsheet",
     "material-item": "../../../components/material-item/material-item",
-    "filter": "../../../components/filter/filter"
+    "filter": "../../../components/filter/filter",
+    "cover": "../../../components/cover/cover"
   }
 }

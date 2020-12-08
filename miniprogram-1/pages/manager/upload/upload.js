@@ -1,6 +1,5 @@
 // pages/manager/upload/upload.js
 import request from '../../../service/request.js'
-import { watch } from "../../../app.js";
 const app =  getApp();
 Page({
 
@@ -269,8 +268,6 @@ Page({
           }
         });
       },
-      fail: () => {},
-      complete: () => {}
     });
       
     

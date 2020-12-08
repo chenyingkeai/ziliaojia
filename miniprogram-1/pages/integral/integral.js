@@ -59,7 +59,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    let myOpenid = wx.getStorageSync("openid")
+    let myOpenid = wx.getStorageSync("openId")
     return {
       title: '海量初中学习资料',
       path: `/pages/index/index?hisOpenid=${myOpenid}`,

@@ -48,6 +48,17 @@ Page({
       showActionsheet: true
   })
   },
+  filter(e) {
+    console.log(e);
+    this.data.lastChose = e.detail
+    let pram = {}
+    pram.detail = {}
+    pram.detail.value = this.data.groupsChoose
+    this.btnClick(pram)
+    this.setData({
+      materialSelect: false,
+    })
+  },
   btnClick(e) {
       console.log(e.detail.value)
       this.close()
@@ -70,7 +81,7 @@ Page({
           }
         })
       }
-      if(e.detail.value==2){
+      else if(e.detail.value==2){
         request({
           url: 'material/selectByGoodIndex',
           data,
@@ -83,7 +94,7 @@ Page({
             })
           }
         })
-      }else{
+      }else if(e.detail.value==3){
         request({
           url: 'material/selectByTimeIndex',
           data,
@@ -96,7 +107,7 @@ Page({
             })
           }
         })
-      }
+      } 
   },
   onLoad: function (options) {
     if (options.hisOpenid) {
@@ -131,13 +142,12 @@ Page({
     }
     
     if(app.globalData.renewIndex = true){
-      this.getzlList()
+      let e = {}
+      e.detail = {}
+      e.detail.value = this.data.groupsChoose
+      this.btnClick(e)
       app.globalData.renewIndex = false
     }
-
-    let data = {}
-    data.detail = this.data.lastChose
-    this.getMaterialList(data)
   },
   // 获取资料列表
   getzlList(){
@@ -160,9 +170,10 @@ Page({
   },
   // 登陆覆盖
   toLoginPage(){
-    wx.redirectTo({
-        url: '/pages/turn/turn?id='+1
-      })   
+    wx.navigateTo({
+      url: '/pages/turn/turn?id='+1
+    })
+      
   },
   // 遮罩层
   materialSelect() {
@@ -170,46 +181,6 @@ Page({
       materialSelect: !this.data.materialSelect
     });
   },
-  getMaterialList(e) {
-    console.log(e.detail);
-    this.data.lastChose = e.detail
-    // this.data.lastChose.zlList="智能排序"
-    request({
-      url: 'material/selectMaterialByTag',
-      method: 'POST',
-      data: e.detail
-    }).then(res =>{
-      let that = this
-      console.log(res.data);
-      if (res.data.code === 200) {
-        console.log("筛选成功");
-        that.setData({
-          zlList:res.data.data,
-          materialSelect: false,
-          groupsChoose:1
-        })
-      } else {
-        console.log('筛选失败');
-      }
-    }).catch(err=>{
-      console.log(err);          
-    })      
-  },
-  // closeMask(e){
-  //   let that =this
-  //   console.log(e.detail.y);
-  //   let leng=e.detail.y
-  //   if(that.data.flag){
-  //     if(leng>that.data.shadeLeng){
-  //       that.setData({
-  //         flag:!that.data.flag
-  //       })
-  //       console.log("成功关闭");
-        
-  //     }
-
-  //   }
-  // },
   // 跳转到搜索页
   toSearch(){
     wx.navigateTo({
@@ -297,4 +268,20 @@ Page({
       selectNum3:-1
     })
   },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    wx.showNavigationBarLoading()
+    let e = {}
+    e.detail = {}
+    e.detail.value = this.data.groupsChoose
+    this.btnClick(e)
+    setTimeout(() => {
+      wx.hideNavigationBarLoading(); //完成停止加载图标
+      wx.stopPullDownRefresh();
+    }, 1000);
+  },
+
 })

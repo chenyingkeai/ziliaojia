@@ -50,26 +50,6 @@ Page({
     this.getGoodAndFavor()
 
     this.getMaterianInfo()
-    // wx.downloadFile({
-    //   // 示例 url，并非真实存在
-    //   url: 'http://example.com/somefile.pdf',
-    //   success: function (res) {
-    //     const filePath = res.tempFilePath
-    //     wx.openDocument({
-    //       filePath: filePath,
-    //       success: function (res) {
-    //         console.log(res);
-    //         console.log('打开文档成功')
-    //       },
-    //       fail:function (res){
-    //         console.log("打开文档失败")
-    //       }
-    //     })
-    //   },
-    //   fail:function (res){
-    //     console.log(res)
-    //   }
-    // })
   },
   // 请求资料数据
   getMaterianInfo(){
@@ -96,8 +76,8 @@ Page({
   },
   getGoodAndFavor(){
     let that = this
-    let openId =wx.getStorageSync('openid');
-    let userId =wx.getStorageSync('userid');
+    let openId =wx.getStorageSync('openId');
+    let userId =wx.getStorageSync('userId');
     console.log(openId,userId,that.data.detailsId);
     request({
       url: 'material/getGoodAndFavorite',
@@ -124,18 +104,18 @@ Page({
       console.log(err);          
     })
   },
-    // 点赞资料
-    tapGood(e){
+  // 点赞资料
+  tapGood(){
       let that =this
-      let openid =wx.getStorageSync('openid');
-      console.log(openid);
+      let openId =wx.getStorageSync('openId');
+      console.log(openId);
       let index =this.data.detailsId;
       console.log(index);
       request({
-        url: 'material/setGood/{openId}/{zlId}?openId='+openid+'&zlId='+index,
+        url: 'material/setGood/{openId}/{zlId}?openId='+openId+'&zlId='+index,
         method: 'POST',
         data: {
-          "openId" : openid,
+          "openId" : openId,
           "zlId" :index
         }
       }).then(res =>{
@@ -164,18 +144,18 @@ Page({
       }).catch(err=>{
         console.log(err);          
       })
-    },
-    // 收藏
-    tapCollect(e){
-      let openid =wx.getStorageSync('openid');
-      console.log(openid);
+  },
+  // 收藏
+  tapCollect(e){
+      let openId =wx.getStorageSync('openId');
+      console.log(openId);
       let index =e.currentTarget.dataset.index;
       console.log(index);
       request({
-        url: 'material/setFavorite/{openId}/{zlId}?openId='+openid+'&zlId='+index,
+        url: 'material/setFavorite/{openId}/{zlId}?openId='+openId+'&zlId='+index,
         method: 'POST',
         data: {
-          "openId" : openid,
+          "openId" : openId,
           "zlId" :index
         }
       }).then(res =>{
@@ -196,10 +176,11 @@ Page({
       }).catch(err=>{
         console.log(err);          
       }) 
-    },
-    // 兑换
-    buyKeyword(){
-      let userId =app.globalData.userid;
+  },
+  // 兑换
+  buyKeyword(){
+    console.log(app.globalData);
+      let userId =app.globalData.userid || app.globalData.userId;
       let zlDownload=this.data.materianInfo.zlDownload
       let index =this.data.detailsId;
       let Keyword =this.data.materianInfo.zlKeyword
@@ -223,12 +204,21 @@ Page({
               console.log(res.data);
               console.log(Keyword);
               if (res.data.code === 200) {
-                wx.navigateTo({
-                    url: '/pages/index/details/haszl/haszl?id='+Keyword
-                  })
-                that.setData({
-                  isDownLoad:true
-                })
+                wx.navigateTo({
+                  url: '/pages/index/details/haszl/haszl?id='+Keyword
+                })
+                that.setData({
+                  isDownLoad:true
+                })
+              } else if (res.data.code === 404) {
+                wx.showModal({
+                  title: '兑换失败',
+                  content: '下载券不够，兑换失败~快去邀请好友赚下载券吧',
+                  showCancel: false,
+                  confirmText: '确定',
+                  confirmColor: '#3CC51F',
+                });
+                  
               } else {
                 console.log(res);
                 wx.showToast({
@@ -238,43 +228,31 @@ Page({
                 })
               }
             }).catch(err=>{
-              console.log(err);          
+              console.log(err); 
+              wx.showToast({
+                title: "兑换失败",
+                icon: 'none',
+                duration: 2000
+              })         
             }) 
           } else if (res.cancel) {
             console.log('用户点击取消')
           }
         }
       })
-    },
-      //取消事件
-    // _error() {
-    //   console.log('你点击了取消');
-    //   this.popup.hidePopup();
-    // },
-    //确认事件
-//     _success() {
-//       let that =this
-//       console.log("兑换成功");
-//       let Keyword =this.data.Keyword
-//         that.setData({
-//           isDownLoad:true
-//         })
-//         wx.navigateTo({
-//           url: '/pages/index/details/haszl/haszl?id='+Keyword
-//         })
-//       this.popup.hidePopup();
-    // },
-    checkKeyword(){
+  },
+  
+  checkKeyword(){
       let Keyword =this.data.materianInfo.zlKeyword
       wx.navigateTo({
         url: '/pages/index/details/haszl/haszl?id='+Keyword
         })
-    },
-      // 登陆覆盖
+  },
+    // 登陆覆盖
   toLoginPage(){
-    wx.redirectTo({
-        url: '/pages/turn/turn?id='+2+'?page'+this.data.detailsId
-      })   
+    wx.navigateTo({
+      url: '/pages/turn/turn?id='+2+'?page'+this.data.detailsId
+    })       
   },
     
   /**
@@ -312,38 +290,10 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    let myOpenid = wx.getStorageSync("openid")
+    let myOpenid = wx.getStorageSync("openId")
     let zlId = this.data.detailsId
     return {
       title: '海量初中学习资料',
